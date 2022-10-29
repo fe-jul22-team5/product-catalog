@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "eslint  --fix src/**/*.tsx",
+    "lint": "eslint --fix src/",
     "prepare": "cd .. && husky install frontend/.husky"
   },
   "eslintConfig": {
@@ -55,5 +55,8 @@
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "2.7.1"
+  },
+  "lint-staged": {
+    "*.tsx": "npm run lint"
   }
 }
