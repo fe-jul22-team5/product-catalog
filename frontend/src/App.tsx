@@ -1,6 +1,7 @@
 import React from 'react';
 
-const a;
+const b;
+
 
 export function App() {
   return (
