@@ -24,7 +24,8 @@
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "eslint  --fix src/**/*.js"
+    "lint": "eslint  --fix src/**/*.js",
+    "prepare": "cd ../ && husky install ./bazzzzckend/.husky"
   },
   "eslintConfig": {
     "extends": [
