@@ -1,8 +1,5 @@
 import React from 'react';
 
-const b;
-
-
 export function App() {
   return (
     <div className='App'>
