@@ -31,5 +31,8 @@
     "typescript": "^4.8.4"
   },
   "author": "Kostya Kosyuk",
-  "license": "ISC"
+  "license": "ISC",
+  "lint-staged": {
+    "*.tsx": "npm run lint"
+  }
 }

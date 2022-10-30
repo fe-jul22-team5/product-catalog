@@ -7,8 +7,6 @@ app.get('/', (req, res) => {
   res.status(200).send('Hello World');
 });
 
-decm
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
