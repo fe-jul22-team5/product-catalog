@@ -1,0 +1,96 @@
+@import './_utils/mixins';
+@import './_utils//normalize';
+
+@font-face {
+  font-family: "Mont-Bold";
+  src: local("Mont-Bold"),
+   url("./fonts/Mont-Bold.otf") format("truetype");
+  font-weight: bold;
+  }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 1px 0px #E2E6E9;
+    font-family: "Mont-Bold";
+    box-sizing: border-box;
+}
+
+.header__logo_nav_block {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+
+  @include onDesktop {
+    gap: 48px;
+  }
+}
+
+.header__logo {
+  padding-left: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.header__menu {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+  }
+}
+
+.header__menu_list {
+    display: flex;
+    gap: 32px;
+
+    @include onDesktop {
+      gap: 64px;
+    }
+  }
+
+.header__menu_link {
+  color: #89939A;
+  font-weight: 800;
+
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.header__menu_link:hover,
+.header__menu_link:active {
+  color: #0F0F11;
+  padding-bottom: 23px;
+  border-bottom: 4px solid #0F0F11;
+}
+
+.header__cart_icon {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+    align-items: center;
+    padding-right: 17px;
+    padding-left: 17px;
+    border-left: 1px solid #E2E6E9;
+  }
+
+  @include onDesktop {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+}
+
+.header__burger_menu {
+  display: flex;
+  align-items: center;
+  padding-right: 17px;
+  padding-left: 17px;
+  border-left: 1px solid #E2E6E9;
+
+  @include onTablet {
+    display: none;
+  }
+}
+
