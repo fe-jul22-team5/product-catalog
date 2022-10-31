@@ -1,19 +1,24 @@
 'use strict';
 
 import { Phone } from '../types/phone';
-import { getPhonesFromJSON } from '../api/getPhones.js';
+import { PhoneFull } from '../types/phoneFull';
+import {
+  getPhonesFromJSON,
+  getPhonesDescriptionFromDir,
+} from '../api/getPhones.js';
 
 const pathToPhoneJSON = './api_data/phones.json';
 const pathToPhonesDescriptionDir = './api_data/phones/';
 
-const phones = getPhonesFromJSON(pathToPhoneJSON);
+const phones: Phone[] = getPhonesFromJSON(pathToPhoneJSON);
+const phonesDescriptions: PhoneFull[] = getPhonesDescriptionFromDir(pathToPhonesDescriptionDir);
 
 export function getAll() {
   return phones;
 }
 
-export function getPhoneById(id: string) {
-  const foundPhone = phones.find((phone) => phone.id === id);
+export function getPhoneById(phoneId: string) {
+  const foundPhone = phonesDescriptions.find((phone) => phone.id === phoneId);
 
   return foundPhone;
 }
