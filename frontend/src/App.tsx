@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { PageNotFound } from './pages/PageNotFound';
+// import { PageNotFound } from './pages/PageNotFound';
 // import { PhonesPage } from './pages/PhonesPage';
 import {Card} from './pages/components/Card';
 
@@ -17,7 +17,7 @@ export function App() {
         {/* <Route path="phones" element={<PhonesPage />} /> */}
         {/* <Route path="/" element={<PhonesPage />} /> */}
 
-        <Route path="*" element={<PageNotFound />} />
+        {/* <Route path="*" element={<PageNotFound />} /> */}
       </Routes>
 
       <Card />

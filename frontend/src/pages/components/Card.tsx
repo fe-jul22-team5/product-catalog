@@ -1,39 +1,54 @@
 import React from 'react';
 import './Card.scss';
 import iphone_1 from '../../img/iphone_1.png';
+import './Reset.css';
 
 export const Card = React.memo(function Card() {
   return (
-    <div className="phones__card">
+    <div className="phones-card">
       <img src={iphone_1} alt=""/>
-      <h2 className="phones__card-name">
+      <h2 className="phones-card__name">
         Apple iPhone Xs 64GB Silver <br/>(iMT9G2FS/A)
       </h2>
-      <p className="phones__card-price">
+      <div className="phones-card__prices">
+        <span className="phones-card__price phones-card__price--newPrice">
           $799
-        <span className='phones__card-oldPrice'>
+        </span>
+        <span className="phones-card__price phones-card__price--oldPrice">
           $899
         </span>
-      </p>
-      <ul className='phones__card-characteristics'>
-        <li>
-          <span>Screen</span>
-          <span>5.8” OLED</span>
+      </div>
+      <ul className='phones-card__characteristic'>
+        <li className="phones-card__characteristic-item">
+          <span className="phones-card__characteristic-name">
+            Screen
+          </span>
+          <span className="phones-card__characteristic-num">
+            5.8” OLED
+          </span>
         </li>
-        <li>
-          <span>Capacity</span>
-          <span>64 GB</span>
+        <li className="phones-card__characteristic-item">
+          <span className="phones-card__characteristic-name">
+            Capacity
+          </span>
+          <span className="phones-card__characteristic-num">
+            64 GB
+          </span>
         </li>
-        <li>
-          <span>RAM</span>
-          <span>4 GB</span>
+        <li className="phones-card__characteristic-item">
+          <span className="phones-card__characteristic-name">
+            RAM
+          </span>
+          <span className="phones-card__characteristic-num">
+            4 GB
+          </span>
         </li>
       </ul>
-      <div className="phones__card-btns">
-        <button className='phones__card-addBtn'>
-        Add to cart
+      <div className="phones-card__btns">
+        <button className="phones-card__addBtn">
+          Add to cart
         </button>
-        <button className='phones__card-favoritesBtn'></button>
+        <button className="phones-card__favoritesBtn"></button>
       </div>
     </div>
   );
