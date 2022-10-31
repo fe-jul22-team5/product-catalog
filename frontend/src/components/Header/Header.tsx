@@ -44,7 +44,7 @@ export const Header = React.memo(function Header() {
 
       <div className={styles.header__cart_icon}>
         <a href="/cart" className={styles.header__cart_icon_link}>
-          <img src={cart} alt="shopping_cart_icon" />
+          <img src={cart} alt="shopping_cart_icon"/>
         </a>
       </div>
 
@@ -54,5 +54,6 @@ export const Header = React.memo(function Header() {
         </a>
       </div>
     </div>
+
   );
 });

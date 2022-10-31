@@ -1,6 +1,11 @@
 @import '../../styles/_utils//mixins';
 
 .header {
+    position: sticky;
+    top: 0;
+
+    background-color: #FFFFFF;
+
     display: flex;
     justify-content: space-between;
     box-shadow: 0px 1px 0px #E2E6E9;
@@ -62,7 +67,14 @@ position: relative;
   font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+
+  transition: 0.3s;
 }
+
+.header__menu_link:hover {
+  color: #0F0F11;
+}
+
 
 .header__menu_link:hover::after {
   display: block;
@@ -80,17 +92,26 @@ position: relative;
   display: none;
 
   @include onTablet {
-    display: flex;
-    align-items: center;
+    display: grid;
+    place-content: center;
     border-left: 1px solid #E2E6E9;
   }
 }
 
 .header__cart_icon_link {
   @include onTablet {
-    padding: 17px;
+    padding-left: 17px;
+    padding-right: 17px;
+    padding-bottom: 12px;
+    padding-top: 18px;
+    transition: 0.3s;
   }
 }
+
+.header__cart_icon_link:hover {
+  transform: scale(1.15);
+}
+
 
 .header__burger_menu {
   display: flex;
