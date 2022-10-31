@@ -2,6 +2,28 @@ iframe {
   display: none;
 }
 
+@font-face {
+  font-family: "Mont-Bold";
+  src: local("Mont-Bold"),
+   url("./fonts/Mont-Bold.otf") format("truetype");
+  font-weight: bold;
+  }
+
+@font-face {
+  font-family: "Mont-Regular";
+  src: local("Mont-Regular"),
+  url("./fonts/Mont-Regular.otf") format("truetype");
+  font-weight: regular;
+  }
+
+@font-face {
+  font-family: "Mont-SemiBold";
+  src: local("Mont-SemiBold"),
+  url("./fonts/Mont-SemiBold.otf") format("truetype");
+  font-weight: regular;
+  }
+
+
 
 //import styles here
 
