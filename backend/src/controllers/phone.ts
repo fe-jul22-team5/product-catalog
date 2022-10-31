@@ -1,15 +1,37 @@
 'use strict';
 
 import {
+  Request,
+  Response,
+} from 'express';
+
+import {
   getAll,
-  getPhone,
+  getPhoneById,
 } from '../services/phone.js';
 
-export const getAllProducts = (req, res) => {
+export const getAllProducts = (req: Request, res: Response) => {
   const products = getAll();
-
-  console.log('products requested');
 
   res.statusCode = 200;
   res.send(products);
+};
+
+export const getProductById = (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const phone = getPhoneById(id);
+
+  console.log(phone);
+
+  if (phone === undefined) {
+
+    res.statusCode = 404;
+    res.send();
+
+    return;
+  }
+
+  res.statusCode = 200;
+  res.send(phone);
 };
