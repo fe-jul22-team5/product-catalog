@@ -2,12 +2,13 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PageNotFound } from './pages/PageNotFound';
 import { PhonesPage } from './pages/PhonesPage';
+import { Header } from './components/Header';
 
 export function App() {
   return (
     <div className='App'>
 
-      {/* ADD HEADER COMPONENT HERE */}
+      <Header />
 
       <Routes>
         {/* <Route path="/" element={<HomePage />} />
