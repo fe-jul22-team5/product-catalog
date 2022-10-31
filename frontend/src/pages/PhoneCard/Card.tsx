@@ -1,9 +1,10 @@
 import React from 'react';
-import './Card.scss';
 import iphone_1 from '../../img/iphone_1.png';
+import './Card.scss';
 import './Reset.css';
 
 export const Card = React.memo(function Card() {
+
   return (
     <div className="phones-card">
       <img src={iphone_1} alt=""/>
@@ -48,7 +49,9 @@ export const Card = React.memo(function Card() {
         <button className="phones-card__addBtn">
           Add to cart
         </button>
-        <button className="phones-card__favoritesBtn"></button>
+        <button className="phones-card__favoritesBtn">
+          <span className="phones-card__favoritesBtn-heart"></span>
+        </button>
       </div>
     </div>
   );

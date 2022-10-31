@@ -1,37 +1,41 @@
+$accent-color: #F86800;
+$phonesCard-width-heigh-px: 16px;
+
 .phones-card {
   display: flex;
   flex-direction: column;
+
   max-width: 270px;
   height: 506px;
-  background: #FFFFFF;
-  border: 1px solid #E2E6E9;
-  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+
   box-sizing: border-box;
+  background-color: #FFF;
+  border-radius: 8px;
+  border: 1px solid #E2E6E9;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
 
   &__name {
+    padding: 8px 32px;
+    margin: 0;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     color: #0F0F11;
-    padding: 8px 32px;
-    margin: 0;
   }
 
   &__prices {
-    padding-bottom: 8px;
     position: relative;
     padding: 8px 32px;
     margin-bottom: 8px;
 
     &::after {
       content: "";
-      background-image: url(../../img/divider.svg);
-      width: 208px;
-      height: 1px;
       position: absolute;
       top: 45px;
       left: 33px;
+      width: 208px;
+      height: 1px;
+      background-image: url(../../img/divider.svg);
     }
   }
 
@@ -53,24 +57,25 @@
 
       &::after {
         content: "";
-        border-top: 2px solid #89939A;
-        width: 45px;
-        height: 1px;
-        display: block;
         position: absolute;
         top: 15px;
+        display: block;
+        width: 45px;
+        height: 1px;
+        border-top: 2px solid #89939A;
       }
     }
   }
 
   &__characteristic {
-    list-style: none;
     margin-bottom: 8px;
     padding-left: 32px;
+    list-style: none;
 
     &-item {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+
       &:not(:last-child) {
         margin-bottom: 8px;
       }
@@ -85,12 +90,12 @@
     }
 
     &-num {
+      margin-right: 32px;
       font-style: normal;
       font-weight: 700;
       font-size: 12px;
       line-height: 15px;
       text-align: right;
-      margin-right: 32px;
     }
   }
 
@@ -100,32 +105,53 @@
   }
 
   &__addBtn {
+    margin-right: 8px;
     width: 160px;
     height: 40px;
-    background: #F86800;
+    background-color: $accent-color;
     border-radius: 8px;
     color: #FFF;
     border-color: transparent;
-    margin-right: 8px;
+    cursor: pointer;
+    transition: box-shadow 0.5s ease-in-out;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+    }
+
+    &:active {
+      color: $accent-color;
+      background-color: transparent;
+    }
   }
 
   &__favoritesBtn {
-    border-radius: 50%;
+    position: relative;
     width: 40px;
     height: 40px;
     border: 1px solid #B4BDC4;
     border-radius: 48px;
     background-color: transparent;
-    position: relative;
+    cursor: pointer;
 
-    &::after {
-      content: "";
-      background-image: url(../../img/favourites.svg);
-      width: 16px;
-      height: 16px;
+    &-heart {
       position: absolute;
       top: 11px;
       left: 11px;
+      display: block;
+      width: $phonesCard-width-heigh-px;
+      height: $phonesCard-width-heigh-px;
+      background-image: url(../../img/favourites.svg);
+
+      &:active {
+        position: absolute;
+        display: block;
+        top: 11px;
+        left: 11px;
+        width: $phonesCard-width-heigh-px;
+        height:$phonesCard-width-heigh-px;
+        background-image: url(../../img/favourites-selected.svg);
+      }
     }
   }
 }

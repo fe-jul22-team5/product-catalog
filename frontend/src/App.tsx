@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import { PageNotFound } from './pages/PageNotFound';
 // import { PhonesPage } from './pages/PhonesPage';
-import {Card} from './pages/components/Card';
+import {Card} from './pages/PhoneCard/Card';
 
 export function App() {
   return (
