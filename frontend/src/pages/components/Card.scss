@@ -1,0 +1,62 @@
+.phones__card {
+  max-width: 270px;
+  height: 500px;
+  background: #FFFFFF;
+  border: 1px solid #E2E6E9;
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 32px;
+
+  &-name {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #0F0F11;
+  }
+
+  &-price {
+    padding-bottom: 8px;
+    position: relative;
+
+    &::after {
+      content: "";
+      background-image: url(../../img/divider.svg);
+      width: 208px;
+      height: 1px;
+      position: absolute;
+      top: 32px;
+      left: 33px;
+    }
+  }
+
+  &-characteristics {
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  &-btns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-addBtn {
+    width: 160px;
+    height: 40px;
+    background: #F86800;
+    border-radius: 8px;
+    color: #FFF;
+    border-color: transparent;
+    margin-right: 8px;
+  }
+
+  &-favoritesBtn {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-color: #B4BDC3;
+    background-color: transparent;
+  }
+}
