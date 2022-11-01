@@ -18,7 +18,6 @@
   }
 
   &__img {
-    // max-width: 200px;
     height: 190px;
     margin: 0 auto;
   }
@@ -30,6 +29,7 @@
     font-size: 14px;
     line-height: 21px;
     color: #0F0F11;
+    flex: 1 0 auto;
   }
 
   &__prices {
