@@ -1,38 +1,24 @@
-$padding-l-r: 24px;
+@import '../../styles/_utils//mixins';
+@import '../../styles/_utils/_variables';
+
 $margin-t: 24px;
 $margin-b: 75px;
-$mobile-width: 290 + $padding-l-r * 2;
-$tablet-width: 590 + $padding-l-r * 2;
-$big-tablet-width: 720 + $padding-l-r * 2;
-$widescreen-width: 1135 + $padding-l-r * 2;
-
-$grey-primary-clr: #0F0F11;
-$grey-secondary-clr: #89939A;
 
 .page {
-  // height: 100vh;
   margin-top: $margin-t;
   margin-bottom: $margin-b;
 
-  @media (min-width: 768px) {
+  @include onTablet {
     margin-bottom: $margin-b + 5px;
   }
 
   &__container {
     margin: 0 auto;
-    max-width: $mobile-width;
+    max-width: 100%;
     padding: 0 $padding-l-r;
     height: 100%;
 
-    @media (min-width: 660px) {
-      max-width: $tablet-width;
-    }
-
-    @media (min-width: 768px) {
-      max-width: $big-tablet-width;
-    }
-
-    @media (min-width: 1200px) {
+    @include onDesktop {
       max-width: $widescreen-width;
     }
   }

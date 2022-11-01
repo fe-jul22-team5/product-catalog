@@ -1,3 +1,6 @@
+@import '../../styles/_utils/_variables';
+@import '../../styles/_utils/_variables';
+
 .Dropdown {
   position: relative;
   display: flex;
@@ -13,15 +16,15 @@ button.button {
   text-align: left;
   font-weight: 700;
 
-  background-color: #fff;
-  color: #0F0F11;
+  background-color: $white-primary-clr;
+  color: $grey-primary-clr;
 
   border: 2px solid #B4BDC3;
   border-radius: 8px;
 
   &:hover {
-    background-color: #fff;
-    border-color: #0F0F11;
+    background-color: $white-primary-clr;
+    border-color: $grey-primary-clr;
   }
 }
 
@@ -32,7 +35,7 @@ button.button {
   width: 100%;
 
 
-  background-color: #fff;
+  background-color: $white-primary-clr;
   border: 1px solid #E2E6E9;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
@@ -49,7 +52,7 @@ button.button {
   font-weight: 600;
   line-height: 21px;
 
-  color: #89939A;
+  color: $grey-secondary-clr;
 
   transition-property: color, background-color;
   transition: 0.3s;
@@ -57,7 +60,7 @@ button.button {
   cursor: pointer;
 
   &:hover {
-    color: #0F0F11;
+    color: $grey-primary-clr;
 
     background-color: #FAFBFC;
   }
@@ -70,6 +73,5 @@ button.button {
   font-size: 12px;
   line-height: 15px;
 
-
-  color: #89939A;
+  color: $grey-secondary-clr;
 }

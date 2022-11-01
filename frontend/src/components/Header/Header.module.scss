@@ -1,16 +1,17 @@
 @import '../../styles/_utils//mixins';
+@import '../../styles/_utils/_variables';
 
 .header {
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
 
-    background-color: #FFFFFF;
+  background-color: $white-primary-clr;
 
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0px 1px 0px #E2E6E9;
-    font-weight: 700;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 1px 0px #E2E6E9;
+  font-weight: 700;
+  box-sizing: border-box;
 }
 
 .header__logo_nav_block {
@@ -58,7 +59,7 @@
 .header__menu_link {
   position: relative;
 
-  color: #89939A;
+  color: $grey-secondary-clr;
   font-weight: 800;
 
   padding-top: 19px;
@@ -85,7 +86,7 @@
   display: block;
   content: "";
   height: 4px;
-  background-color: #0F0F11;
+  background-color: $grey-primary-clr;
   border-radius: 8px;
   position: absolute;
   top: 52px;
