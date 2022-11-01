@@ -58,13 +58,12 @@
 
 .header__menu_link {
   position: relative;
-
-  color: $grey-secondary-clr;
-  font-weight: 800;
-
   padding-top: 19px;
   padding-bottom: 19px;
 
+  color: $grey-secondary-clr;
+
+  font-weight: 800;
   font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -137,3 +136,18 @@
   padding: 17px;
 }
 
+.header__menu_link_is_active::after {
+  display: block;
+  content: "";
+  height: 4px;
+  background-color: $grey-primary-clr;
+  border-radius: 8px;
+  position: absolute;
+  top: 52px;
+  left: 0;
+  right: 0;
+
+  transition-property: color, left, right;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

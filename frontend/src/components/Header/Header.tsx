@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 import logo from './logo/full_logo.png';
 import cart from './logo/Shopping_cart.png';
 import burger from './logo/burger.png';
@@ -18,24 +20,53 @@ export const Header = React.memo(function Header() {
         <nav className={styles.header__menu}>
           <ul className={styles.header__menu_list}>
             <li className={styles.header__menu_item}>
-              <a href="/" className={styles.header__menu_link}>
+              <NavLink
+                to="/"
+                className={({ isActive }) => classNames(
+                  styles.header__menu_link,
+                  { [styles.header__menu_link_is_active]: isActive },
+                )}
+                end
+              >
               Home
-              </a>
+              </NavLink>
             </li>
             <li className={styles.header__menu_item}>
-              <a href="/phones" className={styles.header__menu_link}>
+              <NavLink
+                to="phones"
+                className={({ isActive }) => classNames(
+                  styles.header__menu_link,
+                  { [styles.header__menu_link_is_active]: isActive },
+                )}
+                end
+              >
               Phones
-              </a>
+              </NavLink>
+
             </li>
             <li className={styles.header__menu_item}>
-              <a href="/tablets" className={styles.header__menu_link}>
+              <NavLink
+                to="tablets"
+                className={({ isActive }) => classNames(
+                  styles.header__menu_link,
+                  { [styles.header__menu_link_is_active]: isActive },
+                )}
+                end
+              >
               Tablets
-              </a>
+              </NavLink>
             </li>
             <li className={styles.header__menu_item}>
-              <a href="/accessories" className={styles.header__menu_link}>
+              <NavLink
+                to="accessories"
+                className={({ isActive }) => classNames(
+                  styles.header__menu_link,
+                  { [styles.header__menu_link_is_active]: isActive },
+                )}
+                end
+              >
               accessories
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>
