@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from './logo/full_logo.png';
 import cart from './logo/Shopping_cart.png';
@@ -7,7 +7,12 @@ import burger from './logo/burger.png';
 
 import styles from  './Header.module.scss';
 
+
 export const Header = React.memo(function Header() {
+  const [active, setBurgerActive] = useState(false);
+  const navigate = useNavigate();
+
+
   return (
     <div className={styles.header}>
       <div className={styles.header__logo_nav_block}>
@@ -79,11 +84,38 @@ export const Header = React.memo(function Header() {
         </a>
       </div>
 
-      <div className={styles.header__burger_menu}>
-        <a href="/menu" className={styles.header__burger_menu_link}>
+      {!active &&
+      <div className={styles.header__burger_menu}
+        onClick={() => setBurgerActive(true)}>
+        <NavLink
+          to="burger"
+          className={styles.header__burger_menu_link}
+        >
           <img src={burger} alt="burger-menu icon" />
-        </a>
+        </NavLink>
       </div>
+      }
+
+      {active &&
+      <div
+        className={styles.header__burger_menu}
+        onClick={() => {
+          setBurgerActive(false);
+          navigate(-1);
+        } }
+      >
+        <NavLink
+          to="burger"
+          className={styles.header__burger_menu_link}
+        >
+          <p>
+            Х
+          </p>
+        </NavLink>
+      </div>
+      }
+
+
     </div>
 
   );
