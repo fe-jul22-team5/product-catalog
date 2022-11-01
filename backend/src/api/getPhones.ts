@@ -1,12 +1,12 @@
 'use strict';
 
 import { Phone } from '../types/phone';
-import { PhoneFull } from '../types/phoneFull';
+import { PhoneDescription } from '../types/phoneDescription';
 import fs from 'fs';
 
 export function getPhonesDescriptionFromDir(pathToDir: string) {
 
-  const allData: PhoneFull[] = [];
+  const allData: PhoneDescription[] = [];
 
   const files = fs.readdirSync(pathToDir);
 
