@@ -18,8 +18,8 @@
   }
 
   &__img {
-    max-width: 200px;
-    min-height: 130px;
+    // max-width: 200px;
+    height: 190px;
     margin: 0 auto;
   }
 
@@ -58,28 +58,16 @@
       display: inline-block;
       color: $grey-secondary-clr;
       @extend %card_price_mutualStyles;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 14px;
-        display: block;
-        width: 45px;
-        height: 1px;
-        border-top: 2px solid #89939A;
-      }
+      font-weight: 600;
+      text-decoration: line-through;
     }
   }
 
   &__characteristic {
     margin-bottom: 8px;
-    // padding-left: 32px;
     list-style: none;
 
     &_item {
-      // display: grid;
-      // grid-template-columns: repeat(2, 1fr);
-
       display: flex;
       justify-content: space-between;
 
