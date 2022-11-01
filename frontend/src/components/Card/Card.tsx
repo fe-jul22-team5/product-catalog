@@ -1,6 +1,6 @@
 import React from 'react';
 import iphone_1 from '../../img/iphone_1.png';
-import './Card.scss';
+import card from './Card.module.scss';
 import './Reset.css';
 
 export const Card = React.memo(function Card() {
