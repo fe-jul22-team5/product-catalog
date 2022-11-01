@@ -1,20 +1,49 @@
 @import '../../styles/_utils/_variables';
+@import '../../styles/_utils/mixins';
 
 .footer {
   &__container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     margin-top: 80px;
     padding: 32px;
+
+    @include onPhone {
+      display: block;
+    }
+  }
+
+  &__logo {
+    @include onPhone {
+      margin-bottom: 32px;
+    }
   }
 
   &__info {
     display: flex;
 
+    @include onPhone {
+      flex-direction: column;
+      margin-bottom: 32px;
+    }
+
     &_item {
       &:not(:last-child) {
         margin-right: 100px;
+      }
+
+      @include onTablet {
+        &:not(:last-child) {
+          margin-right: 70px;
+        }
+      }
+
+      @include onPhone {
+        &:not(:last-child) {
+          margin-bottom: 16px;
+        }
       }
     }
 
@@ -61,6 +90,10 @@
   &__toTop {
     display: flex;
     align-items: center;
+
+    @include onPhone {
+      justify-content: center;
+    }
 
     &_text {
       font-style: normal;
