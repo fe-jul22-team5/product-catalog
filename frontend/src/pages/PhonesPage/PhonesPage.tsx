@@ -24,46 +24,42 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
   return (
     <>
-      <main className={phonePage.page}>
-        <div className={phonePage.page__container}>
-          <div className={phonePage.navInfo}>
-            <a href="#" className={phonePage.navInfo__homeLink}>
-              <img src={home_icon} alt="Home" />
-            </a>
-            <img src={right_arrow_icon} alt="Arrow" className={phonePage.navInfo__arrow}/>
-            <h4 className={phonePage.navInfo__title}>
+      <div className={phonePage.navInfo}>
+        <a href="#" className={phonePage.navInfo__homeLink}>
+          <img src={home_icon} alt="Home" />
+        </a>
+        <img src={right_arrow_icon} alt="Arrow" className={phonePage.navInfo__arrow}/>
+        <h4 className={phonePage.navInfo__title}>
               Phones
-            </h4>
-          </div>
-          <h1 className={phonePage.page__title}>
+        </h4>
+      </div>
+      <h1 className={phonePage.title}>
             Mobile phones
-          </h1>
-          <p className={phonePage.page__modelsCount}>
+      </h1>
+      <p className={phonePage.modelsCount}>
             95 models
-          </p>
+      </p>
 
-          <div className={phonePage.filters}>
-            <Dropdown
-              options={sortBy}
-              width={175}
-              onChange={onChangeSortBy}
-              value={selectedSortBy}
-              title={'Sort by'}
-            />
+      <div className={phonePage.filters}>
+        <Dropdown
+          options={sortBy}
+          width={175}
+          onChange={onChangeSortBy}
+          value={selectedSortBy}
+          title={'Sort by'}
+        />
 
-            <Dropdown
-              options={itemsOnPage}
-              width={130}
-              onChange={onChangeItemsOnPage}
-              value={selectedItemsOnPage}
-              title={'Items on page'}
-            />
-          </div>
+        <Dropdown
+          options={itemsOnPage}
+          width={130}
+          onChange={onChangeItemsOnPage}
+          value={selectedItemsOnPage}
+          title={'Items on page'}
+        />
+      </div>
 
-          <Loader />
-          <CardList />
-        </div>
-      </main>
+      <Loader />
+      <CardList />
     </>
   );
 });
