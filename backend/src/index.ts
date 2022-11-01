@@ -18,6 +18,8 @@ app.use(cors());
 app.use('/public', express.static(path.join(__dirname + '../src/public')));
 app.use('/product', express.json(), productRouter);
 
+console.log('ok');
+
 app.listen(process.env.PORT || PORT, () => {
   console.log(`Server running on port ${process.env.PORT || PORT}`);
 });
