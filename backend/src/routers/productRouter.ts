@@ -3,10 +3,10 @@
 import express from 'express';
 import {
   getAllProducts,
-  getProductById,
+  getProductDescriptionById,
 } from '../controllers/phone.js';
 
 export const productRouter = express.Router();
 
 productRouter.get('/', getAllProducts);
-productRouter.get('/:id', getProductById);
+productRouter.get('/:id', getProductDescriptionById);

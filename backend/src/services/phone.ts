@@ -5,7 +5,7 @@ import { PhoneFull } from '../types/phoneFull';
 import {
   getPhonesFromJSON,
   getPhonesDescriptionFromDir,
-} from '../api/getPhones.js';
+} from '../helpers/getPhones.js';
 
 const pathToPhoneJSON = './api_data/phones.json';
 const pathToPhonesDescriptionDir = './api_data/phones/';
@@ -17,8 +17,12 @@ export function getAll() {
   return phones;
 }
 
-export function getPhoneById(phoneId: string) {
+export function getPhoneDescriptionById(phoneId: string) {
   const foundPhone = phonesDescriptions.find((phone) => phone.id === phoneId);
 
   return foundPhone;
 }
+
+// export function getPhonesByRange(from: string, to: string) {
+
+// }

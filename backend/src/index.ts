@@ -17,6 +17,7 @@ const app = express();
 console.log((path.join(`${__dirname}/../src/img`)));
 
 app.use(cors());
+
 app.use('/img', express.static(path.join(`${__dirname}/../src/img`)));
 app.use('/product', express.json(), productRouter);
 
