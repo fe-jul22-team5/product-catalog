@@ -15,7 +15,7 @@ const PORT = 3000;
 const app = express();
 
 app.use(cors());
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/public', express.static(path.join(__dirname + '/public')));
 app.use('/product', express.json(), productRouter);
 
 app.listen(process.env.PORT || PORT, () => {
