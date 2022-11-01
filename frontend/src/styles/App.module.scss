@@ -11,23 +11,19 @@ $margin-b: 75px;
 }
 
 .page {
-  margin-top: $margin-t;
-  margin-bottom: $margin-b;
+  background-color: #FAFBFC;
 
   flex: 1 0 auto;
 
-  @include onTablet {
-    margin-bottom: $margin-b + 5px;
-  }
-
   &__container {
-    margin: 0 auto;
+    margin: $margin-t auto $margin-b;
     max-width: 100%;
     padding: 0 $padding-l-r-small;
     height: 100%;
 
     @include onTablet {
       padding: 0 $padding-l-r-big;
+      margin-bottom: $margin-b + 5px;
     }
 
     @include onDesktop {
