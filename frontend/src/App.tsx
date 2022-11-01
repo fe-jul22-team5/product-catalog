@@ -9,7 +9,7 @@ import app from './styles/App.module.scss';
 
 export function App() {
   return (
-    <div className='App'>
+    <div className={app.App}>
 
       <Header />
 
@@ -24,7 +24,7 @@ export function App() {
           </Routes>
         </div>
       </main>
-      
+
       <Footer/>
     </div>
   );

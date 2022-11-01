@@ -4,9 +4,17 @@
 $margin-t: 24px;
 $margin-b: 75px;
 
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .page {
   margin-top: $margin-t;
   margin-bottom: $margin-b;
+
+  flex: 1 0 auto;
 
   @include onTablet {
     margin-bottom: $margin-b + 5px;

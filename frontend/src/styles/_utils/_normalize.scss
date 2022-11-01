@@ -21,3 +21,7 @@ button {
   box-sizing: border-box;
   font-family: Mont, sans-serif;
 }
+
+html, body, #root {
+  min-height: 100vh;
+}
