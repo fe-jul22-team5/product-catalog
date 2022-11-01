@@ -35,7 +35,7 @@
       left: 33px;
       width: 208px;
       height: 1px;
-      background-image: url(../../img/divider.svg);
+      background-image: url(../../img/icons/divider.svg);
     }
 
     &__newPrice {
@@ -107,7 +107,7 @@
     color: #FFF;
     border-color: transparent;
     cursor: pointer;
-    transition: box-shadow 0.5s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out;
 
     &:hover {
       box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
@@ -128,6 +128,12 @@
     background-color: transparent;
     cursor: pointer;
 
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+      border-color: $grey-primary-clr;
+    }
+
     &_heart {
       position: absolute;
       top: 11px;
@@ -135,7 +141,7 @@
       display: block;
       width: $phonesCard-width-heigh-px;
       height: $phonesCard-width-heigh-px;
-      background-image: url(../../img/favourites.svg);
+      background-image: url(../../img/icons/favourites.svg);
 
       &:active {
         position: absolute;
@@ -144,7 +150,7 @@
         left: 11px;
         width: $phonesCard-width-heigh-px;
         height:$phonesCard-width-heigh-px;
-        background-image: url(../../img/favourites-selected.svg);
+        background-image: url(../../img/icons/favourites-selected.svg);
       }
     }
   }
