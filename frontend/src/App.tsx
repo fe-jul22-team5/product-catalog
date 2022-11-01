@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { PageNotFound } from './pages/PageNotFound';
 import { PhonesPage } from './pages/PhonesPage';
 import { Header } from './components/Header';
+import { Card } from './components/Card';
 
 export function App() {
   return (
@@ -18,6 +19,7 @@ export function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 
+      <Card/>
       {/* ADD FOOTER COMPONENT HERE */}
 
     </div>
