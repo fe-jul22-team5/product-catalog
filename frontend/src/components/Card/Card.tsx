@@ -6,7 +6,7 @@ export const Card = React.memo(function Card() {
 
   return (
     <div className={card.phones_card}>
-      <img src={iphone_1} alt="iphone 11"/>
+      <img src={iphone_1} alt="iphone 11" className={card.phones_card__img}/>
       <h2 className={card.phones_card__name}>
         Apple iPhone Xs 64GB Silver <br/>(iMT9G2FS/A)
       </h2>
