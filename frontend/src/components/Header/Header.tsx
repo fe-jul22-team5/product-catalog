@@ -3,7 +3,7 @@ import logo from './logo/full_logo.png';
 import cart from './logo/Shopping_cart.png';
 import burger from './logo/burger.png';
 
-import styles from  '../Header/header.module.scss';
+import styles from  './Header.module.scss';
 
 export const Header = React.memo(function Header() {
   return (
