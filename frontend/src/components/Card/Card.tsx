@@ -1,12 +1,11 @@
 import React from 'react';
 import iphone_1 from '../../img/iphone_1.png';
 import card from './Card.module.scss';
-import './Reset.css';
 
 export const Card = React.memo(function Card() {
 
   return (
-    <div className="phones-card">
+    <div className={card.phones_card}>
       <img src={iphone_1} alt=""/>
       <h2 className="phones-card__name">
         Apple iPhone Xs 64GB Silver <br/>(iMT9G2FS/A)
