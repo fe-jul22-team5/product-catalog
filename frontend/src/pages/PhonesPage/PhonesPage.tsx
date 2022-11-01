@@ -3,7 +3,7 @@ import phonePage from './PhonesPage.module.scss';
 import home_icon from '../../img/icons/home-icon.svg';
 import right_arrow_icon from '../../img/icons/right-arrow-icon.svg';
 import { Dropdown } from '../../components/Dropdown/Dropdown';
-import { Card } from '../../components/Card';
+import { CardList } from '../../components/CardList';
 
 export const PhonesPage = React.memo(function PhonesPage() {
   const [sortBy] = useState(['Newest', 'Alphabetically', 'Cheapest']);
@@ -59,7 +59,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
             />
           </div>
 
-          <Card />
+          <CardList />
         </div>
       </main>
     </>
