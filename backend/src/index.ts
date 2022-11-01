@@ -10,6 +10,8 @@ const app = express();
 app.use(cors());
 app.use('/product', express.json(), productRouter);
 
+console.log('ok');
+
 app.listen(process.env.PORT || PORT, () => {
   console.log(`Server running on port ${process.env.PORT || PORT}`);
 });
