@@ -3,24 +3,24 @@ iframe {
 }
 
 @font-face {
-  font-family: "Mont-Bold";
+  font-family: "Mont";
   src: local("Mont-Bold"),
    url("./fonts/Mont-Bold.otf") format("truetype");
-  font-weight: bold;
+  font-weight: 700;
   }
 
 @font-face {
-  font-family: "Mont-Regular";
+  font-family: "Mont";
   src: local("Mont-Regular"),
   url("./fonts/Mont-Regular.otf") format("truetype");
-  font-weight: regular;
+  font-weight: 400;
   }
 
 @font-face {
-  font-family: "Mont-SemiBold";
+  font-family: "Mont";
   src: local("Mont-SemiBold"),
   url("./fonts/Mont-SemiBold.otf") format("truetype");
-  font-weight: regular;
+  font-weight: 600;
   }
 
 //import styles here
