@@ -1,0 +1,57 @@
+@import '../../styles/_utils/_variables';
+
+.footer {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 80px;
+    padding: 32px;
+  }
+
+  &__info {
+    display: flex;
+
+    &_item {
+      &:not(:last-child) {
+        margin-right: 100px;
+      }
+    }
+
+    &_link {
+      font-size: 12px;
+      line-height: 11px;
+      font-style: normal;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: $grey-secondary-clr;
+    }
+  }
+
+  &__toTop {
+    display: flex;
+    align-items: center;
+
+    &_text {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+      color: $grey-secondary-clr;
+    }
+
+    &_link {
+      display: inline-block;
+      margin-left: 20px;
+
+      &::after {
+        content: "";
+        background-image: url(./img/link-toTop.svg);
+        width: 32px;
+        height: 32px;
+        display: block;
+      }
+    }
+  }
+}

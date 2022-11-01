@@ -4,6 +4,7 @@ import { PageNotFound } from './pages/PageNotFound';
 import { PhonesPage } from './pages/PhonesPage';
 import { Header } from './components/Header';
 import { Card } from './components/Card';
+import { Footer } from './components/Footer';
 
 export function App() {
   return (
@@ -20,7 +21,7 @@ export function App() {
       </Routes>
 
       <Card/>
-      {/* ADD FOOTER COMPONENT HERE */}
+      <Footer/>
 
     </div>
   );
