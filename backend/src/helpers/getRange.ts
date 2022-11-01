@@ -1,5 +1,6 @@
-export function getRange(array: unknown[], from: number, to: number) {
-  const range: unknown[] = [];
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export function getRange(array: any[], from: number, to: number) {
+  const range: any[] = [];
 
   for (let i = from; i <= to; i++) {
     range.push(array[i]);
