@@ -13,7 +13,6 @@ export function App() {
       <Routes>
         {/* <Route path="/" element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} /> */}
-
         <Route path="phones" element={<PhonesPage />} />
 
         <Route path="*" element={<PageNotFound />} />

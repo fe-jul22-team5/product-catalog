@@ -1,0 +1,157 @@
+@import '../../styles/_utils/_variables';
+@import '../../styles/_utils/extends';
+
+.phones_card {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 270px;
+  height: 506px;
+
+  box-sizing: border-box;
+  background-color: #FFF;
+  border: 1px solid #E2E6E9;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+
+  &__name {
+    padding: 8px 32px;
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #0F0F11;
+  }
+
+  &__prices {
+    position: relative;
+    padding: 8px 32px;
+    margin-bottom: 8px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 45px;
+      left: 33px;
+      width: 208px;
+      height: 1px;
+      background-image: url(../../img/icons/divider.svg);
+    }
+
+    &__newPrice {
+      margin-right: 8px;
+      color: #0F0F11;
+      @extend %card_price_mutualStyles;
+    }
+
+    &__oldPrice {
+      position: relative;
+      display: inline-block;
+      color: $grey-secondary-clr;
+      @extend %card_price_mutualStyles;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 14px;
+        display: block;
+        width: 45px;
+        height: 1px;
+        border-top: 2px solid #89939A;
+      }
+    }
+  }
+
+  &__characteristic {
+    margin-bottom: 8px;
+    padding-left: 32px;
+    list-style: none;
+
+    &_item {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+
+    &_name {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+      color: #89939A;
+    }
+
+    &_num {
+      margin-right: 32px;
+      font-style: normal;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: right;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    padding-left: 32px;
+  }
+
+  &__addBtn {
+    margin-right: 8px;
+    width: 160px;
+    height: 40px;
+    background-color: $accent-color;
+    border-radius: 8px;
+    color: #FFF;
+    border-color: transparent;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+    }
+
+    &:active {
+      color: $accent-color;
+      background-color: transparent;
+    }
+  }
+
+  &__favoritesBtn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #B4BDC4;
+    border-radius: 48px;
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+      border-color: $grey-primary-clr;
+    }
+
+    &_heart {
+      position: absolute;
+      top: 11px;
+      left: 11px;
+      display: block;
+      width: $phonesCard-width-heigh-px;
+      height: $phonesCard-width-heigh-px;
+      background-image: url(../../img/icons/favourites.svg);
+
+      &:active {
+        position: absolute;
+        display: block;
+        top: 11px;
+        left: 11px;
+        width: $phonesCard-width-heigh-px;
+        height:$phonesCard-width-heigh-px;
+        background-image: url(../../img/icons/favourites-selected.svg);
+      }
+    }
+  }
+}
