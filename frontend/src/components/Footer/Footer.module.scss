@@ -90,8 +90,18 @@
   }
 
   &__toTop {
+    color: $grey-secondary-clr;
     display: flex;
     align-items: center;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $grey-primary-clr;
+    }
 
     @include onPhone {
       justify-content: center;
@@ -101,8 +111,6 @@
       font-style: normal;
       font-weight: 700;
       font-size: 12px;
-      line-height: 15px;
-      color: $grey-secondary-clr;
     }
 
     &_link {
