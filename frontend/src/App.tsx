@@ -24,9 +24,11 @@ export function App() {
             <Route path="*" element={<PageNotFound />} />
           </Routes>
 
-      <Footer/>
+          <Footer/>
 
-      {/* ADD FOOTER COMPONENT HERE */}
+          {/* ADD FOOTER COMPONENT HERE */}
+        </div>
+      </main>
     </div>
   );
 }
