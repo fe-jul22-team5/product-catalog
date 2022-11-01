@@ -4,6 +4,7 @@ import home_icon from '../../img/icons/home-icon.svg';
 import right_arrow_icon from '../../img/icons/right-arrow-icon.svg';
 import { Dropdown } from '../../components/Dropdown/Dropdown';
 import { CardList } from '../../components/CardList';
+import { Loader } from '../../components/Loader';
 
 export const PhonesPage = React.memo(function PhonesPage() {
   const [sortBy] = useState(['Newest', 'Alphabetically', 'Cheapest']);
@@ -59,6 +60,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
             />
           </div>
 
+          <Loader />
           <CardList />
         </div>
       </main>
