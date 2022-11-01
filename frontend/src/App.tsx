@@ -3,23 +3,29 @@ import { Route, Routes } from 'react-router-dom';
 import { PageNotFound } from './pages/PageNotFound';
 import { PhonesPage } from './pages/PhonesPage';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import app from './styles/App.module.scss';
+
 
 export function App() {
   return (
-    <div className='App'>
+    <div className={app.App}>
 
       <Header />
 
-      <Routes>
-        {/* <Route path="/" element={<HomePage />} />
+      <main className={app.page}>
+        <div className={app.page__container}>
+          <Routes>
+            {/* <Route path="/" element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} /> */}
-        <Route path="phones" element={<PhonesPage />} />
+            <Route path="phones" element={<PhonesPage />} />
 
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </div>
+      </main>
 
-      {/* ADD FOOTER COMPONENT HERE */}
-
+      <Footer/>
     </div>
   );
 }

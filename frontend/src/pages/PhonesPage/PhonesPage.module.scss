@@ -1,40 +1,22 @@
 @import '../../styles/_utils//mixins';
 @import '../../styles/_utils/_variables';
 
-$margin-t: 24px;
-$margin-b: 75px;
-
-.page {
-  margin-top: $margin-t;
-  margin-bottom: $margin-b;
-
-  @include onTablet {
-    margin-bottom: $margin-b + 5px;
-  }
-
-  &__container {
-    margin: 0 auto;
-    max-width: 100%;
-    padding: 0 $padding-l-r;
-    height: 100%;
-
-    @include onDesktop {
-      max-width: $widescreen-width;
-    }
-  }
-
-  &__title {
+.title {
     margin-bottom: 8px;
 
     font-weight: 800;
-    font-size: 48px;
+    font-size: 32px;
     line-height: 56px;
     letter-spacing: -0.01em;
 
     color: $grey-primary-clr;
+
+    @include onTablet {
+      font-size: 48px;
+    }
   }
 
-  &__modelsCount {
+.modelsCount {
     margin-bottom: 40px;
 
     font-weight: 600;
@@ -43,7 +25,6 @@ $margin-b: 75px;
 
     color: $grey-secondary-clr;
   }
-}
 
 .navInfo {
   display: flex;
@@ -73,5 +54,6 @@ $margin-b: 75px;
 .filters {
   display: flex;
   gap: 16px;
+  margin-bottom: 24px;
 }
 

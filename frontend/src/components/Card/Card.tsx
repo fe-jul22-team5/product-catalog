@@ -1,21 +1,37 @@
 import React from 'react';
-import iphone_1 from '../../img/iphone_1.png';
+import { BASE_URL } from '../../api/fetchClient';
+import { Phone } from '../../types/phone';
 import card from './Card.module.scss';
 
-export const Card = React.memo(function Card() {
+type Props = {
+  phone: Phone,
+}
+
+export const Card = React.memo(function Card({ phone }: Props) {
+  const {
+    name,
+    fullPrice,
+    price,
+    screen,
+    capacity,
+    ram,
+    image
+  } = phone;
 
   return (
     <div className={card.phones_card}>
-      <img src={iphone_1} alt="iphone 11"/>
+      <img src={`${BASE_URL}/${image}`} alt={name} className={card.phones_card__img}/>
       <h2 className={card.phones_card__name}>
-        Apple iPhone Xs 64GB Silver <br/>(iMT9G2FS/A)
+        {name}
+        <br/>
+         (iMT9G2FS/A)
       </h2>
       <div className={card.phones_card__prices}>
         <span className={card.phones_card__prices__newPrice}>
-          $799
+          {`$${price}`}
         </span>
         <span className={card.phones_card__prices__oldPrice}>
-          $899
+          {`$${fullPrice}`}
         </span>
       </div>
       <ul className={card.phones_card__characteristic}>
@@ -24,7 +40,7 @@ export const Card = React.memo(function Card() {
             Screen
           </span>
           <span className={card.phones_card__characteristic_num}>
-            5.8” OLED
+            {screen}
           </span>
         </li>
         <li className={card.phones_card__characteristic_item}>
@@ -32,7 +48,7 @@ export const Card = React.memo(function Card() {
             Capacity
           </span>
           <span className={card.phones_card__characteristic_num}>
-            64 GB
+            {capacity}
           </span>
         </li>
         <li className={card.phones_card__characteristic_item}>
@@ -40,7 +56,7 @@ export const Card = React.memo(function Card() {
             RAM
           </span>
           <span className={card.phones_card__characteristic_num}>
-            4 GB
+            {ram}
           </span>
         </li>
       </ul>

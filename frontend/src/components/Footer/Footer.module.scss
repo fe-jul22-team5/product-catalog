@@ -1,0 +1,129 @@
+@import '../../styles/_utils/_variables';
+@import '../../styles/_utils/mixins';
+
+.footer {
+  flex-shrink: 0;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    // margin-top: 80px;
+    padding: 32px;
+
+    @include onPhone {
+      display: block;
+    }
+  }
+
+  &__logo {
+    @include onPhone {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__info {
+    display: flex;
+
+    @include onPhone {
+      flex-direction: column;
+      margin-bottom: 32px;
+    }
+
+    &_item {
+      &:not(:last-child) {
+        margin-right: 100px;
+      }
+
+      @include onTablet {
+        &:not(:last-child) {
+          margin-right: 70px;
+        }
+      }
+
+      @include onPhone {
+        &:not(:last-child) {
+          margin-bottom: 16px;
+        }
+      }
+    }
+
+    &_link {
+      font-size: 12px;
+      line-height: 11px;
+      font-style: normal;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: $grey-secondary-clr;
+
+      position: relative;
+      transition-property: color;
+      transition-duration: 0.3s;
+
+      &:hover {
+        color: #0F0F11;
+
+          &::after {
+            left: 0;
+            right: 0
+          }
+      }
+
+      &::after {
+       display: block;
+      content: "";
+      height: 4px;
+      background-color: $grey-primary-clr;
+      border-radius: 8px;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      right: 50%;
+
+      transition-property: color, left, right;
+      transition-duration: 0.3s;
+      transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+    }
+  }
+
+  &__toTop {
+    color: $grey-secondary-clr;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $grey-primary-clr;
+    }
+
+    @include onPhone {
+      justify-content: center;
+    }
+
+    &_text {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    &_link {
+      display: inline-block;
+      margin-left: 20px;
+
+      &::after {
+        content: "";
+        background-image: url(./img/link-toTop.svg);
+        width: 32px;
+        height: 32px;
+        display: block;
+      }
+    }
+  }
+}
