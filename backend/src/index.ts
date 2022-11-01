@@ -14,8 +14,6 @@ const __dirname = path.dirname(__filename);
 const PORT = 3000;
 const app = express();
 
-console.log(__dirname + '/public');
-
 app.use(cors());
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/product', express.json(), productRouter);
