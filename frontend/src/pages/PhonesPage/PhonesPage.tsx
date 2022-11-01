@@ -57,8 +57,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
           title={'Items on page'}
         />
       </div>
-
-      <Loader />
+      
       <CardList />
     </>
   );
