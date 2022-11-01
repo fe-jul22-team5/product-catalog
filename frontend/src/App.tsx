@@ -14,8 +14,7 @@ export function App() {
         {/* <Route path="/" element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} /> */}
 
-        {/* <Route path="phones" element={<PhonesPage />} /> */}
-        <Route path="/" element={<PhonesPage />} />
+        <Route path="phones" element={<PhonesPage />} />
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>
