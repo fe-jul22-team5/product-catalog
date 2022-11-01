@@ -5,5 +5,6 @@ $grey-secondary-clr: #89939A;
 $accent-color: #F86800;
 $phonesCard-width-heigh-px: 16px;
 
-$padding-l-r: 24px;
-$widescreen-width: 1135 + $padding-l-r * 2;
+$padding-l-r-big: 24px;
+$padding-l-r-small: 16px;
+$widescreen-width: 1135 + $padding-l-r-big * 2;

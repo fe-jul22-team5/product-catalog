@@ -14,9 +14,13 @@ const __dirname = path.dirname(__filename);
 const PORT = 3000;
 const app = express();
 
+console.log((path.join(`${__dirname}/../src/img`)));
+
 app.use(cors());
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/img', express.static(path.join(`${__dirname}/../src/img`)));
 app.use('/product', express.json(), productRouter);
+
+console.log('ok');
 
 app.listen(process.env.PORT || PORT, () => {
   console.log(`Server running on port ${process.env.PORT || PORT}`);

@@ -5,6 +5,8 @@ import { PhonesPage } from './pages/PhonesPage';
 import { Header } from './components/Header';
 import { Card } from './components/Card';
 import { Footer } from './components/Footer';
+import app from './styles/App.module.scss';
+
 
 export function App() {
   return (
@@ -12,17 +14,19 @@ export function App() {
 
       <Header />
 
-      <Routes>
-        {/* <Route path="/" element={<HomePage />} />
+      <main className={app.page}>
+        <div className={app.page__container}>
+          <Routes>
+            {/* <Route path="/" element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} /> */}
-        <Route path="phones" element={<PhonesPage />} />
+            <Route path="phones" element={<PhonesPage />} />
 
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
 
-      {/* <Card/> */}
       <Footer/>
 
+      {/* ADD FOOTER COMPONENT HERE */}
     </div>
   );
 }

@@ -73,7 +73,7 @@
 }
 
 .header__menu_link:hover {
-  color: #0F0F11;
+  color: $grey-primary-clr;
 
   &::after {
     left: 0;
@@ -136,18 +136,18 @@
   padding: 17px;
 }
 
-.header__menu_link_is_active::after {
-  display: block;
-  content: "";
-  height: 4px;
-  background-color: $grey-primary-clr;
-  border-radius: 8px;
-  position: absolute;
-  top: 52px;
-  left: 0;
-  right: 0;
+.header__menu_link_is_active {
+  color: $grey-primary-clr;
 
-  transition-property: color, left, right;
-  transition-duration: 0.3s;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  &::after {
+    display: block;
+    content: "";
+    height: 4px;
+    background-color: $grey-primary-clr;
+    border-radius: 8px;
+    position: absolute;
+    top: 52px;
+    left: 0;
+    right: 0;
+  }
 }
