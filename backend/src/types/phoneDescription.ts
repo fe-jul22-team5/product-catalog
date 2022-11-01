@@ -1,4 +1,4 @@
-export interface PhoneFull {
+export interface PhoneDescription {
   id: string;
   namespaceId: string;
   name: string;
