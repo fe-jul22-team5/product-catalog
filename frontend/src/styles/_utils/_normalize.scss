@@ -1,0 +1,23 @@
+body,
+p,
+ul,
+li,
+section,
+nav,
+a,
+main,
+h1,
+h2,
+h3,
+h4,
+button {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+}
