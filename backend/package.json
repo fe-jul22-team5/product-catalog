@@ -11,8 +11,7 @@
     "start": "npm run build && SET NODE_ENV=production && node dist/index.js",
     "lint": "eslint  --fix src/**/*.ts",
     "prepare": "cd ../ && husky install ./backend/.husky",
-    "husky": "node ./node_modules/husky/lib/bin.js",
-    "copy": "cp -r src/public/ dist/public"
+    "husky": "node ./node_modules/husky/lib/bin.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -29,7 +28,6 @@
     "@typescript-eslint/parser": "^5.41.0",
     "eslint": "^8.26.0",
     "husky": "^8.0.1",
-    "imagemin-cli": "^7.0.0",
     "lint-staged": "^13.0.3",
     "nodemon": "^2.0.20",
     "typescript": "^4.8.4"
@@ -37,6 +35,6 @@
   "author": "Kostya Kosyuk",
   "license": "ISC",
   "lint-staged": {
-    "*.tsx": "npm run lint"
+    "*.ts": "npm run lint"
   }
 }
