@@ -1,6 +1,9 @@
 @import './_utils/_mixins';
 @import './_utils/_variables';
 
+$margin-t: 24px;
+$margin-b: 75px;
+
 .page {
   margin-top: $margin-t;
   margin-bottom: $margin-b;
