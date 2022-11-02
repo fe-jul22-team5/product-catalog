@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import logo from './img/full_logo.png';
 import styles from './Footer.module.scss';
+import { NavLink } from 'react-router-dom';
 
 
 export const Footer = React.memo(function Footer() {
@@ -13,19 +14,25 @@ export const Footer = React.memo(function Footer() {
     <div className={styles.footer}>
       <div className={styles.footer__container}>
         <div className={styles.footer__logo}>
-          <a href="/">
+          <NavLink to="home">
             <img className='footer__logo' src={logo} alt="full__logo" />
-          </a>
+          </NavLink>
         </div>
         <ul className={styles.footer__info}>
           <li className={styles.footer__info_item}>
-            <a className={styles.footer__info_link} href="#">Github</a>
+            <a
+              className={styles.footer__info_link}
+              href="https://github.com/fe-jul22-team5/product-catalog"
+              target="_blank" rel="noreferrer"
+            >
+              Github
+            </a>
           </li>
           <li className={styles.footer__info_item}>
-            <a className={styles.footer__info_link} href="#">Contacts</a>
+            <a className={styles.footer__info_link} href="/">Contacts</a>
           </li>
           <li className={styles.footer__info_item}>
-            <a className={styles.footer__info_link} href="#">Rights</a>
+            <a className={styles.footer__info_link} href="/">Rights</a>
           </li>
         </ul>
         <button

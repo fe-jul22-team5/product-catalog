@@ -12,9 +12,9 @@ export const Header = React.memo(function Header() {
     <div className={styles.header}>
       <div className={styles.header__logo_nav_block}>
         <div className={styles.header__logo}>
-          <a href="/">
+          <NavLink to="home">
             <img className='header__logo' src={logo} alt="full__logo" />
-          </a>
+          </NavLink>
         </div>
 
         <nav className={styles.header__menu}>
