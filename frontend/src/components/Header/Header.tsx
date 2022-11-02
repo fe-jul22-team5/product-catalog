@@ -81,20 +81,33 @@ export const Header = React.memo(function Header() {
         </nav>
       </div>
 
+      <div className={styles.header_icons_container}>
+        <div className={styles.header__cart_icon}>
+          <NavLink
+            to="favourites"
+            className={({ isActive }) => classNames(
+              styles.header__cart_icon_link,
+              { [styles.header__menu_link_is_active]: isActive },
+            )}
+            end
+          >
+            <img src={favicon} alt="favourites_icon"/>
+          </NavLink>
+        </div>
 
-      <div className={styles.header__cart_icon}>
-        <NavLink
-          to="cart"
-          className={({ isActive }) => classNames(
-            styles.header__cart_icon_link,
-            { [styles.header__menu_link_is_active]: isActive },
-          )}
-          end
-        >
-          <img src={cart} alt="shopping_cart_icon"/>
-        </NavLink>
+        <div className={styles.header__cart_icon}>
+          <NavLink
+            to="cart"
+            className={({ isActive }) => classNames(
+              styles.header__cart_icon_link,
+              { [styles.header__menu_link_is_active]: isActive },
+            )}
+            end
+          >
+            <img src={cart} alt="shopping_cart_icon"/>
+          </NavLink>
+        </div>
       </div>
-
 
       <div className={styles.header__burger_menu}
         onClick={() => setActiveBurger(!activeBurger)}
