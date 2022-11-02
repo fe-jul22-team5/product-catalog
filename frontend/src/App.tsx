@@ -28,9 +28,13 @@ export function App() {
         </div>
       </main>
 
+<<<<<<< HEAD
       <Footer />
+=======
+      {/* <PageCart /> */}
 
       <Footer/>
+>>>>>>> cartAdaptLayout
     </div>
   );
 }
