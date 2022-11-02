@@ -1,0 +1,17 @@
+@import '../../styles/_utils/mixins';
+
+.cart__list {
+  margin-right: 16px;
+  flex: 1 0 auto;
+
+
+  @media (max-width: 1024px) {
+    margin-bottom: 32px;
+    margin-right: 0;
+  }
+
+  @include onPhone {
+    margin-right: 0;
+    margin-bottom: 32px;
+  }
+}
