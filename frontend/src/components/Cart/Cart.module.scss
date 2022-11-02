@@ -2,6 +2,20 @@
 @import '../../styles/_utils/extends';
 @import '../../styles/_utils/mixins';
 
+
+.cart__img_container {
+  flex: 1 0 auto;
+  text-align: center;
+
+  @include onPhone {
+    flex-grow: 0;
+  }
+}
+
+.cart__img {
+  max-width: 66px;
+}
+
 .cart__item {
   display: flex;
   justify-content: space-between;
@@ -44,7 +58,8 @@
 }
 
 .cart__name {
-  margin-right: 20px;
+  flex: 1 0 300px;
+  padding: 0 24px;
   font-size: 14px;
   line-height: 21px;
   font-style: normal;
@@ -53,6 +68,7 @@
 
   @include onPhone {
     max-width: 128px;
+    padding: 0;
     margin-right: 0;
     margin-left: auto;
   }
