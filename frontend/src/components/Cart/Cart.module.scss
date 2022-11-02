@@ -1,0 +1,92 @@
+@import '../../styles/_utils/variables';
+@import '../../styles/_utils/extends';
+@import '../../styles/_utils/mixins';
+
+.cart__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 752px;
+  padding: 24px;
+  border: 1px solid #E2E6E9;
+  border-radius: 16px;
+  background-color: $white-primary-clr;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  @include onPhone {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 16px;
+  }
+}
+
+.cart__closeBtn {
+  background-image: url(../Cart/img/close-btn.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  margin-right: 15px;
+  width: 9px;
+  height: 9px;
+  border: none;
+  transition: all 1s ease-in-out;
+
+  &:hover {
+    background-image: url(../../pages/PageCart/img/close-btnHover.svg);
+    width: 9px;
+    height: 9px;
+    color: black;
+  }
+}
+
+.cart__name {
+  margin-right: 20px;
+  font-size: 14px;
+  line-height: 21px;
+  font-style: normal;
+  font-weight: 400;
+  color: $grey-primary-clr;
+
+  @include onPhone {
+    max-width: 128px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+.cart__counter {
+  display: flex;
+  align-items: center;
+
+  @include onPhone {
+    margin-top: 16px;
+  }
+}
+
+.cart__removeBtn {
+  background-image: url(../../pages/PageCart/img/remove-btn.svg);
+  @extend %remove_add_btn_styles;
+}
+
+.cart__addBtn {
+  margin-right: 24px;
+  background-image: url(../../pages/PageCart/img/add-btn.svg);
+  @extend %remove_add_btn_styles;
+}
+
+.cart__productQuantity {
+  margin: 0 13px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+}
+
+.cart__price {
+  font-size: 22px;
+  line-height: 140%;
+  font-weight: 800;
+}
