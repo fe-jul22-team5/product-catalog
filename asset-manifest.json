@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/product-catalog/static/css/main.cbd5ec5d.css",
-    "main.js": "/product-catalog/static/js/main.a220a82c.js",
+    "main.css": "/product-catalog/static/css/main.f5d4b1ec.css",
+    "main.js": "/product-catalog/static/js/main.e4abad64.js",
     "static/media/Mont-Regular.otf": "/product-catalog/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
     "static/media/Mont-SemiBold.otf": "/product-catalog/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
     "static/media/Mont-Bold.otf": "/product-catalog/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
@@ -9,15 +9,20 @@
     "static/media/home-icon.svg": "/product-catalog/static/media/home-icon.63e64c2945a6b7fb320f9ac5cbd08865.svg",
     "static/media/favourites-selected.svg": "/product-catalog/static/media/favourites-selected.c92067b36bd61d47d89d.svg",
     "index.html": "/product-catalog/index.html",
+    "static/media/close-btn.svg": "/product-catalog/static/media/close-btn.adff151dead090d2bb35.svg",
+    "static/media/close-btnHover.svg": "/product-catalog/static/media/close-btnHover.176fe32f46d4c434659e.svg",
+    "static/media/add-btn.svg": "/product-catalog/static/media/add-btn.c87eb500f799b3ac0a09.svg",
     "static/media/link-toTop.svg": "/product-catalog/static/media/link-toTop.941e7415827821e265b8.svg",
+    "static/media/arrow-back.svg": "/product-catalog/static/media/arrow-back.7054fc20b9c0c4527770.svg",
     "static/media/right-arrow-icon.svg": "/product-catalog/static/media/right-arrow-icon.7ec4fc6dd97400e39f377b12ef48e7ee.svg",
     "static/media/down-arrow-icon.svg": "/product-catalog/static/media/down-arrow-icon.b87d883446f750defdba843478820ff5.svg",
+    "static/media/remove-btn.svg": "/product-catalog/static/media/remove-btn.a1d3940e4bb0b95e44c0.svg",
     "static/media/divider.svg": "/product-catalog/static/media/divider.b3cd47ad47435f3bcf23.svg",
-    "main.cbd5ec5d.css.map": "/product-catalog/static/css/main.cbd5ec5d.css.map",
-    "main.a220a82c.js.map": "/product-catalog/static/js/main.a220a82c.js.map"
+    "main.f5d4b1ec.css.map": "/product-catalog/static/css/main.f5d4b1ec.css.map",
+    "main.e4abad64.js.map": "/product-catalog/static/js/main.e4abad64.js.map"
   },
   "entrypoints": [
-    "static/css/main.cbd5ec5d.css",
-    "static/js/main.a220a82c.js"
+    "static/css/main.f5d4b1ec.css",
+    "static/js/main.e4abad64.js"
   ]
 }
