@@ -8,6 +8,9 @@ import { Loader } from '../../components/Loader';
 import { getPhones } from '../../api/phone';
 import { Phone } from '../../types/phone';
 
+import { useSearchParams } from 'react-router-dom';
+import { SortTypes } from '../../types/sortTypes';
+
 export const PhonesPage = React.memo(function PhonesPage() {
   const [sortBy] = useState(['Newest', 'Alphabetically', 'Cheapest']);
   const [itemsOnPage] = useState(['all', '16', '8', '4']);
@@ -18,8 +21,15 @@ export const PhonesPage = React.memo(function PhonesPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
-    getPhones()
+    setSearchParams({sort: 'cheap', from: '1', to: '10'});
+    const sort  = searchParams.get('sort') as SortTypes || undefined;
+    const from = searchParams.get('from') || undefined;
+    const to = searchParams.get('to') || undefined;
+
+    getPhones(from, to, sort)
       .then(phones => setPhonesList(phones))
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));

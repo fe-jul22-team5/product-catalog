@@ -2,7 +2,7 @@
 export function getRange(array: any[], from: number, to: number) {
   const range: any[] = [];
 
-  for (let i = from + 1; i <= to; i++) {
+  for (let i = from - 1; i <= to - 1; i++) {
     range.push(array[i]);
   }
 
