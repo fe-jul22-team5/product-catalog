@@ -5,6 +5,8 @@ import { Phone } from '../../types/phone';
 import { Loader } from '../Loader';
 import cardList from './CardList.module.scss';
 
+import { useSearchParams } from 'react-router-dom';
+import { SortTypes } from '../../types/sortTypes';
 
 function setToLocalStorage(
   key: string,
@@ -23,6 +25,7 @@ export const CardList = React.memo(function CardList() {
   const [isError, setIsError] = useState(false);
   const [cart, setCart] = useState<string[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setToLocalStorage('cart', setCart);
@@ -30,11 +33,17 @@ export const CardList = React.memo(function CardList() {
   }, []);
 
   useEffect(() => {
-    getPhones()
+    setSearchParams({sort: 'cheap', from: '1', to: '10'});
+    const sort  = searchParams.get('sort') as SortTypes || undefined;
+    const from = searchParams.get('from') || undefined;
+    const to = searchParams.get('to') || undefined;
+
+    getPhones(from, to, sort)
       .then(phones => setPhonesList(phones))
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
   }, []);
+
 
   const addItemToCart = useCallback((id: string) => {
     let newCart = cart.filter(el => el !== id);

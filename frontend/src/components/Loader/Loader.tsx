@@ -9,7 +9,7 @@ export const Loader = React.memo(function Loader() {
       radius="9"
       color="#89939A"
       ariaLabel="three-dots-loading"
-      wrapperStyle={{ 'justify-content': 'center' }}
+      wrapperStyle={{ 'justifyContent': 'center' }}
       visible={true}
     />
   );

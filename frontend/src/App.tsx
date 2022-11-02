@@ -21,7 +21,6 @@ export function App() {
 
             <Route path="phones" element={<PhonesPage />} />
 
-
             <Route path="cart" element={<PageCart />} />
 
             <Route path="*" element={<PageNotFound />} />
