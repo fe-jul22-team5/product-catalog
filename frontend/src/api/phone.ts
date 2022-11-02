@@ -1,5 +1,6 @@
 import { Params } from '../types/params';
 import { Phone } from '../types/phone';
+import { PhonesCount } from '../types/phonesCount';
 import { SortTypes } from '../types/sortTypes';
 
 import { client } from './fetchClient';
@@ -23,7 +24,7 @@ export const getPhones = async (
 };
 
 export const getCountOfPhones = async () => {
-  const count = await client.get(countOfProductsEndPoint);
+  const count = await client.get<PhonesCount>(countOfProductsEndPoint);
 
   return count;
 };
