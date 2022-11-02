@@ -1,7 +1,7 @@
 'use strict';
 
 import { Phone } from '../types/phone';
-import { PhoneFull } from '../types/phoneFull';
+import { PhoneDescription } from '../types/phoneDescription';
 import {
   getPhonesFromJSON,
   getPhonesDescriptionFromDir,
@@ -11,7 +11,7 @@ const pathToPhoneJSON = './api_data/phones.json';
 const pathToPhonesDescriptionDir = './api_data/phones/';
 
 const phones: Phone[] = getPhonesFromJSON(pathToPhoneJSON);
-const phonesDescriptions: PhoneFull[] = getPhonesDescriptionFromDir(pathToPhonesDescriptionDir);
+const phonesDescriptions: PhoneDescription[] = getPhonesDescriptionFromDir(pathToPhonesDescriptionDir);
 
 export function getAll() {
   return phones;
