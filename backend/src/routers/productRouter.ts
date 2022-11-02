@@ -10,5 +10,5 @@ import {
 export const productRouter = express.Router();
 
 productRouter.get('/', getAllProducts);
-productRouter.get('/length', getAllProductsCount);
+productRouter.get('/count', getAllProductsCount);
 productRouter.get('/:id', getProductDescriptionById);
