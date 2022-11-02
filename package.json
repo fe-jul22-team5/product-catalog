@@ -1,0 +1,26 @@
+{
+  "name": "product-catalog",
+  "version": "1.0.0",
+  "description": "https://fe-jul22-team5.github.io/product-catalog/",
+  "dependencies": {
+    "husky": "^8.0.1"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3"
+  },
+  "scripts": {
+    "test": "cd ./frontend && npm run lint && cd ../backend npm run lint",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fe-jul22-team5/product-catalog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/fe-jul22-team5/product-catalog#readme",
+  "lint-staged": {
+    "./*/src/**/*.{js,jsx,ts,tsx}": "npm test"
+  }
+}
