@@ -7,6 +7,9 @@ import { CardList } from '../../components/CardList';
 import { getCountOfPhones } from '../../api/phone';
 
 
+import { useSearchParams } from 'react-router-dom';
+import { SortTypes } from '../../types/sortTypes';
+
 export const PhonesPage = React.memo(function PhonesPage() {
   const [sortBy] = useState(['Newest', 'Alphabetically', 'Cheapest']);
   const [itemsOnPage] = useState(['all', '16', '8', '4']);
@@ -14,10 +17,22 @@ export const PhonesPage = React.memo(function PhonesPage() {
   const [selectedSortBy, setSelectedSortBy] = useState(sortBy[0]);
   const [selectedItemsOnPage, setItemsOnPage] = useState(itemsOnPage[0]);
 
+  const [phoneList, setPhonesList] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
-    getCountOfPhones()
-      .then(({ count }) => setPhonesCount(count))
-      .catch(() => setPhonesCount(-1));
+    setSearchParams({sort: 'cheap', from: '1', to: '10'});
+    const sort  = searchParams.get('sort') as SortTypes || undefined;
+    const from = searchParams.get('from') || undefined;
+    const to = searchParams.get('to') || undefined;
+
+    getPhones(from, to, sort)
+      .then(phones => setPhonesList(phones))
+      .catch(() => setIsError(true))
+      .finally(() => setIsLoading(false));
   }, []);
 
   const onChangeSortBy = useCallback(

@@ -7,9 +7,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import app from './styles/App.module.scss';
 
-
 export function App() {
-
   return (
     <div className={app.App}>
 
@@ -19,7 +17,7 @@ export function App() {
         <div className={app.page__container}>
           <Routes>
             {/* <Route path="/" element={<HomePage />} /> */}
-            <Route path="home" element={<Navigate to="/" replace />} />
+            <Route path="home" element={<Navigate to="/" replace/>} />
 
             <Route path="phones" element={<PhonesPage />} />
 
