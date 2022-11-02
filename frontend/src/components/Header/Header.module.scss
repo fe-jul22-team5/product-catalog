@@ -159,7 +159,7 @@
 }
 
 .header__menu_link_is_active {
-  color: $grey-primary-clr;
+  color: $grey-primary-clr !important;
 
   &::after {
     display: block;
@@ -236,6 +236,23 @@
   align-items: center;
   gap: 13px;
 }
+
+.burger__menu_link {
+  position: relative;
+  padding-top: 19px;
+  padding-bottom: 19px;
+
+  color: $grey-secondary-clr;
+
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition-property: color;
+
+  transition-duration: 0.3s;
+}
+
 
 .burger__menu_footer {
   display: flex;

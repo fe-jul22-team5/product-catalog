@@ -5,11 +5,17 @@ import logo from './logo/full_logo.png';
 import cart from './logo/Shopping_cart.png';
 import burger from './logo/burger.png';
 import favicon from './logo/fav_icon.png';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import styles from  './Header.module.scss';
 
 export const Header = React.memo(function Header() {
   const [activeBurger, setActiveBurger] = useState(false);
+
+  activeBurger
+    ? disableBodyScroll(document.querySelector('body') as HTMLElement)
+    : enableBodyScroll(document.querySelector('body') as HTMLElement);
+
 
   return (
     <div className={styles.header}>
@@ -113,7 +119,7 @@ export const Header = React.memo(function Header() {
                 onClick={() => setActiveBurger(!activeBurger)}
                 to="/"
                 className={({ isActive }) => classNames(
-                  styles.header__menu_link,
+                  styles.burger__menu_link,
                   { [styles.header__menu_link_is_active]: isActive },
                 )}
                 end
@@ -126,7 +132,7 @@ export const Header = React.memo(function Header() {
                 onClick={() => setActiveBurger(!activeBurger)}
                 to="phones"
                 className={({ isActive }) => classNames(
-                  styles.header__menu_link,
+                  styles.burger__menu_link,
                   { [styles.header__menu_link_is_active]: isActive },
                 )}
                 end
@@ -140,7 +146,7 @@ export const Header = React.memo(function Header() {
                 onClick={() => setActiveBurger(!activeBurger)}
                 to="tablets"
                 className={({ isActive }) => classNames(
-                  styles.header__menu_link,
+                  styles.burger__menu_link,
                   { [styles.header__menu_link_is_active]: isActive },
                 )}
                 end
@@ -153,7 +159,7 @@ export const Header = React.memo(function Header() {
                 onClick={() => setActiveBurger(!activeBurger)}
                 to="accessories"
                 className={({ isActive }) => classNames(
-                  styles.header__menu_link,
+                  styles.burger__menu_link,
                   { [styles.header__menu_link_is_active]: isActive },
                 )}
                 end
