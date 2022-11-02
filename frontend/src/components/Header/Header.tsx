@@ -113,7 +113,7 @@ export const Header = React.memo(function Header() {
                 onClick={() => setActiveBurger(!activeBurger)}
                 to="/"
                 className={({ isActive }) => classNames(
-                  styles.header__menu_link,
+                  styles.burger__menu_link,
                   { [styles.header__menu_link_is_active]: isActive },
                 )}
                 end
@@ -126,7 +126,7 @@ export const Header = React.memo(function Header() {
                 onClick={() => setActiveBurger(!activeBurger)}
                 to="phones"
                 className={({ isActive }) => classNames(
-                  styles.header__menu_link,
+                  styles.burger__menu_link,
                   { [styles.header__menu_link_is_active]: isActive },
                 )}
                 end
@@ -140,7 +140,7 @@ export const Header = React.memo(function Header() {
                 onClick={() => setActiveBurger(!activeBurger)}
                 to="tablets"
                 className={({ isActive }) => classNames(
-                  styles.header__menu_link,
+                  styles.burger__menu_link,
                   { [styles.header__menu_link_is_active]: isActive },
                 )}
                 end
@@ -153,7 +153,7 @@ export const Header = React.memo(function Header() {
                 onClick={() => setActiveBurger(!activeBurger)}
                 to="accessories"
                 className={({ isActive }) => classNames(
-                  styles.header__menu_link,
+                  styles.burger__menu_link,
                   { [styles.header__menu_link_is_active]: isActive },
                 )}
                 end
