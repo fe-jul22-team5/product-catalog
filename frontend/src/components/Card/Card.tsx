@@ -6,10 +6,10 @@ import card from './Card.module.scss';
 
 type Props = {
   phone: Phone,
-  addItemToCart: (id: string) => void;
-  addItemToFavorites: (id: string) => void;
-  cart: string[];
-  favorites: string[]
+  addItemToCart: (phone: Phone) => void;
+  addItemToFavorites: (phone: Phone) => void;
+  cart: Phone[];
+  favorites: Phone[]
 }
 
 export const Card = React.memo(function Card({
@@ -35,7 +35,7 @@ export const Card = React.memo(function Card({
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('cart') as string);
-    if (items.includes(phoneId)) {
+    if (items.find((el: Phone) => el.phoneId === phoneId)) {
       setIsAddedCart(true);
     } else {
       setIsAddedCart(false);
@@ -44,7 +44,7 @@ export const Card = React.memo(function Card({
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('favorites') as string);
-    if (items.includes(phoneId)) {
+    if (items.find((el: Phone) => el.phoneId === phoneId)) {
       setIsAddedFav(true);
     } else {
       setIsAddedFav(false);
@@ -99,13 +99,13 @@ export const Card = React.memo(function Card({
             card.phones_card__addBtn,
             { [card.phones_card__addBtn__active]: isAddedCart}
           )}
-          onClick={() => addItemToCart(phoneId)}
+          onClick={() => addItemToCart(phone)}
         >
           {!isAddedCart ? 'Add to cart' : 'Added to cart'}
         </button>
         <button
           className={card.phones_card__favoritesBtn}
-          onClick={() => addItemToFavorites(phoneId)}
+          onClick={() => addItemToFavorites(phone)}
         >
           <span
             className={classNames(

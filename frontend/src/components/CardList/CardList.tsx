@@ -10,7 +10,7 @@ import { SortTypes } from '../../types/sortTypes';
 
 function setToLocalStorage(
   key: string,
-  setState: (value: React.SetStateAction<string[]>) => void
+  setState: (value: React.SetStateAction<Phone[]>) => void
 ) {
   if (localStorage.getItem(key)) {
     setState(JSON.parse(localStorage.getItem(key) as string));
@@ -23,8 +23,8 @@ export const CardList = React.memo(function CardList() {
   const [phoneList, setPhonesList] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [cart, setCart] = useState<string[]>([]);
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [cart, setCart] = useState<Phone[]>([]);
+  const [favorites, setFavorites] = useState<Phone[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -45,20 +45,20 @@ export const CardList = React.memo(function CardList() {
   }, []);
 
 
-  const addItemToCart = useCallback((id: string) => {
-    let newCart = cart.filter(el => el !== id);
+  const addItemToCart = useCallback((phone: Phone) => {
+    let newCart = cart.filter(el => el.id !== phone.id);
     if (newCart.length === cart.length) {
-      newCart = [...newCart, id];
+      newCart = [...newCart, phone];
     }
 
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
   }, [cart]);
 
-  const addItemToFavorites = useCallback((id: string) => {
-    let newFavorites = favorites.filter(el => el !== id);
+  const addItemToFavorites = useCallback((phone: Phone) => {
+    let newFavorites = favorites.filter(el => el.id !== phone.id);
     if (newFavorites.length === favorites.length) {
-      newFavorites = [...newFavorites, id];
+      newFavorites = [...newFavorites, phone];
     }
 
     setFavorites(newFavorites);

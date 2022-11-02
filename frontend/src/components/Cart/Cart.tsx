@@ -1,23 +1,62 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { BASE_URL } from '../../api/fetchClient';
+import { Phone } from '../../types/phone';
 import styles from './Cart.module.scss';
-import cartFirstPhoto from './img/cart-photo-1.png';
 
+type Props = {
+  cartItem: Phone;
+  updateCart: (item: Phone, newCount: number, remove?: boolean) => void;
+}
 
-export const Cart = React.memo(function Cart() {
+export const Cart = React.memo(function Cart({ cartItem, updateCart }: Props) {
+  const {
+    name,
+    price,
+    image,
+  } = cartItem;
+
+  let { count = 1 } = cartItem;
+
+  const handlePlusButton = useCallback(() => {
+    count++;
+    updateCart(cartItem, count);
+  }, []);
+
+  const handleMinusButton = useCallback(() => {
+    if (count > 1) {
+      count--;
+      updateCart(cartItem, count);
+    }
+  }, []);
+
+  const handleRemoveButton = useCallback(() => {
+    updateCart(cartItem, count, true);
+  }, []);
   return (
     <li className={styles.cart__item}>
-      <button className={styles.cart__closeBtn}></button>
-      <img src={cartFirstPhoto} alt="iphone 14 Pro" />
+      <button
+        className={styles.cart__closeBtn}
+        onClick={handleRemoveButton}
+      ></button>
+      <div className={styles.cart__img_container}>
+        <img src={`${BASE_URL}/${image}`} alt="iphone 14 Pro" className={styles.cart__img}/>
+      </div>
       <h3 className={styles.cart__name}>
-      Apple iPhone 14 Pro 128GB Silver (MQ023)
+        {name} (MQ023)
       </h3>
       <div className={styles.cart__counter}>
-        <button className={styles.cart__removeBtn}></button>
-        <span className={styles.cart__productQuantity}>1</span>
-        <button className={styles.cart__addBtn}></button>
+        <button
+          className={styles.cart__removeBtn}
+          onClick={handleMinusButton}
+        ></button>
+        <span className={styles.cart__productQuantity}>{count}</span>
+        <button
+          className={styles.cart__addBtn}
+          onClick={handlePlusButton}
+        ></button>
       </div>
       <span className={styles.cart__price}>
-      $999
+        {`$${price}`}
       </span>
     </li>
   );
