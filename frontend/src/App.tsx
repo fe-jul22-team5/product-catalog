@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { PageNotFound } from './pages/PageNotFound';
 import { PhonesPage } from './pages/PhonesPage';
+// import { PageCart } from './pages/PageCart';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import app from './styles/App.module.scss';
@@ -28,6 +29,8 @@ export function App() {
       </main>
 
       <Footer />
+
+      <Footer/>
     </div>
   );
 }

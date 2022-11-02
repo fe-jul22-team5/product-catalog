@@ -1,0 +1,230 @@
+@import '../../styles/_utils/variables';
+@import '../../styles/_utils/extends';
+@import '../../styles/_utils/mixins';
+
+.cart {
+  padding: 40px 0 80px;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 26px;
+  }
+
+  &__backLink {
+    position: relative;
+    padding-left: 20px;
+    display: inline-block;
+    margin-bottom: 16px;
+
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+    color: $grey-secondary-clr;
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 38px;
+      bottom: 5px;
+      display: block;
+      background-image: url(../../pages/PageCart/img/arrow-back.svg);
+      width: 5px;
+      height: 9px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+    font-size: 48px;
+    line-height: 56px;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: $grey-primary-clr;
+  }
+
+  &__content {
+    display: flex;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
+
+    @include onPhone {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__list {
+    margin-right: 16px;
+
+    @media (max-width: 1024px) {
+      margin-bottom: 32px;
+      margin-right: 0;
+    }
+
+    @include onPhone {
+      margin-right: 0;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 752px;
+    padding: 24px;
+    border: 1px solid #E2E6E9;
+    border-radius: 16px;
+    background-color: $white-primary-clr;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+    @include onPhone {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 16px;
+    }
+  }
+
+  &__closeBtn {
+    background-image: url(../PageCart/img/close-btn.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    margin-right: 15px;
+    width: 9px;
+    height: 9px;
+    border: none;
+    transition: all 1s ease-in-out;
+
+    &:hover {
+      background-image: url(../../pages/PageCart/img/close-btnHover.svg);
+      width: 9px;
+      height: 9px;
+      color: black;
+    }
+  }
+
+  &__name {
+    margin-right: 20px;
+    font-size: 14px;
+    line-height: 21px;
+    font-style: normal;
+    font-weight: 400;
+    color: $grey-primary-clr;
+
+    @include onPhone {
+      max-width: 128px;
+      margin-right: 0;
+      margin-left: auto;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+
+    @include onPhone {
+      margin-top: 16px;
+    }
+  }
+
+  &__removeBtn {
+    background-image: url(../../pages/PageCart/img/remove-btn.svg);
+    @extend %remove_add_btn_styles;
+  }
+
+  &__addBtn {
+    margin-right: 24px;
+    background-image: url(../../pages/PageCart/img/add-btn.svg);
+    @extend %remove_add_btn_styles;
+  }
+
+  &__productQuantity {
+    margin: 0 13px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+  }
+
+  &__price {
+    font-size: 22px;
+    line-height: 140%;
+    font-weight: 800;
+  }
+
+  &__finalSum {
+    flex-basis: 368px;
+    max-height: 190px;
+    padding: 24px;
+    height: 206px;
+    border: 1px solid #E2E6E9;
+    border-radius: 16px;
+  }
+
+  &__sum {
+    text-align: center;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $grey-primary-clr;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+    text-align: center;
+    color: $grey-secondary-clr;
+    margin-bottom: 50px;
+  }
+
+  &__checkoutBtn {
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    border-radius: 8px;
+    padding: 13px 125px;
+    border: none;
+    color: #FFF;
+    background-color: $accent-color;
+
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+    }
+
+    &:active {
+      color: $accent-color;
+      background-color: transparent;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 67px;
+      right: -3px;
+      width: 321px;
+      height: 0px;
+      border: 1px solid #E2E6E9;
+
+      @include onPhone {
+        border: 1px solid #E2E6E9;
+        width: 240px;
+        height: 0;
+      }
+    }
+
+    @include onPhone {
+      padding: 13px 85px;
+    }
+  }
+}
