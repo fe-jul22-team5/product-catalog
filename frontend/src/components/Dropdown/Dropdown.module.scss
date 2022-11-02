@@ -5,6 +5,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
 }
 
 button.button {
