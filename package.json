@@ -6,7 +6,8 @@
     "husky": "^8.0.1"
   },
   "devDependencies": {
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3"
   },
   "scripts": {
     "test": "cd ./frontend && npm run lint && cd ../backend npm run lint",
@@ -18,5 +19,8 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/fe-jul22-team5/product-catalog#readme"
+  "homepage": "https://github.com/fe-jul22-team5/product-catalog#readme",
+  "lint-staged": {
+    "./*/src/**/*.{js,jsx,ts,tsx}": "npm test"
+  }
 }
