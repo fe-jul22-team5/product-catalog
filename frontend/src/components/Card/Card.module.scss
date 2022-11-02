@@ -101,6 +101,7 @@
     height: 40px;
     background-color: $accent-color;
     border-radius: 8px;
+    border: 1px solid #fff;
     color: #FFF;
     border-color: transparent;
     cursor: pointer;
@@ -112,7 +113,8 @@
 
     &:active {
       color: $accent-color;
-      background-color: transparent;
+      background-color: #fff;
+      border-color: #E2E6E9;
     }
   }
 

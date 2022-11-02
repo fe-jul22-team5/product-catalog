@@ -83,9 +83,16 @@ export const Header = React.memo(function Header() {
 
 
       <div className={styles.header__cart_icon}>
-        <a href="/cart" className={styles.header__cart_icon_link}>
+        <NavLink
+          to="cart"
+          className={({ isActive }) => classNames(
+            styles.header__cart_icon_link,
+            { [styles.header__menu_link_is_active]: isActive },
+          )}
+          end
+        >
           <img src={cart} alt="shopping_cart_icon"/>
-        </a>
+        </NavLink>
       </div>
 
 
