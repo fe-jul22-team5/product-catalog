@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Cart } from '../../components/Cart/Cart';
 import styles from './PageCart.module.scss';
 
 export const PageCart = React.memo(function PageCart() {
+  const history = useMemo(() => useNavigate(), []);
+
   return (
     <div className={styles.cart}>
       <div className={styles.cart__container}>
-        <a className={styles.cart__backLink} href="/">
+        <button
+          className={styles.cart__backLink}
+          onClick={() => history(-1)}
+        >
           Back
-        </a>
+        </button>
 
         <h2 className={styles.cart__title}>
           Cart

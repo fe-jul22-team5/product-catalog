@@ -1,14 +1,29 @@
-import React from 'react';
+import classNames from 'classnames';
+import React, { useEffect, useState } from 'react';
 import { BASE_URL } from '../../api/fetchClient';
 import { Phone } from '../../types/phone';
 import card from './Card.module.scss';
 
 type Props = {
   phone: Phone,
+  addItemToCart: (id: string) => void;
+  addItemToFavorites: (id: string) => void;
+  cart: string[];
+  favorites: string[]
 }
 
-export const Card = React.memo(function Card({ phone }: Props) {
+export const Card = React.memo(function Card({
+  phone,
+  addItemToCart,
+  cart,
+  addItemToFavorites,
+  favorites,
+}: Props) {
+  const [isAddedCart, setIsAddedCart] = useState(false);
+  const [isAddedFav, setIsAddedFav] = useState(false);
+
   const {
+    phoneId,
     name,
     fullPrice,
     price,
@@ -17,6 +32,24 @@ export const Card = React.memo(function Card({ phone }: Props) {
     ram,
     image
   } = phone;
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('cart') as string);
+    if (items.includes(phoneId)) {
+      setIsAddedCart(true);
+    } else {
+      setIsAddedCart(false);
+    }
+  }, [cart]);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('favorites') as string);
+    if (items.includes(phoneId)) {
+      setIsAddedFav(true);
+    } else {
+      setIsAddedFav(false);
+    }
+  }, [favorites]);
 
   return (
     <div className={card.phones_card}>
@@ -61,11 +94,25 @@ export const Card = React.memo(function Card({ phone }: Props) {
         </li>
       </ul>
       <div className={card.phones_card__btns}>
-        <button className={card.phones_card__addBtn}>
-          Add to cart
+        <button
+          className={classNames(
+            card.phones_card__addBtn,
+            { [card.phones_card__addBtn__active]: isAddedCart}
+          )}
+          onClick={() => addItemToCart(phoneId)}
+        >
+          {!isAddedCart ? 'Add to cart' : 'Added to cart'}
         </button>
-        <button className={card.phones_card__favoritesBtn}>
-          <span className={card.phones_card__favoritesBtn_heart}></span>
+        <button
+          className={card.phones_card__favoritesBtn}
+          onClick={() => addItemToFavorites(phoneId)}
+        >
+          <span
+            className={classNames(
+              card.phones_card__favoritesBtn_heart,
+              { [card.phones_card__favoritesBtn_heart__active]: isAddedFav}
+            )}
+          ></span>
         </button>
       </div>
     </div>

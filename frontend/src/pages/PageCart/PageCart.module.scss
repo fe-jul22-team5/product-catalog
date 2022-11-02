@@ -3,14 +3,6 @@
 @import '../../styles/_utils/mixins';
 
 .cart {
-  padding: 40px 0 80px;
-
-  &__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 26px;
-  }
-
   &__backLink {
     position: relative;
     padding-left: 20px;
@@ -21,6 +13,15 @@
     line-height: 15px;
     font-weight: 700;
     color: $grey-secondary-clr;
+
+    background-color: transparent;
+    border: 0;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $grey-primary-clr;
+    }
 
     &::before {
       content: "";
@@ -58,6 +59,8 @@
 
   &__list {
     margin-right: 16px;
+    flex: 1 0 auto;
+
 
     @media (max-width: 1024px) {
       margin-bottom: 32px;
