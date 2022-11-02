@@ -63,13 +63,21 @@ export const getProductDescriptionById = (req: Request, res: Response) => {
   console.log(phone);
 
   if (phone === undefined) {
-
-    res.statusCode = 404;
-    res.send();
+    res.sendStatus(404);
 
     return;
   }
 
   res.statusCode = 200;
   res.send(phone);
+};
+
+export const getAllProductsCount = (req: Request, res: Response) => {
+  const products = getAll();
+  const count = products.length;
+
+  console.log('count');
+
+  res.statusCode = 200;
+  res.send({ count });
 };
