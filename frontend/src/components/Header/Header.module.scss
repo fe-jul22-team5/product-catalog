@@ -110,6 +110,8 @@
 
 .header__cart_icon_link {
   @include onTablet {
+    position: relative;
+
     padding-left: 17px;
     padding-right: 17px;
     padding-bottom: 12px;
@@ -119,14 +121,33 @@
 }
 
 .header__cart_icon_link:hover {
-  transform: scale(1.15);
+    &::after {
+    left: 0;
+    right: 0
+  }
 }
 
+.header__cart_icon_link::after {
+  display: block;
+  content: "";
+  height: 4px;
+  background-color: $grey-primary-clr;
+  border-radius: 8px;
+  position: absolute;
+  top: 52px;
+  left: 50%;
+  right: 50%;
+
+  transition-property: color, left, right;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
 .header__burger_menu {
   display: flex;
   align-items: center;
   border-left: 1px solid #E2E6E9;
+  cursor: pointer;
 
   @include onTablet {
     display: none;
@@ -151,4 +172,88 @@
     left: 0;
     right: 0;
   }
+}
+
+.burger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFFFFF;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+}
+
+.burger:target {
+  transform: translateX(-100%);
+}
+
+.burger_open {
+  transform: translateX(0);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #FFFFFF;
+  transition: transform 0.5s;
+}
+
+.burger_open:target {
+  transform: translateX(0);
+}
+
+.burger_open_header {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 1px 0px #E2E6E9;
+}
+
+.burger_header__logo {
+  padding-left: 16px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.burger_header__icon {
+  color: $grey-primary-clr;
+  padding: 17px;
+}
+
+.burger__menu_list {
+  padding-top: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+}
+
+.burger__menu_footer {
+  display: flex;
+  height: 60px;
+  justify-content: space-around;
+  box-shadow: inset 0px 1px 0px #e2e6e9;
+}
+
+
+.burger__menu_footer_pic {
+  display: flex;
+  flex-basis: 50%;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-right: 1px solid #e2e6e9;
+}
+
+.burger__menu_footer_pic:hover {
+  border-bottom: 4px solid $grey-primary-clr;
 }
