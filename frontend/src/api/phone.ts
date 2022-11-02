@@ -5,6 +5,7 @@ import { SortTypes } from '../types/sortTypes';
 import { client } from './fetchClient';
 
 const productEndPoint = '/product';
+const countOfProductsEndPoint = productEndPoint + '/count';
 
 export const getPhones = async (
   from?: number,
@@ -23,3 +24,8 @@ export const getPhones = async (
   return phones;
 };
 
+export const getCountOfPhones = async () => {
+  const count = await client.get(countOfProductsEndPoint);
+
+  return count;
+};
