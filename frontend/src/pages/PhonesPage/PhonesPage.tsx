@@ -1,15 +1,55 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import phonePage from './PhonesPage.module.scss';
 import home_icon from '../../img/icons/home-icon.svg';
 import right_arrow_icon from '../../img/icons/right-arrow-icon.svg';
-import { Dropdown } from '../../components/Dropdown/Dropdown';
 import { CardList } from '../../components/CardList';
 import { getCountOfPhones } from '../../api/phone';
 
+import { SortTypes } from '../../types/sortTypes';
+import { productCountOnPageTypes } from '../../types/productCountOnPageTypes';
+import { CustomSelect } from '../../components/CustomSelect/CustomSelect';
+import { SingleValue } from 'react-select/dist/declarations/src/types';
+
+type Option = {
+  value: string,
+  label: string,
+};
 
 export const PhonesPage = React.memo(function PhonesPage() {
-  const [sortBy] = useState(['Newest', 'Alphabetically', 'Cheapest']);
-  const [itemsOnPage] = useState(['all', '16', '8', '4']);
+  const sortBy = useMemo(() => [
+    {
+      value: SortTypes.alphabetically,
+      label: 'alphabetically'
+    },
+    {
+      value: SortTypes.cheap,
+      label: 'cheap'
+    },
+    {
+      value: SortTypes.novelty,
+      label: 'novelty'
+    },
+  ] as Option[], []);
+
+  const itemsOnPage = useMemo(() => [
+    {
+      value: productCountOnPageTypes.all,
+      label: 'all'
+    },
+    {
+      value: productCountOnPageTypes.sixteen,
+      label: '16'
+    },
+    {
+      value: productCountOnPageTypes.eight,
+      label: '8'
+    },
+    {
+      value: productCountOnPageTypes.four,
+      label: '4'
+    },
+  ] as Option[], []);
+
   const [phonesCount, setPhonesCount] = useState(0);
   const [selectedSortBy, setSelectedSortBy] = useState(sortBy[0]);
   const [selectedItemsOnPage, setItemsOnPage] = useState(itemsOnPage[0]);
@@ -21,12 +61,11 @@ export const PhonesPage = React.memo(function PhonesPage() {
   }, []);
 
   const onChangeSortBy = useCallback(
-    (option: string) => setSelectedSortBy(option),
+    (value: SingleValue<Option>) => setSelectedSortBy(value as Option),
     [],
   );
-
   const onChangeItemsOnPage = useCallback(
-    (option: string) => setItemsOnPage((option)),
+    (value: SingleValue<Option>) => setItemsOnPage(value as Option),
     [],
   );
 
@@ -49,7 +88,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
       </p>
 
       <div className={phonePage.filters}>
-        <Dropdown
+        <CustomSelect
           options={sortBy}
           width={175}
           onChange={onChangeSortBy}
@@ -57,7 +96,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
           title={'Sort by'}
         />
 
-        <Dropdown
+        <CustomSelect
           options={itemsOnPage}
           width={130}
           onChange={onChangeItemsOnPage}
