@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { useCallback } from 'react';
 import { BASE_URL } from '../../api/fetchClient';
 import { Phone } from '../../types/phone';
@@ -18,8 +19,10 @@ export const Cart = React.memo(function Cart({ cartItem, updateCart }: Props) {
   let { count = 1 } = cartItem;
 
   const handlePlusButton = useCallback(() => {
-    count++;
-    updateCart(cartItem, count);
+    if (count < 10) {
+      count++;
+      updateCart(cartItem, count);
+    }
   }, []);
 
   const handleMinusButton = useCallback(() => {
@@ -46,12 +49,18 @@ export const Cart = React.memo(function Cart({ cartItem, updateCart }: Props) {
       </h3>
       <div className={styles.cart__counter}>
         <button
-          className={styles.cart__removeBtn}
+          className={classNames(
+            styles.cart__removeBtn,
+            {[styles.btn__disabled]: count === 1}
+          )}
           onClick={handleMinusButton}
         ></button>
         <span className={styles.cart__productQuantity}>{count}</span>
         <button
-          className={styles.cart__addBtn}
+          className={classNames(
+            styles.cart__addBtn,
+            {[styles.btn__disabled]: count === 10}
+          )}
           onClick={handlePlusButton}
         ></button>
       </div>

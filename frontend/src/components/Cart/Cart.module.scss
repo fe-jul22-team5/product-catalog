@@ -69,7 +69,6 @@
   @include onPhone {
     max-width: 128px;
     padding: 0;
-    margin-right: 0;
     margin-left: auto;
   }
 }
@@ -77,6 +76,8 @@
 .cart__counter {
   display: flex;
   align-items: center;
+  justify-content: left;
+  flex: 0 0 120px;
 
   @include onPhone {
     margin-top: 16px;
@@ -84,14 +85,31 @@
 }
 
 .cart__removeBtn {
-  background-image: url(../../pages/PageCart/img/remove-btn.svg);
+  background: url(../../img/icons/minus.svg) no-repeat center;
   @extend %remove_add_btn_styles;
+
+  &:hover{
+    border-color: $grey-primary-clr;
+  }
 }
 
+
 .cart__addBtn {
-  margin-right: 24px;
-  background-image: url(../../pages/PageCart/img/add-btn.svg);
+  background: url(../../img/icons/Plus.svg) no-repeat center;
   @extend %remove_add_btn_styles;
+
+  &:hover{
+    border-color: $grey-primary-clr;
+  }
+}
+
+.btn__disabled {
+  opacity: 0.5;
+  cursor: default;
+
+  &:hover{
+    border-color: #B4BDC3;
+  }
 }
 
 .cart__productQuantity {
