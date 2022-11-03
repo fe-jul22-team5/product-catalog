@@ -13,6 +13,7 @@ export function App() {
     <div className={app.App}>
 
       <Header />
+      <NotificationContainer />
 
       <main className={app.page}>
         <div className={app.page__container}>
@@ -30,8 +31,6 @@ export function App() {
       </main>
 
       <Footer/>
-
-      <NotificationContainer />
     </div>
   );
 }

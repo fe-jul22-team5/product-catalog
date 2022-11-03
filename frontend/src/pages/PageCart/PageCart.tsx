@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartList } from '../../components/CartList';
 import { Phone } from '../../types/phone';
 import styles from './PageCart.module.scss';
-import { NotificationManager} from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+import { createNotification, NotificationType } from '../../helpers/createNotification';
 
 
 function countSum(cart: Phone[]) {
@@ -74,11 +73,11 @@ export const PageCart = React.memo(function PageCart() {
     setCart([]);
   };
 
-  const createNotification = () => {
+  const showNotification = () => {
     if (cart.length === 0) {
-      NotificationManager.warning('First add something to the cart', 'Oops, sorry', 3000);
+      createNotification(NotificationType.CheckoutFail);
     } else {
-      NotificationManager.success('Thank you!', 'Purchase succeed!', 3000);
+      createNotification(NotificationType.CheckoutSuccess);
       ClearCart();
       navigation('/phones');
     }
@@ -107,7 +106,7 @@ export const PageCart = React.memo(function PageCart() {
             <p className={styles.cart__text}>{`Total for ${itemsCount} items`}</p>
             <button
               className={styles.cart__checkoutBtn}
-              onClick={createNotification}
+              onClick={showNotification}
             >
               Checkout
             </button>

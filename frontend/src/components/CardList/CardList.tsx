@@ -7,6 +7,7 @@ import cardList from './CardList.module.scss';
 
 import { useSearchParams } from 'react-router-dom';
 import { SortTypes } from '../../types/sortTypes';
+import { createNotification, NotificationType } from '../../helpers/createNotification';
 
 function setToLocalStorage(
   key: string,
@@ -44,11 +45,13 @@ export const CardList = React.memo(function CardList() {
       .finally(() => setIsLoading(false));
   }, []);
 
-
   const addItemToCart = useCallback((phone: Phone) => {
     let newCart = cart.filter(el => el.id !== phone.id);
     if (newCart.length === cart.length) {
       newCart = [...newCart, phone];
+      createNotification(NotificationType.addToCart, phone.name);
+    } else {
+      createNotification(NotificationType.removeFromCart, phone.name);
     }
 
     setCart(newCart);
@@ -59,6 +62,9 @@ export const CardList = React.memo(function CardList() {
     let newFavorites = favorites.filter(el => el.id !== phone.id);
     if (newFavorites.length === favorites.length) {
       newFavorites = [...newFavorites, phone];
+      createNotification(NotificationType.AddToFav, phone.name);
+    } else {
+      createNotification(NotificationType.removeFromFav, phone.name);
     }
 
     setFavorites(newFavorites);
