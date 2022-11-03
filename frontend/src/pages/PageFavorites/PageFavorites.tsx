@@ -14,7 +14,7 @@ export const PageFavorites = () => {
   return (
     <>
       <div className={pageNav.navInfo}>
-        <NavLink to="home" className={pageNav.navInfo__homeLink}>
+        <NavLink to="/" className={pageNav.navInfo__homeLink}>
           <img src={home_icon} alt="Home" />
         </NavLink>
         <img src={right_arrow_icon} alt="Arrow" className={pageNav.navInfo__arrow}/>
