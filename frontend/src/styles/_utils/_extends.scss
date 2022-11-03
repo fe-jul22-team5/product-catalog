@@ -14,3 +14,45 @@
   transition: border-color 0.3s;
   border-radius: 50%;
 }
+
+%header_fav_counter {
+  position: absolute;
+  background-color: $icon-counter-clr;
+
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  text-align: center;
+
+  color: #FFFFFF;
+  font-size: 8px;
+  font-weight: 600;
+  padding: 1.5px;
+
+  right: 62px;
+  top: 12px;
+  border: 1px solid #FFFFFF;
+
+  z-index: 1;
+}
+
+%burger_fav_counter {
+  position: absolute;
+  background-color: $icon-counter-clr;
+
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  text-align: center;
+
+  color: #FFFFFF;
+  font-size: 8px;
+  font-weight: 600;
+  padding: 1.5px;
+
+  left: 100px;
+  bottom: 28px;
+  border: 1px solid #FFFFFF;
+
+  z-index: 1;
+}

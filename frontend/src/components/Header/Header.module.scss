@@ -1,5 +1,6 @@
 @import '../../styles/_utils//mixins';
 @import '../../styles/_utils/_variables';
+@import '../../styles/_utils//extends';
 
 .header {
   position: sticky;
@@ -110,6 +111,61 @@
     display: grid;
     place-content: center;
     border-left: 1px solid #E2E6E9;
+  }
+}
+
+.header_fav_counter {
+  visibility: hidden;
+  @extend %header_fav_counter;
+
+  &_active {
+    visibility: visible;
+
+    @extend %header_fav_counter
+  }
+}
+
+.header_cart_counter {
+  @extend %header_fav_counter;
+  visibility: hidden;
+  right: 10px;
+
+  &_active {
+    visibility: visible;
+    right: 10px;
+
+    @extend %header_fav_counter;
+  }
+}
+
+.header_icon_counter {
+  visibility: hidden;
+  position: absolute;
+  background-color: $icon-counter-clr;
+
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  text-align: center;
+
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px;
+
+  right: 62px;
+  top: 12px;
+
+  z-index: 1;
+
+  &_active {
+    visibility: visible;
+
+    @extend %header_fav_counter;
+
+    @include onTablet {
+      display: none;
+    }
   }
 }
 
@@ -271,14 +327,23 @@
   display: flex;
   flex-basis: 50%;
   justify-content: center;
+
   border-right: 1px solid #e2e6e9;
 }
 
 .burger__cart_icon_link {
+  position: relative;
   padding: 25px 90px;
 }
 
-.burger__menu_footer_pic:hover {
-  border-bottom: 4px solid $grey-primary-clr;
+.burger_fav_counter {
+  visibility: hidden;
+  @extend %burger_fav_counter;
+
+  &_active {
+    visibility: visible;
+
+    @extend %burger_fav_counter;
+  }
 }
 
