@@ -9,6 +9,7 @@ import { SortTypes } from '../../types/sortTypes';
 import { productCountOnPageTypes } from '../../types/productCountOnPageTypes';
 import { CustomSelect } from '../../components/CustomSelect/CustomSelect';
 import { SingleValue } from 'react-select/dist/declarations/src/types';
+import { Phone } from '../../types/phone';
 
 type Option = {
   value: string,
@@ -105,7 +106,9 @@ export const PhonesPage = React.memo(function PhonesPage() {
         />
       </div>
 
-      <CardList />
+      <CardList
+        data={[] as Phone[]}
+      />
     </>
   );
 });
