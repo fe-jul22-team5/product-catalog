@@ -4,14 +4,13 @@ import pageNav from '../PageNav.module.scss';
 import home_icon from '../../img/icons/home-icon.svg';
 import right_arrow_icon from '../../img/icons/right-arrow-icon.svg';
 import { CardList } from '../../components/CardList';
-import { getCountOfPhones } from '../../api/phone';
+import { getCountOfPhones, getPhones } from '../../api/phone';
 
 import { SortTypes } from '../../types/sortTypes';
 import { productCountOnPageTypes } from '../../types/productCountOnPageTypes';
 import { CustomSelect } from '../../components/CustomSelect/CustomSelect';
 import { SingleValue } from 'react-select/dist/declarations/src/types';
-import { NavLink } from 'react-router-dom';
-import { Phone } from '../../types/phone';
+import { NavLink, useSearchParams } from 'react-router-dom';
 
 type Option = {
   value: string,
@@ -22,15 +21,15 @@ export const PhonesPage = React.memo(function PhonesPage() {
   const sortBy = useMemo(() => [
     {
       value: SortTypes.alphabetically,
-      label: 'alphabetically'
+      label: 'Alphabetically'
     },
     {
       value: SortTypes.cheap,
-      label: 'cheap'
+      label: 'Cheapest'
     },
     {
       value: SortTypes.novelty,
-      label: 'novelty'
+      label: 'Newest'
     },
   ] as Option[], []);
 
@@ -57,11 +56,22 @@ export const PhonesPage = React.memo(function PhonesPage() {
   const [selectedSortBy, setSelectedSortBy] = useState(sortBy[0]);
   const [selectedItemsOnPage, setItemsOnPage] = useState(itemsOnPage[0]);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     getCountOfPhones()
       .then(({ count }) => setPhonesCount(count))
       .catch(() => setPhonesCount(-1));
   }, []);
+
+  const phones = useMemo(() => {
+    const sort  = searchParams.get('sort') as SortTypes || undefined;
+    const from = searchParams.get('from') || undefined;
+    const to = searchParams.get('to') || undefined;
+
+    return getPhones(from, to, sort);
+
+  }, [ searchParams ]);
 
   const onChangeSortBy = useCallback(
     (value: SingleValue<Option>) => setSelectedSortBy(value as Option),
@@ -93,7 +103,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
       <div className={phonePage.filters}>
         <CustomSelect
           options={sortBy}
-          width={175}
+          width={180}
           onChange={onChangeSortBy}
           value={selectedSortBy}
           title={'Sort by'}
@@ -109,7 +119,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
       </div>
 
       <CardList
-        data={[] as Phone[]}
+        data={phones}
       />
     </>
   );
