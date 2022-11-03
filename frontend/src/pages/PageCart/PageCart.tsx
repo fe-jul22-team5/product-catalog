@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { CartList } from '../../components/CartList';
 import { Phone } from '../../types/phone';
 import styles from './PageCart.module.scss';
+import { NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 
 function countSum(cart: Phone[]) {
@@ -41,7 +43,8 @@ export const PageCart = React.memo(function PageCart() {
     setItemsCount(countItems(cart));
   }, [cart]);
 
-  const history = useNavigate();
+  const navigation = useNavigate();
+
 
   const updateCart = useCallback((item: Phone, newCount: number, remove = false) => {
     setCart(prev => {
@@ -65,14 +68,28 @@ export const PageCart = React.memo(function PageCart() {
     });
   }, [cart]);
 
-  console.log(cart);
+  const ClearCart = () => {
+    localStorage.setItem('cart', JSON.stringify([]));
+
+    setCart([]);
+  };
+
+  const createNotification = () => {
+    if (cart.length === 0) {
+      NotificationManager.warning('First add something to the cart', 'Oops, sorry', 3000);
+    } else {
+      NotificationManager.success('Thank you!', 'Purchase succeed!', 3000);
+      ClearCart();
+      navigation('/phones');
+    }
+  };
 
   return (
     <div className={styles.cart}>
       <div className={styles.cart__container}>
         <button
           className={styles.cart__backLink}
-          onClick={() => history(-1)}
+          onClick={() => navigation(-1)}
         >
           Back
         </button>
@@ -88,7 +105,12 @@ export const PageCart = React.memo(function PageCart() {
           <div className={styles.cart__finalSum}>
             <p className={styles.cart__sum}>{sum}</p>
             <p className={styles.cart__text}>{`Total for ${itemsCount} items`}</p>
-            <button className={styles.cart__checkoutBtn}>Checkout</button>
+            <button
+              className={styles.cart__checkoutBtn}
+              onClick={createNotification}
+            >
+              Checkout
+            </button>
           </div>
         </div>
       </div>

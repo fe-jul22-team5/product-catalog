@@ -6,6 +6,7 @@ import { PageCart } from './pages/PageCart';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import app from './styles/App.module.scss';
+import { NotificationContainer} from 'react-notifications';
 
 export function App() {
   return (
@@ -29,6 +30,8 @@ export function App() {
       </main>
 
       <Footer/>
+
+      <NotificationContainer />
     </div>
   );
 }
