@@ -10,7 +10,10 @@ import { SortTypes } from '../../types/sortTypes';
 import { productCountOnPageTypes } from '../../types/productCountOnPageTypes';
 import { CustomSelect } from '../../components/CustomSelect/CustomSelect';
 import { SingleValue } from 'react-select/dist/declarations/src/types';
+
 import { NavLink, useSearchParams } from 'react-router-dom';
+
+import { Phone } from '../../types/phone';
 
 type Option = {
   value: string,
