@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { CardList } from '../../components/CardList';
-import { setToLocalStorage, useLocalStorage } from '../../helpers/localStorage';
+import { FavoritesList } from '../../components/FavoritesList';
+import { useLocalStorage } from '../../helpers/localStorage';
 import home_icon from '../../img/icons/home-icon.svg';
 import right_arrow_icon from '../../img/icons/right-arrow-icon.svg';
-import { Phone } from '../../types/phone';
 import pageNav from '../PageNav.module.scss';
 
 
-export const PageFavorites = React.memo(function PageNotFound() {
+export const PageFavorites = () => {
   const [favorites, setFavorites] = useLocalStorage('favorites', []);
 
   return (
@@ -29,7 +28,7 @@ export const PageFavorites = React.memo(function PageNotFound() {
         {`${favorites.length} models`}
       </p>
 
-      <CardList data={favorites} />
+      <FavoritesList favorites={favorites} setFavorites={setFavorites} />
     </>
   );
-});
+};
