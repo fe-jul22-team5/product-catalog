@@ -25,6 +25,7 @@ export function App() {
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
+
         </div>
       </main>
 
