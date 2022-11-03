@@ -271,11 +271,14 @@
   display: flex;
   flex-basis: 50%;
   justify-content: center;
-  padding-top: 25px;
-  padding-bottom: 25px;
   border-right: 1px solid #e2e6e9;
+}
+
+.burger__cart_icon_link {
+  padding: 25px 90px;
 }
 
 .burger__menu_footer_pic:hover {
   border-bottom: 4px solid $grey-primary-clr;
 }
+
