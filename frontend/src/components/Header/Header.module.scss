@@ -3,7 +3,7 @@
 
 .header {
   position: sticky;
-  z-index: 100;
+  z-index: 50;
   top: 0;
 
   background-color: $white-primary-clr;
@@ -96,6 +96,11 @@
   transition-property: color, left, right;
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.header_icons_container {
+  display: flex;
+  flex-direction: row;
 }
 
 .header__cart_icon {
@@ -266,11 +271,14 @@
   display: flex;
   flex-basis: 50%;
   justify-content: center;
-  padding-top: 25px;
-  padding-bottom: 25px;
   border-right: 1px solid #e2e6e9;
+}
+
+.burger__cart_icon_link {
+  padding: 25px 90px;
 }
 
 .burger__menu_footer_pic:hover {
   border-bottom: 4px solid $grey-primary-clr;
 }
+

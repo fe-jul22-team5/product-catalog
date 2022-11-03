@@ -2,6 +2,20 @@
 @import '../../styles/_utils/extends';
 @import '../../styles/_utils/mixins';
 
+
+.cart__img_container {
+  flex: 1 0 auto;
+  text-align: center;
+
+  @include onPhone {
+    flex-grow: 0;
+  }
+}
+
+.cart__img {
+  max-width: 66px;
+}
+
 .cart__item {
   display: flex;
   justify-content: space-between;
@@ -44,7 +58,8 @@
 }
 
 .cart__name {
-  margin-right: 20px;
+  flex: 1 0 300px;
+  padding: 0 24px;
   font-size: 14px;
   line-height: 21px;
   font-style: normal;
@@ -53,7 +68,7 @@
 
   @include onPhone {
     max-width: 128px;
-    margin-right: 0;
+    padding: 0;
     margin-left: auto;
   }
 }
@@ -61,6 +76,8 @@
 .cart__counter {
   display: flex;
   align-items: center;
+  justify-content: left;
+  flex: 0 0 120px;
 
   @include onPhone {
     margin-top: 16px;
@@ -68,14 +85,31 @@
 }
 
 .cart__removeBtn {
-  background-image: url(../../pages/PageCart/img/remove-btn.svg);
+  background: url(../../img/icons/minus.svg) no-repeat center;
   @extend %remove_add_btn_styles;
+
+  &:hover{
+    border-color: $grey-primary-clr;
+  }
 }
 
+
 .cart__addBtn {
-  margin-right: 24px;
-  background-image: url(../../pages/PageCart/img/add-btn.svg);
+  background: url(../../img/icons/Plus.svg) no-repeat center;
   @extend %remove_add_btn_styles;
+
+  &:hover{
+    border-color: $grey-primary-clr;
+  }
+}
+
+.btn__disabled {
+  opacity: 0.5;
+  cursor: default;
+
+  &:hover{
+    border-color: #B4BDC3;
+  }
 }
 
 .cart__productQuantity {

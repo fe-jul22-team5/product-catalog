@@ -6,12 +6,14 @@ import { PageCart } from './pages/PageCart';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import app from './styles/App.module.scss';
+import { NotificationContainer} from 'react-notifications';
 
 export function App() {
   return (
     <div className={app.App}>
 
       <Header />
+      <NotificationContainer />
 
       <main className={app.page}>
         <div className={app.page__container}>
