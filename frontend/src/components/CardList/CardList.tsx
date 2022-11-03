@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { getPhones } from '../../api/phone';
 import { Card } from '../../components/Card';
 import { Phone } from '../../types/phone';
 import { Loader } from '../Loader';
 import cardList from './CardList.module.scss';
 
-import { useSearchParams } from 'react-router-dom';
-import { SortTypes } from '../../types/sortTypes';
 import { createNotification, NotificationType } from '../../helpers/createNotification';
+
+type Props = {
+  data: Promise<Phone[]> | Phone[],
+};
 
 function setToLocalStorage(
   key: string,
@@ -20,13 +21,15 @@ function setToLocalStorage(
   }
 }
 
-export const CardList = React.memo(function CardList() {
+export const CardList = React.memo(function CardList(props: Props) {
+  const { data } = props;
+
   const [phoneList, setPhonesList] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [cart, setCart] = useState<Phone[]>([]);
   const [favorites, setFavorites] = useState<Phone[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setToLocalStorage('cart', setCart);
@@ -34,15 +37,19 @@ export const CardList = React.memo(function CardList() {
   }, []);
 
   useEffect(() => {
-    setSearchParams({sort: 'cheap', from: '1', to: '10'});
-    const sort  = searchParams.get('sort') as SortTypes || undefined;
-    const from = searchParams.get('from') || undefined;
-    const to = searchParams.get('to') || undefined;
+    // setSearchParams({sort: 'cheap', from: '1', to: '10'});
+    // const sort  = searchParams.get('sort') as SortTypes || undefined;
+    // const from = searchParams.get('from') || undefined;
+    // const to = searchParams.get('to') || undefined;
 
-    getPhones(from, to, sort)
-      .then(phones => setPhonesList(phones))
-      .catch(() => setIsError(true))
-      .finally(() => setIsLoading(false));
+    if (data instanceof Promise<Phone[]>) {
+      data.then(phones => setPhonesList(phones))
+        .catch(() => setIsError(true))
+        .finally(() => setIsLoading(false));
+    } else {
+      setPhonesList(data);
+      setIsLoading(false);
+    }
   }, []);
 
   const addItemToCart = useCallback((phone: Phone) => {
