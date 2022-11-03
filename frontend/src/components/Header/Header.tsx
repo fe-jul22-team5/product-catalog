@@ -223,8 +223,16 @@ export const Header = React.memo(function Header() {
               className={styles.burger__cart_icon_link}
             >
               <img src={favicon} alt="facourite_icon"/>
-              <div className={styles.burger_fav_counter}>
-                1
+              <div
+                className={
+                  favorites.length > 0
+                    ?
+                    styles.burger_fav_counter_active
+                    :
+                    styles.burger_fav_counter
+                }
+              >
+                {favorites.length}
               </div>
             </NavLink>
           </div>
@@ -236,14 +244,21 @@ export const Header = React.memo(function Header() {
               className={styles.burger__cart_icon_link}
             >
               <img src={cartLogo} alt="shopping_cart_icon"/>
-              <div className={styles.burger_fav_counter_active}>
-                10
+              <div
+                className={
+                  cart.length > 0
+                    ?
+                    styles.burger_fav_counter_active
+                    :
+                    styles.burger_fav_counter
+                }
+              >
+                {cart.length}
               </div>
             </NavLink>
           </div>
         </footer>
       </nav>
-
     </div>
 
   );
