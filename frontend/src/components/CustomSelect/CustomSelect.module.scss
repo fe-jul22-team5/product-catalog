@@ -1,0 +1,21 @@
+@import '../../styles/_utils/_variables';
+@import '../../styles/_utils/_variables';
+
+.Dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.title {
+  margin-bottom: 4px;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+
+  color: $grey-secondary-clr;
+}
