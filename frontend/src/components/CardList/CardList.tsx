@@ -17,8 +17,8 @@ export const CardList = React.memo(function CardList(props: Props) {
   const [phoneList, setPhonesList] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [cart, setCart] = useLocalStorage('cart', []);
-  const [favorites, setFavorites] = useLocalStorage('favorites', []);
+  const [cart, setCart] = useLocalStorage<Phone[]>('cart', []);
+  const [favorites, setFavorites] = useLocalStorage<Phone[]>('favorites', []);
   // const [searchParams, setSearchParams] = useSearchParams();
 
 

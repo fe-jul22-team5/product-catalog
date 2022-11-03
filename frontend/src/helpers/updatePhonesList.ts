@@ -3,7 +3,6 @@ import { createNotification, NotificationType } from './createNotification';
 
 export const updatePhonesList = (cart: Phone[], phone: Phone): Phone[] => {
   let newCart = cart.filter((el: Phone) => el.id !== phone.id);
-  console.log(cart);
 
   if (newCart.length === cart.length) {
     newCart = [...newCart, phone];
