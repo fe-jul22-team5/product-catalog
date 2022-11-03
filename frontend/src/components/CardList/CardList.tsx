@@ -5,21 +5,11 @@ import { Loader } from '../Loader';
 import cardList from './CardList.module.scss';
 
 import { createNotification, NotificationType } from '../../helpers/createNotification';
+import { setToLocalStorage, useLocalStorage } from '../../helpers/localStorage';
 
 type Props = {
   data: Promise<Phone[]> | Phone[],
 };
-
-function setToLocalStorage(
-  key: string,
-  setState: (value: React.SetStateAction<Phone[]>) => void
-) {
-  if (localStorage.getItem(key)) {
-    setState(JSON.parse(localStorage.getItem(key) as string));
-  } else {
-    localStorage.setItem(key, JSON.stringify([]));
-  }
-}
 
 export const CardList = React.memo(function CardList(props: Props) {
   const { data } = props;
@@ -27,14 +17,14 @@ export const CardList = React.memo(function CardList(props: Props) {
   const [phoneList, setPhonesList] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [cart, setCart] = useState<Phone[]>([]);
-  const [favorites, setFavorites] = useState<Phone[]>([]);
+  const [cart, setCart] = useLocalStorage('cart', []);
+  const [favorites, setFavorites] = useLocalStorage('favorites', []);
   // const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    setToLocalStorage('cart', setCart);
-    setToLocalStorage('favorites', setFavorites);
-  }, []);
+  // useEffect(() => {
+  //   setToLocalStorage('cart', setCart);
+  //   setToLocalStorage('favorites', setFavorites);
+  // }, []);
 
   useEffect(() => {
     // setSearchParams({sort: 'cheap', from: '1', to: '10'});
@@ -50,10 +40,10 @@ export const CardList = React.memo(function CardList(props: Props) {
       setPhonesList(data);
       setIsLoading(false);
     }
-  }, []);
+  }, [data]);
 
   const addItemToCart = useCallback((phone: Phone) => {
-    let newCart = cart.filter(el => el.id !== phone.id);
+    let newCart = cart.filter((el: Phone) => el.id !== phone.id);
     if (newCart.length === cart.length) {
       newCart = [...newCart, phone];
       createNotification(NotificationType.addToCart, phone.name);
@@ -62,11 +52,11 @@ export const CardList = React.memo(function CardList(props: Props) {
     }
 
     setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    // localStorage.setItem('cart', JSON.stringify(newCart));
   }, [cart]);
 
   const addItemToFavorites = useCallback((phone: Phone) => {
-    let newFavorites = favorites.filter(el => el.id !== phone.id);
+    let newFavorites = favorites.filter((el: Phone) => el.id !== phone.id);
     if (newFavorites.length === favorites.length) {
       newFavorites = [...newFavorites, phone];
       createNotification(NotificationType.AddToFav, phone.name);
@@ -75,7 +65,7 @@ export const CardList = React.memo(function CardList(props: Props) {
     }
 
     setFavorites(newFavorites);
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    // localStorage.setItem('favorites', JSON.stringify(newFavorites));
   }, [favorites]);
 
   return (
