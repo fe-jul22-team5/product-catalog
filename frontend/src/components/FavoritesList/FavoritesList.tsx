@@ -15,7 +15,7 @@ export const FavoritesList = React.memo(function FavoritesList({
   setFavorites,
 }: Props) {
 
-  const [cart, setCart] = useLocalStorage('cart', []);
+  const [cart, setCart] = useLocalStorage<Phone[]>('cart', []);
 
 
   const addItemToCart = useCallback((phone: Phone) => {

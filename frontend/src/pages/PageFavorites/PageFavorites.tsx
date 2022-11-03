@@ -1,14 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FavoritesList } from '../../components/FavoritesList';
 import { useLocalStorage } from '../../helpers/localStorage';
 import home_icon from '../../img/icons/home-icon.svg';
 import right_arrow_icon from '../../img/icons/right-arrow-icon.svg';
+import { Phone } from '../../types/phone';
 import pageNav from '../PageNav.module.scss';
 
 
 export const PageFavorites = () => {
-  const [favorites, setFavorites] = useLocalStorage('favorites', []);
+  const [favorites, setFavorites] = useLocalStorage<Phone[]>('favorites', []);
 
   return (
     <>

@@ -2,20 +2,25 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from './logo/full_logo.png';
-import cart from './logo/Shopping_cart.png';
+import cartLogo from './logo/Shopping_cart.png';
 import burger from './logo/burger.png';
 import favicon from './logo/fav_icon.png';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import styles from  './Header.module.scss';
+import { useLocalStorage } from '../../helpers/localStorage';
+import { Phone } from '../../types/phone';
 
 export const Header = React.memo(function Header() {
   const [activeBurger, setActiveBurger] = useState(false);
+  const [cart] = useLocalStorage<Phone[]>('cart', []);
+  const [favorites] = useLocalStorage<Phone[]>('favorites', []);
 
   activeBurger
     ? disableBodyScroll(document.querySelector('body') as HTMLElement)
     : enableBodyScroll(document.querySelector('body') as HTMLElement);
 
+  console.log(cart);
 
   return (
     <div className={styles.header}>
@@ -83,8 +88,14 @@ export const Header = React.memo(function Header() {
 
       <div className={styles.header_icons_container}>
         <div className={styles.header__cart_icon}>
-          <div className={styles.header_fav_counter}>
-          20
+          <div className={
+            favorites.length > 0
+              ?
+              styles.header_fav_counter_active
+              :
+              styles.header_fav_counter
+          }>
+            {favorites.length}
           </div>
           <NavLink
             to="favorites"
@@ -99,8 +110,15 @@ export const Header = React.memo(function Header() {
         </div>
 
         <div className={styles.header__cart_icon}>
-          <div className={styles.header_cart_counter_active}>
-          11
+          <div
+            className={
+              cart.length > 0
+                ?
+                styles.header_cart_counter_active
+                :
+                styles.header_cart_counter
+            }>
+            {cart.length}
           </div>
           <NavLink
             to="cart"
@@ -110,7 +128,7 @@ export const Header = React.memo(function Header() {
             )}
             end
           >
-            <img src={cart} alt="shopping_cart_icon"/>
+            <img src={cartLogo} alt="shopping_cart_icon"/>
           </NavLink>
         </div>
       </div>
@@ -217,7 +235,7 @@ export const Header = React.memo(function Header() {
               to="/cart"
               className={styles.burger__cart_icon_link}
             >
-              <img src={cart} alt="shopping_cart_icon"/>
+              <img src={cartLogo} alt="shopping_cart_icon"/>
               <div className={styles.burger_fav_counter_active}>
                 10
               </div>

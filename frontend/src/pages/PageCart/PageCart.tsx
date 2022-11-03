@@ -4,6 +4,7 @@ import { CartList } from '../../components/CartList';
 import { Phone } from '../../types/phone';
 import styles from './PageCart.module.scss';
 import { createNotification, NotificationType } from '../../helpers/createNotification';
+import useLocalStorage from '../../helpers/localStorage';
 
 
 function countSum(cart: Phone[]) {
@@ -25,17 +26,9 @@ function countItems(cart: Phone[]) {
 }
 
 export const PageCart = React.memo(function PageCart() {
-  const [cart, setCart] = useState<Phone[]>([]);
+  const [cart, setCart] = useLocalStorage<Phone[]>('cart', []);
   const [sum, setSum] = useState(0);
   const [itemsCount, setItemsCount] = useState(0);
-
-  useEffect(() => {
-    const items = localStorage.getItem('cart');
-    if (items) {
-      const parsedCart = JSON.parse(items);
-      setCart(parsedCart);
-    }
-  }, []);
 
   useEffect(() => {
     setSum(countSum(cart));
