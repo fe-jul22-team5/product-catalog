@@ -4,7 +4,7 @@ import pageNav from '../PageNav.module.scss';
 import home_icon from '../../img/icons/home-icon.svg';
 import right_arrow_icon from '../../img/icons/right-arrow-icon.svg';
 import { CardList } from '../../components/CardList';
-import { getCountOfPhones } from '../../api/phone';
+import { getCountOfPhones, getPhones } from '../../api/phone';
 
 import { SortTypes } from '../../types/sortTypes';
 import { productCountOnPageTypes } from '../../types/productCountOnPageTypes';
@@ -107,7 +107,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
         />
       </div>
 
-      <CardList data={[] as Phone[]}/>
+      <CardList data={getPhones('1', '10')}/>
     </>
   );
 });

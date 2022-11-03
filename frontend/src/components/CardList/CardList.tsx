@@ -4,8 +4,8 @@ import { Phone } from '../../types/phone';
 import { Loader } from '../Loader';
 import cardList from './CardList.module.scss';
 
-import { createNotification, NotificationType } from '../../helpers/createNotification';
-import { setToLocalStorage, useLocalStorage } from '../../helpers/localStorage';
+import { useLocalStorage } from '../../helpers/localStorage';
+import { updatePhonesList } from '../../helpers/updatePhonesList';
 
 type Props = {
   data: Promise<Phone[]> | Phone[],
@@ -21,10 +21,6 @@ export const CardList = React.memo(function CardList(props: Props) {
   const [favorites, setFavorites] = useLocalStorage('favorites', []);
   // const [searchParams, setSearchParams] = useSearchParams();
 
-  // useEffect(() => {
-  //   setToLocalStorage('cart', setCart);
-  //   setToLocalStorage('favorites', setFavorites);
-  // }, []);
 
   useEffect(() => {
     // setSearchParams({sort: 'cheap', from: '1', to: '10'});
@@ -43,31 +39,12 @@ export const CardList = React.memo(function CardList(props: Props) {
   }, [data]);
 
   const addItemToCart = useCallback((phone: Phone) => {
-    let newCart = cart.filter((el: Phone) => el.id !== phone.id);
-    if (newCart.length === cart.length) {
-      newCart = [...newCart, phone];
-      createNotification(NotificationType.addToCart, phone.name);
-    } else {
-      createNotification(NotificationType.removeFromCart, phone.name);
-    }
-
-    setCart(newCart);
-    // localStorage.setItem('cart', JSON.stringify(newCart));
+    setCart((prev: Phone[]) => updatePhonesList(prev, phone));
   }, [cart]);
 
   const addItemToFavorites = useCallback((phone: Phone) => {
-    let newFavorites = favorites.filter((el: Phone) => el.id !== phone.id);
-    if (newFavorites.length === favorites.length) {
-      newFavorites = [...newFavorites, phone];
-      createNotification(NotificationType.AddToFav, phone.name);
-    } else {
-      createNotification(NotificationType.removeFromFav, phone.name);
-    }
-
-    setFavorites(newFavorites);
-    // localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    setFavorites((prev: Phone[]) => updatePhonesList(prev, phone));
   }, [favorites]);
-
   return (
     <>
       {isLoading
