@@ -83,6 +83,9 @@ export const Header = React.memo(function Header() {
 
       <div className={styles.header_icons_container}>
         <div className={styles.header__cart_icon}>
+          <div className={styles.header_fav_counter}>
+          20
+          </div>
           <NavLink
             to="favorites"
             className={({ isActive }) => classNames(
@@ -96,6 +99,9 @@ export const Header = React.memo(function Header() {
         </div>
 
         <div className={styles.header__cart_icon}>
+          <div className={styles.header_cart_counter_active}>
+          11
+          </div>
           <NavLink
             to="cart"
             className={({ isActive }) => classNames(
@@ -199,6 +205,9 @@ export const Header = React.memo(function Header() {
               className={styles.burger__cart_icon_link}
             >
               <img src={favicon} alt="facourite_icon"/>
+              <div className={styles.burger_fav_counter}>
+                1
+              </div>
             </NavLink>
           </div>
 
@@ -209,7 +218,9 @@ export const Header = React.memo(function Header() {
               className={styles.burger__cart_icon_link}
             >
               <img src={cart} alt="shopping_cart_icon"/>
-
+              <div className={styles.burger_fav_counter_active}>
+                10
+              </div>
             </NavLink>
           </div>
         </footer>
