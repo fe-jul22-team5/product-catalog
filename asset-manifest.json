@@ -1,10 +1,14 @@
 {
   "files": {
-    "main.css": "/product-catalog/static/css/main.da7e0ca6.css",
-    "main.js": "/product-catalog/static/js/main.856c73c8.js",
+    "main.css": "/product-catalog/static/css/main.6fe7d681.css",
+    "main.js": "/product-catalog/static/js/main.dbab324f.js",
     "static/media/Mont-Regular.otf": "/product-catalog/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
     "static/media/Mont-SemiBold.otf": "/product-catalog/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
     "static/media/Mont-Bold.otf": "/product-catalog/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
+    "static/media/notification.svg?s3g3t9": "/product-catalog/static/media/notification.5d0158671dd860c714c4.svg",
+    "static/media/notification.eot": "/product-catalog/static/media/notification.3657084dc0419605a91c.eot",
+    "static/media/notification.woff?s3g3t9": "/product-catalog/static/media/notification.c392cd33d9d9de730f9d.woff",
+    "static/media/notification.ttf?s3g3t9": "/product-catalog/static/media/notification.c5d9251ea82e42f75381.ttf",
     "static/media/favourites.svg": "/product-catalog/static/media/favourites.7eca6a760530ea074506.svg",
     "static/media/home-icon.svg": "/product-catalog/static/media/home-icon.63e64c2945a6b7fb320f9ac5cbd08865.svg",
     "static/media/favourites-selected.svg": "/product-catalog/static/media/favourites-selected.c92067b36bd61d47d89d.svg",
@@ -18,11 +22,11 @@
     "static/media/down-arrow-icon.svg": "/product-catalog/static/media/down-arrow-icon.b87d883446f750defdba843478820ff5.svg",
     "static/media/minus.svg": "/product-catalog/static/media/minus.f1534e41b8f01195bbc8.svg",
     "static/media/divider.svg": "/product-catalog/static/media/divider.b3cd47ad47435f3bcf23.svg",
-    "main.da7e0ca6.css.map": "/product-catalog/static/css/main.da7e0ca6.css.map",
-    "main.856c73c8.js.map": "/product-catalog/static/js/main.856c73c8.js.map"
+    "main.6fe7d681.css.map": "/product-catalog/static/css/main.6fe7d681.css.map",
+    "main.dbab324f.js.map": "/product-catalog/static/js/main.dbab324f.js.map"
   },
   "entrypoints": [
-    "static/css/main.da7e0ca6.css",
-    "static/js/main.856c73c8.js"
+    "static/css/main.6fe7d681.css",
+    "static/js/main.dbab324f.js"
   ]
 }
