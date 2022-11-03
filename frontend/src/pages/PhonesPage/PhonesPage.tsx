@@ -13,19 +13,24 @@ import { SingleValue } from 'react-select/dist/declarations/src/types';
 
 import { NavLink, useSearchParams } from 'react-router-dom';
 
-import { Phone } from '../../types/phone';
-
 type Option = {
   value: string,
   label: string,
 };
 
+const defaultSortBy: Option = {
+  value: SortTypes.alphabetically,
+  label: 'Alphabetically'
+};
+
+const defaultCount: Option = {
+  value: productCountOnPageTypes.all,
+  label: 'all'
+};
+
 export const PhonesPage = React.memo(function PhonesPage() {
-  const sortBy = useMemo(() => [
-    {
-      value: SortTypes.alphabetically,
-      label: 'Alphabetically'
-    },
+  const sortByOptions = useMemo(() => [
+    defaultSortBy,
     {
       value: SortTypes.cheap,
       label: 'Cheapest'
@@ -36,11 +41,8 @@ export const PhonesPage = React.memo(function PhonesPage() {
     },
   ] as Option[], []);
 
-  const itemsOnPage = useMemo(() => [
-    {
-      value: productCountOnPageTypes.all,
-      label: 'all'
-    },
+  const itemsOnPageOptions = useMemo(() => [
+    defaultCount,
     {
       value: productCountOnPageTypes.sixteen,
       label: '16'
@@ -56,10 +58,34 @@ export const PhonesPage = React.memo(function PhonesPage() {
   ] as Option[], []);
 
   const [phonesCount, setPhonesCount] = useState(0);
-  const [selectedSortBy, setSelectedSortBy] = useState(sortBy[0]);
-  const [selectedItemsOnPage, setItemsOnPage] = useState(itemsOnPage[0]);
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+  function updateSearch(params: { [key: string]: string | undefined }) {
+    Object.entries(params).forEach(([key, value]) => {
+      if (value === undefined) {
+        searchParams.delete(key);
+      } else {
+        searchParams.set(key, value);
+      }
+    });
+
+    setSearchParams(searchParams);
+  }
+
+  const selectedSortBy = useMemo(() => {
+    const sortBy = searchParams.get('sort') as SortTypes || SortTypes.alphabetically;
+
+    return sortByOptions.find((option) => option.value === sortBy) || defaultSortBy;
+
+  }, [searchParams]);
+
+  const selectedItemsOnPage = useMemo(() => {
+    const count = searchParams.get('count') as productCountOnPageTypes || productCountOnPageTypes.all;
+
+    return sortByOptions.find((option) => option.value === count) || defaultCount;
+
+  }, [searchParams]);
 
   useEffect(() => {
     getCountOfPhones()
@@ -77,11 +103,15 @@ export const PhonesPage = React.memo(function PhonesPage() {
   }, [ searchParams ]);
 
   const onChangeSortBy = useCallback(
-    (value: SingleValue<Option>) => setSelectedSortBy(value as Option),
+    (newValue: SingleValue<Option>) => {
+      updateSearch({ sort: newValue?.value });
+    },
     [],
   );
   const onChangeItemsOnPage = useCallback(
-    (value: SingleValue<Option>) => setItemsOnPage(value as Option),
+    (newValue: SingleValue<Option>) => {
+      updateSearch({ count: newValue?.value });
+    },
     [],
   );
 
@@ -105,7 +135,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
       <div className={phonePage.filters}>
         <CustomSelect
-          options={sortBy}
+          options={sortByOptions}
           width={180}
           onChange={onChangeSortBy}
           value={selectedSortBy}
@@ -113,7 +143,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
         />
 
         <CustomSelect
-          options={itemsOnPage}
+          options={itemsOnPageOptions}
           width={130}
           onChange={onChangeItemsOnPage}
           value={selectedItemsOnPage}
