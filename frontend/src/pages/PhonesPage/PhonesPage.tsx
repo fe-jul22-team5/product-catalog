@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import phonePage from './PhonesPage.module.scss';
+import pageNav from '../PageNav.module.scss';
 import home_icon from '../../img/icons/home-icon.svg';
 import right_arrow_icon from '../../img/icons/right-arrow-icon.svg';
 import { CardList } from '../../components/CardList';
@@ -9,6 +10,7 @@ import { SortTypes } from '../../types/sortTypes';
 import { productCountOnPageTypes } from '../../types/productCountOnPageTypes';
 import { CustomSelect } from '../../components/CustomSelect/CustomSelect';
 import { SingleValue } from 'react-select/dist/declarations/src/types';
+import { NavLink } from 'react-router-dom';
 import { Phone } from '../../types/phone';
 
 type Option = {
@@ -72,19 +74,19 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
   return (
     <>
-      <div className={phonePage.navInfo}>
-        <a href="#" className={phonePage.navInfo__homeLink}>
+      <div className={pageNav.navInfo}>
+        <NavLink to="home" className={pageNav.navInfo__homeLink}>
           <img src={home_icon} alt="Home" />
-        </a>
-        <img src={right_arrow_icon} alt="Arrow" className={phonePage.navInfo__arrow}/>
-        <h4 className={phonePage.navInfo__title}>
-                  Phones
+        </NavLink>
+        <img src={right_arrow_icon} alt="Arrow" className={pageNav.navInfo__arrow}/>
+        <h4 className={pageNav.navInfo__title}>
+            Phones
         </h4>
       </div>
-      <h1 className={phonePage.title}>
-                Mobile phones
+      <h1 className={pageNav.title}>
+          Mobile phones
       </h1>
-      <p className={phonePage.modelsCount}>
+      <p className={pageNav.modelsCount}>
         {`${phonesCount} models`}
       </p>
 

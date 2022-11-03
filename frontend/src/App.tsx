@@ -7,6 +7,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import app from './styles/App.module.scss';
 import { NotificationContainer} from 'react-notifications';
+import { PageFavorites } from './pages/PageFavorites';
 
 export function App() {
   return (
@@ -24,6 +25,8 @@ export function App() {
             <Route path="phones" element={<PhonesPage />} />
 
             <Route path="cart" element={<PageCart />} />
+
+            <Route path="favorites" element={<PageFavorites />} />
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
