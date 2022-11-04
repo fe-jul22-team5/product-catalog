@@ -4,6 +4,11 @@ import { Phone } from '../../types/phone';
 import cardList from './FavoritesList.module.scss';
 import { useLocalStorage } from '../../helpers/localStorage';
 import { updatePhonesList } from '../../helpers/updatePhonesList';
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
+import '../../styles/TransitionGroup.scss';
 
 type Props = {
   favorites: Phone[],
@@ -28,18 +33,23 @@ export const FavoritesList = React.memo(function FavoritesList({
 
   return (
     <>
-      <div className={cardList.CardList}>
+      <TransitionGroup className={cardList.CardList}>
         {favorites.map((phone: Phone) => (
-          <Card
+          <CSSTransition
             key={phone.id}
-            phone={phone}
-            addItemToCart={addItemToCart}
-            addItemToFavorites={addItemToFavorites}
-            cart={cart}
-            favorites={favorites}
-          />
+            timeout={200}
+            classNames="item"
+          >
+            <Card
+              phone={phone}
+              addItemToCart={addItemToCart}
+              addItemToFavorites={addItemToFavorites}
+              cart={cart}
+              favorites={favorites}
+            />
+          </CSSTransition>
         ))}
-      </div>
+      </TransitionGroup>
     </>
   );
 });
