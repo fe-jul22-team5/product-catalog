@@ -63,6 +63,15 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const phones = useMemo(() => {
+    const sort  = searchParams.get('sort') as SortTypes || SortTypes.alphabetically;
+    const count = searchParams.get('count') || productCountOnPageTypes.all;
+    const page = searchParams.get('page') || '0';
+
+    return getPhones(page, count, sort);
+
+  }, [ searchParams ]);
+
   function updateSearch(params: { [key: string]: string | undefined }) {
     Object.entries(params).forEach(([key, value]) => {
       if (value === undefined) {
@@ -83,9 +92,11 @@ export const PhonesPage = React.memo(function PhonesPage() {
   }, [searchParams]);
 
   const selectedItemsOnPage = useMemo(() => {
+
+
     const count = searchParams.get('count') as productCountOnPageTypes || productCountOnPageTypes.all;
 
-    return sortByOptions.find((option) => option.value === count) || defaultCount;
+    return itemsOnPageOptions.find((option) => option.value === count) || defaultCount;
 
   }, [searchParams]);
 
@@ -100,9 +111,15 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
   }, [searchParams]);
 
-  const handlePageChange = useCallback(({ selected }: { [key: string]: number }) => {
-    updateSearch({ page: selected.toString() });
-  }, []);
+  const countOfPages = useMemo(() => {
+    const countOfItemsOnPage = selectedItemsOnPage.value;
+
+    if (countOfItemsOnPage !== productCountOnPageTypes.all && Number.isInteger(Number(countOfItemsOnPage))) {
+      return Math.ceil(phonesCount / Number(countOfItemsOnPage));
+    }
+
+    return 0;
+  }, [selectedItemsOnPage, phonesCount]);
 
   useEffect(() => {
     getCountOfPhones()
@@ -110,22 +127,18 @@ export const PhonesPage = React.memo(function PhonesPage() {
       .catch(() => setPhonesCount(-1));
   }, []);
 
-  const phones = useMemo(() => {
-    const sort  = searchParams.get('sort') as SortTypes || undefined;
-    const from = searchParams.get('from') || undefined;
-    const to = searchParams.get('to') || undefined;
+  const handlePageChange = useCallback(({ selected }: { [key: string]: number }) => {
+    updateSearch({ page: selected.toString() });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
-    return getPhones(from, to, sort);
-
-  }, [ searchParams ]);
-
-  const onChangeSortBy = useCallback(
+  const handleChangeSortBy = useCallback(
     (newValue: SingleValue<Option>) => {
       updateSearch({ sort: newValue?.value });
     },
     [],
   );
-  const onChangeItemsOnPage = useCallback(
+  const handleChangeItemsOnPage = useCallback(
     (newValue: SingleValue<Option>) => {
       updateSearch({ count: newValue?.value });
     },
@@ -154,7 +167,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
         <CustomSelect
           options={sortByOptions}
           width={180}
-          onChange={onChangeSortBy}
+          onChange={handleChangeSortBy}
           value={selectedSortBy}
           title={'Sort by'}
         />
@@ -162,7 +175,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
         <CustomSelect
           options={itemsOnPageOptions}
           width={130}
-          onChange={onChangeItemsOnPage}
+          onChange={handleChangeItemsOnPage}
           value={selectedItemsOnPage}
           title={'Items on page'}
         />
@@ -172,30 +185,32 @@ export const PhonesPage = React.memo(function PhonesPage() {
         data={phones}
       />
 
-      <ReactPaginate
-        onPageChange={handlePageChange}
-        previousLabel="<"
-        nextLabel=">"
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={1}
-        pageCount={10}
-        initialPage={selectedPage}
-        breakClassName={phonePage.break}
-        containerClassName={phonePage.pagination}
-        pageClassName={phonePage.pageItem}
-        activeClassName={phonePage.active}
-        previousClassName={classNames(
-          phonePage.prevAndNext,
-          {[phonePage.prevAndNext_disabled]: selectedPage === 0}
-        )}
-        nextClassName={classNames(
-          phonePage.prevAndNext,
-          {[phonePage.prevAndNext_disabled]: selectedPage === 9}
-        )}
-        pageLinkClassName={phonePage.pageLink}
-        previousLinkClassName={phonePage.prevAndNextLink}
-        nextLinkClassName={phonePage.prevAndNextLink}
-      />
+      {selectedItemsOnPage.value !== productCountOnPageTypes.all
+        && <ReactPaginate
+          onPageChange={handlePageChange}
+          previousLabel="<"
+          nextLabel=">"
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={1}
+          pageCount={countOfPages}
+          initialPage={selectedPage}
+          breakClassName={phonePage.break}
+          containerClassName={phonePage.pagination}
+          pageClassName={phonePage.pageItem}
+          activeClassName={phonePage.active}
+          previousClassName={classNames(
+            phonePage.prevAndNext,
+            { [phonePage.prevAndNext_disabled]: selectedPage === 0 }
+          )}
+          nextClassName={classNames(
+            phonePage.prevAndNext,
+            { [phonePage.prevAndNext_disabled]: selectedPage === countOfPages - 1 }
+          )}
+          pageLinkClassName={phonePage.pageLink}
+          previousLinkClassName={phonePage.prevAndNextLink}
+          nextLinkClassName={phonePage.prevAndNextLink}
+        />
+      }
     </>
   );
 });

@@ -9,18 +9,19 @@ const productEndPoint = '/product';
 const countOfProductsEndPoint = productEndPoint + '/count';
 
 export const getPhones = async (
-  from?: string,
-  to?: string,
+  page: string,
+  count: string,
   sortType: SortTypes = SortTypes.alphabetically,
 ) => {
-  const params: Params = { sort: sortType };
-
-  if (from && to) {
-    params.from = from;
-    params.to = to;
-  }
+  const params: Params = {
+    sort: sortType,
+    page,
+    count,
+  };
 
   const phones = await client.get<Phone[]>(productEndPoint, params);
+
+  console.log(params);
 
   return phones;
 };
