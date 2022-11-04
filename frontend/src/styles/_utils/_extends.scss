@@ -1,3 +1,5 @@
+@import './mixins';
+
 %card_price_mutualStyles {
   font-style: normal;
   font-weight: 700;
@@ -55,4 +57,16 @@
   border: 1px solid #FFFFFF;
 
   z-index: 1;
+}
+
+%phone_page_blocks_after {
+  display: block;
+  position: absolute;
+  content: "";
+  height: 1px;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+  background-color: #E2E6E9;
 }

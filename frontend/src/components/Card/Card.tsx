@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { BASE_URL } from '../../api/fetchClient';
 import { Phone } from '../../types/phone';
 import card from './Card.module.scss';
@@ -53,12 +54,19 @@ export const Card = React.memo(function Card({
 
   return (
     <div className={card.phones_card}>
-      <img src={`${BASE_URL}/${image}`} alt={name} className={card.phones_card__img}/>
-      <h2 className={card.phones_card__name}>
-        {name}
-        <br/>
+      <NavLink
+        to='./1'
+        className={card.phones_card__img_link}
+        end
+      >
+        <img src={`${BASE_URL}/${image}`} alt={name} className={card.phones_card__img}/>
+        <h2 className={card.phones_card__name}>
+          {name}
+          <br/>
          (iMT9G2FS/A)
-      </h2>
+        </h2>
+      </NavLink>
+
       <div className={card.phones_card__prices}>
         <span className={card.phones_card__prices__newPrice}>
           {`$${price}`}

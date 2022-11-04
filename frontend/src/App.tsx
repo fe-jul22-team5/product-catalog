@@ -9,6 +9,7 @@ import app from './styles/App.module.scss';
 import { NotificationContainer} from 'react-notifications';
 import { PageFavorites } from './pages/PageFavorites';
 import { MainSlider } from './Home_page/HomePageSlider';
+import { PhoneItemPage } from './pages/PhoneItemPage';
 
 export function App() {
   return (
@@ -20,10 +21,12 @@ export function App() {
       <main className={app.page}>
         <div className={app.page__container}>
           <Routes>
-            {/* <Route path="/" element={<HomePage />} /> */}
+            <Route path="/" element={<MainSlider />} />
             <Route path="home" element={<Navigate to="/" replace/>} />
 
             <Route path="phones" element={<PhonesPage />} />
+
+            <Route path="phones/1" element={<PhoneItemPage />} />
 
             <Route path="cart" element={<PageCart />} />
 
@@ -31,8 +34,6 @@ export function App() {
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-
-          <MainSlider/>
         </div>
       </main>
 
