@@ -1,0 +1,65 @@
+@import '../_utils/variables';
+@import '../_utils/mixins';
+
+.swiper-pagination {
+  position: static;
+}
+
+.swiper-button-prev {
+  left: 0;
+  background-image: url(../../Home_page/HomePageSlider/img/left-arrow.svg);
+}
+
+.swiper-button-next {
+  right: 0;
+  background-image: url(../../Home_page/HomePageSlider/img/right-arrow.svg);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 53%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 400px;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+
+.swiper-pagination-bullet {
+  width: 14px;
+  height: 4px;
+  border-radius: 0;
+
+  &.swiper-pagination-bullet-active {
+    background-color: $grey-primary-clr;
+  }
+}
+
+@include onPhone {
+  .swiper-button-prev,
+  .swiper-button-next {
+    background: transparent;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .swiper-button-prev {
+    top: 56%;
+    left: 50px;
+    background-image: url(../../Home_page/HomePageSlider/img/tablet-prev-btn.svg);
+  }
+
+  .swiper-button-next {
+    top: 56%;
+    right: 50px;
+    background-image: url(../../Home_page/HomePageSlider/img/tablet-next-btn.png);
+  }
+}

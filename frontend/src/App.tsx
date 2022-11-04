@@ -8,6 +8,7 @@ import { Footer } from './components/Footer';
 import app from './styles/App.module.scss';
 import { NotificationContainer} from 'react-notifications';
 import { PageFavorites } from './pages/PageFavorites';
+import { MainSlider } from './Home_page/HomePageSlider';
 
 export function App() {
   return (
@@ -30,6 +31,8 @@ export function App() {
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
+
+          <MainSlider/>
         </div>
       </main>
 
