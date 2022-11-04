@@ -88,6 +88,21 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
   }, [searchParams]);
 
+  const selectedPage = useMemo(() => {
+    const page = searchParams.get('page') || '0';
+
+    if (!Number.isInteger(Number(page))) {
+      return 0;
+    }
+
+    return Number(page);
+
+  }, [searchParams]);
+
+  const handlePageChange = useCallback(({ selected }: { [key: string]: number }) => {
+    updateSearch({ page: selected.toString() });
+  }, []);
+
   useEffect(() => {
     getCountOfPhones()
       .then(({ count }) => setPhonesCount(count))
@@ -157,12 +172,14 @@ export const PhonesPage = React.memo(function PhonesPage() {
       />
 
       <ReactPaginate
+        onPageChange={handlePageChange}
         previousLabel="<"
         nextLabel=">"
-        pageRangeDisplayed={2}
+        pageRangeDisplayed={4}
         marginPagesDisplayed={2}
-        pageCount={10}
-        // breakClassName={}
+        pageCount={7}
+        initialPage={selectedPage}
+        breakClassName={phonePage.break}
         containerClassName={phonePage.pagination}
         pageClassName={phonePage.pageItem}
         activeClassName={phonePage.active}
