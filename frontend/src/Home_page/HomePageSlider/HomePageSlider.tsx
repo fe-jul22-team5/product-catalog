@@ -27,10 +27,10 @@ export const MainSlider = React.memo(function MainSlider() {
         effect={'fade'}
         slidesPerView={1}
         pagination={{ clickable: true }}
-        // autoplay={{
-        //   delay: 5000,
-        //   disableOnInteraction: false
-        // }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false
+        }}
       >
         <SwiperSlide className={styles.mainSlider__swiperSlide}>
           <HomePageSlider/>
