@@ -26,8 +26,10 @@ export const CustomSelect = React.memo(function Dropdown({
     const custom: StylesConfig<Option, false> = {
       container: (provided) => ({
         ...provided,
-        'marginRight': '16px',
-        width: `${width}px`,
+        '&: not(:last-child)': {
+          'marginRight': '16px',
+        },
+        maxWidth: `${width}px`,
       }),
       control: (provided) => ({
         ...provided,
@@ -45,7 +47,7 @@ export const CustomSelect = React.memo(function Dropdown({
       }),
       indicatorSeparator: (provided) => ({
         ...provided,
-        opacity: '0',
+        display: 'none',
       }),
       option: (provided, state) => ({
         ...provided,

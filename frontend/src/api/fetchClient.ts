@@ -13,6 +13,7 @@ function request<T>(
   const options: RequestInit = { method };
 
   const url = new URL(BASE_URL + endPoint);
+
   if (params) {
     url.search = new URLSearchParams(params).toString();
   }

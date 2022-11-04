@@ -10,34 +10,38 @@ import { SortTypes } from '../../types/sortTypes';
 import { productCountOnPageTypes } from '../../types/productCountOnPageTypes';
 import { CustomSelect } from '../../components/CustomSelect/CustomSelect';
 import { SingleValue } from 'react-select/dist/declarations/src/types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 
 type Option = {
   value: string,
   label: string,
 };
 
+const defaultSortBy: Option = {
+  value: SortTypes.alphabetically,
+  label: 'Alphabetically'
+};
+
+const defaultCount: Option = {
+  value: productCountOnPageTypes.all,
+  label: 'all'
+};
+
 export const PhonesPage = React.memo(function PhonesPage() {
-  const sortBy = useMemo(() => [
-    {
-      value: SortTypes.alphabetically,
-      label: 'alphabetically'
-    },
+  const sortByOptions = useMemo(() => [
+    defaultSortBy,
     {
       value: SortTypes.cheap,
-      label: 'cheap'
+      label: 'Cheapest'
     },
     {
       value: SortTypes.novelty,
-      label: 'novelty'
+      label: 'Newest'
     },
   ] as Option[], []);
 
-  const itemsOnPage = useMemo(() => [
-    {
-      value: productCountOnPageTypes.all,
-      label: 'all'
-    },
+  const itemsOnPageOptions = useMemo(() => [
+    defaultCount,
     {
       value: productCountOnPageTypes.sixteen,
       label: '16'
@@ -53,8 +57,34 @@ export const PhonesPage = React.memo(function PhonesPage() {
   ] as Option[], []);
 
   const [phonesCount, setPhonesCount] = useState(0);
-  const [selectedSortBy, setSelectedSortBy] = useState(sortBy[0]);
-  const [selectedItemsOnPage, setItemsOnPage] = useState(itemsOnPage[0]);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  function updateSearch(params: { [key: string]: string | undefined }) {
+    Object.entries(params).forEach(([key, value]) => {
+      if (value === undefined) {
+        searchParams.delete(key);
+      } else {
+        searchParams.set(key, value);
+      }
+    });
+
+    setSearchParams(searchParams);
+  }
+
+  const selectedSortBy = useMemo(() => {
+    const sortBy = searchParams.get('sort') as SortTypes || SortTypes.alphabetically;
+
+    return sortByOptions.find((option) => option.value === sortBy) || defaultSortBy;
+
+  }, [searchParams]);
+
+  const selectedItemsOnPage = useMemo(() => {
+    const count = searchParams.get('count') as productCountOnPageTypes || productCountOnPageTypes.all;
+
+    return sortByOptions.find((option) => option.value === count) || defaultCount;
+
+  }, [searchParams]);
 
   useEffect(() => {
     getCountOfPhones()
@@ -62,12 +92,25 @@ export const PhonesPage = React.memo(function PhonesPage() {
       .catch(() => setPhonesCount(-1));
   }, []);
 
+  const phones = useMemo(() => {
+    const sort  = searchParams.get('sort') as SortTypes || undefined;
+    const from = searchParams.get('from') || undefined;
+    const to = searchParams.get('to') || undefined;
+
+    return getPhones(from, to, sort);
+
+  }, [ searchParams ]);
+
   const onChangeSortBy = useCallback(
-    (value: SingleValue<Option>) => setSelectedSortBy(value as Option),
+    (newValue: SingleValue<Option>) => {
+      updateSearch({ sort: newValue?.value });
+    },
     [],
   );
   const onChangeItemsOnPage = useCallback(
-    (value: SingleValue<Option>) => setItemsOnPage(value as Option),
+    (newValue: SingleValue<Option>) => {
+      updateSearch({ count: newValue?.value });
+    },
     [],
   );
 
@@ -91,15 +134,15 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
       <div className={phonePage.filters}>
         <CustomSelect
-          options={sortBy}
-          width={175}
+          options={sortByOptions}
+          width={180}
           onChange={onChangeSortBy}
           value={selectedSortBy}
           title={'Sort by'}
         />
 
         <CustomSelect
-          options={itemsOnPage}
+          options={itemsOnPageOptions}
           width={130}
           onChange={onChangeItemsOnPage}
           value={selectedItemsOnPage}
@@ -107,7 +150,9 @@ export const PhonesPage = React.memo(function PhonesPage() {
         />
       </div>
 
-      <CardList data={getPhones('1', '10')}/>
+      <CardList
+        data={phones}
+      />
     </>
   );
 });

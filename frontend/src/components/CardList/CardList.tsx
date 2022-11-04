@@ -19,15 +19,8 @@ export const CardList = React.memo(function CardList(props: Props) {
   const [isError, setIsError] = useState(false);
   const [cart, setCart] = useLocalStorage<Phone[]>('cart', []);
   const [favorites, setFavorites] = useLocalStorage<Phone[]>('favorites', []);
-  // const [searchParams, setSearchParams] = useSearchParams();
-
 
   useEffect(() => {
-    // setSearchParams({sort: 'cheap', from: '1', to: '10'});
-    // const sort  = searchParams.get('sort') as SortTypes || undefined;
-    // const from = searchParams.get('from') || undefined;
-    // const to = searchParams.get('to') || undefined;
-
     if (data instanceof Promise<Phone[]>) {
       data.then(phones => setPhonesList(phones))
         .catch(() => setIsError(true))

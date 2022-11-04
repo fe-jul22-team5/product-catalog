@@ -15,8 +15,10 @@ export const getPhones = async (
 ) => {
   const params: Params = { sort: sortType };
 
-  params.from = from;
-  params.to = to;
+  if (from && to) {
+    params.from = from;
+    params.to = to;
+  }
 
   const phones = await client.get<Phone[]>(productEndPoint, params);
 
