@@ -20,8 +20,6 @@ export const Header = React.memo(function Header() {
     ? disableBodyScroll(document.querySelector('body') as HTMLElement)
     : enableBodyScroll(document.querySelector('body') as HTMLElement);
 
-  console.log(cart);
-
   return (
     <div className={styles.header}>
       <div className={styles.header__logo_nav_block}>
