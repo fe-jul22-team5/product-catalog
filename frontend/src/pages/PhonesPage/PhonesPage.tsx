@@ -10,7 +10,7 @@ import { SortTypes } from '../../types/sortTypes';
 import { productCountOnPageTypes } from '../../types/productCountOnPageTypes';
 import { CustomSelect } from '../../components/CustomSelect/CustomSelect';
 import { SingleValue } from 'react-select/dist/declarations/src/types';
-import { Phone } from '../../types/phone';
+import { NavLink } from 'react-router-dom';
 
 type Option = {
   value: string,
@@ -74,9 +74,9 @@ export const PhonesPage = React.memo(function PhonesPage() {
   return (
     <>
       <div className={pageNav.navInfo}>
-        <a href="#" className={pageNav.navInfo__homeLink}>
+        <NavLink to="/" className={pageNav.navInfo__homeLink}>
           <img src={home_icon} alt="Home" />
-        </a>
+        </NavLink>
         <img src={right_arrow_icon} alt="Arrow" className={pageNav.navInfo__arrow}/>
         <h4 className={pageNav.navInfo__title}>
             Phones
