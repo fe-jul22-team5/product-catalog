@@ -26,7 +26,7 @@ export function App() {
 
             <Route path="cart" element={<PageCart />} />
 
-            <Route path="favorites" element={<PageFavorites />} />
+            <Route path="favourites" element={<PageFavorites />} />
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>

@@ -19,11 +19,11 @@ export const PageFavorites = () => {
         </NavLink>
         <img src={right_arrow_icon} alt="Arrow" className={pageNav.navInfo__arrow}/>
         <h4 className={pageNav.navInfo__title}>
-          Favorites
+        Favourites
         </h4>
       </div>
       <h1 className={pageNav.title}>
-        Favorites
+        Favourites
       </h1>
       <p className={pageNav.modelsCount}>
         {`${favorites.length} models`}
