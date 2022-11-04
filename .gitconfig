@@ -1,0 +1,4 @@
+[push]
+    default = matching
+[core]
+    excludesfile = /Users/xiaoronglv/.gitignore_global

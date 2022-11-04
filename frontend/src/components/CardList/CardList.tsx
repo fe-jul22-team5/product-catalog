@@ -1,70 +1,50 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { getPhones } from '../../api/phone';
 import { Card } from '../../components/Card';
 import { Phone } from '../../types/phone';
 import { Loader } from '../Loader';
 import cardList from './CardList.module.scss';
 
-import { useSearchParams } from 'react-router-dom';
-import { SortTypes } from '../../types/sortTypes';
+import { useLocalStorage } from '../../helpers/localStorage';
+import { updatePhonesList } from '../../helpers/updatePhonesList';
 
-function setToLocalStorage(
-  key: string,
-  setState: (value: React.SetStateAction<string[]>) => void
-) {
-  if (localStorage.getItem(key)) {
-    setState(JSON.parse(localStorage.getItem(key) as string));
-  } else {
-    localStorage.setItem(key, JSON.stringify([]));
-  }
-}
+type Props = {
+  data: Promise<Phone[]> | Phone[],
+};
 
-export const CardList = React.memo(function CardList() {
+export const CardList = React.memo(function CardList(props: Props) {
+  const { data } = props;
+
   const [phoneList, setPhonesList] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [cart, setCart] = useState<string[]>([]);
-  const [favorites, setFavorites] = useState<string[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [cart, setCart] = useLocalStorage<Phone[]>('cart', []);
+  const [favorites, setFavorites] = useLocalStorage<Phone[]>('favorites', []);
+  // const [searchParams, setSearchParams] = useSearchParams();
+
 
   useEffect(() => {
-    setToLocalStorage('cart', setCart);
-    setToLocalStorage('favorites', setFavorites);
-  }, []);
+    // setSearchParams({sort: 'cheap', from: '1', to: '10'});
+    // const sort  = searchParams.get('sort') as SortTypes || undefined;
+    // const from = searchParams.get('from') || undefined;
+    // const to = searchParams.get('to') || undefined;
 
-  useEffect(() => {
-    setSearchParams({sort: 'cheap', from: '1', to: '10'});
-    const sort  = searchParams.get('sort') as SortTypes || undefined;
-    const from = searchParams.get('from') || undefined;
-    const to = searchParams.get('to') || undefined;
-
-    getPhones(from, to, sort)
-      .then(phones => setPhonesList(phones))
-      .catch(() => setIsError(true))
-      .finally(() => setIsLoading(false));
-  }, []);
-
-
-  const addItemToCart = useCallback((id: string) => {
-    let newCart = cart.filter(el => el !== id);
-    if (newCart.length === cart.length) {
-      newCart = [...newCart, id];
+    if (data instanceof Promise<Phone[]>) {
+      data.then(phones => setPhonesList(phones))
+        .catch(() => setIsError(true))
+        .finally(() => setIsLoading(false));
+    } else {
+      setPhonesList(data);
+      setIsLoading(false);
     }
+  }, [data]);
 
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
+  const addItemToCart = useCallback((phone: Phone) => {
+    setCart((prev: Phone[]) => updatePhonesList(prev, phone));
   }, [cart]);
 
-  const addItemToFavorites = useCallback((id: string) => {
-    let newFavorites = favorites.filter(el => el !== id);
-    if (newFavorites.length === favorites.length) {
-      newFavorites = [...newFavorites, id];
-    }
-
-    setFavorites(newFavorites);
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+  const addItemToFavorites = useCallback((phone: Phone) => {
+    setFavorites((prev: Phone[]) => updatePhonesList(prev, phone));
   }, [favorites]);
-
   return (
     <>
       {isLoading

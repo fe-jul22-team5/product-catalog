@@ -1,3 +1,3 @@
-export type PhonesCount = {
+export interface PhonesCount {
   count: number,
 }

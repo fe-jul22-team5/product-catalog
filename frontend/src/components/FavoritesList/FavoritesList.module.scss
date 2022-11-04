@@ -1,0 +1,8 @@
+@import '../../styles/_utils//mixins';
+
+.CardList {
+  display: grid;
+  gap: 40px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+}
+

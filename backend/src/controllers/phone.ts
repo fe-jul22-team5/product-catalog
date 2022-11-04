@@ -22,8 +22,6 @@ export const getAllProducts = (req: Request, res: Response) => {
     sort,
   } = req.query;
 
-  console.log(`from: ${from}, to: ${to}`);
-
   let products = getAll();
 
   if (sort) {

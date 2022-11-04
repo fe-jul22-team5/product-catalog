@@ -2,20 +2,25 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from './logo/full_logo.png';
-import cart from './logo/Shopping_cart.png';
+import cartLogo from './logo/Shopping_cart.png';
 import burger from './logo/burger.png';
 import favicon from './logo/fav_icon.png';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import styles from  './Header.module.scss';
+import { useLocalStorage } from '../../helpers/localStorage';
+import { Phone } from '../../types/phone';
 
 export const Header = React.memo(function Header() {
   const [activeBurger, setActiveBurger] = useState(false);
+  const [cart] = useLocalStorage<Phone[]>('cart', []);
+  const [favorites] = useLocalStorage<Phone[]>('favorites', []);
 
   activeBurger
     ? disableBodyScroll(document.querySelector('body') as HTMLElement)
     : enableBodyScroll(document.querySelector('body') as HTMLElement);
 
+  console.log(cart);
 
   return (
     <div className={styles.header}>
@@ -81,20 +86,52 @@ export const Header = React.memo(function Header() {
         </nav>
       </div>
 
+      <div className={styles.header_icons_container}>
+        <div className={styles.header__cart_icon}>
+          <div className={
+            favorites.length > 0
+              ?
+              styles.header_fav_counter_active
+              :
+              styles.header_fav_counter
+          }>
+            {favorites.length}
+          </div>
+          <NavLink
+            to="favourites"
+            className={({ isActive }) => classNames(
+              styles.header__cart_icon_link,
+              { [styles.header__menu_link_is_active]: isActive },
+            )}
+            end
+          >
+            <img src={favicon} alt="favourites_icon"/>
+          </NavLink>
+        </div>
 
-      <div className={styles.header__cart_icon}>
-        <NavLink
-          to="cart"
-          className={({ isActive }) => classNames(
-            styles.header__cart_icon_link,
-            { [styles.header__menu_link_is_active]: isActive },
-          )}
-          end
-        >
-          <img src={cart} alt="shopping_cart_icon"/>
-        </NavLink>
+        <div className={styles.header__cart_icon}>
+          <div
+            className={
+              cart.length > 0
+                ?
+                styles.header_cart_counter_active
+                :
+                styles.header_cart_counter
+            }>
+            {cart.length}
+          </div>
+          <NavLink
+            to="cart"
+            className={({ isActive }) => classNames(
+              styles.header__cart_icon_link,
+              { [styles.header__menu_link_is_active]: isActive },
+            )}
+            end
+          >
+            <img src={cartLogo} alt="shopping_cart_icon"/>
+          </NavLink>
+        </div>
       </div>
-
 
       <div className={styles.header__burger_menu}
         onClick={() => setActiveBurger(!activeBurger)}
@@ -182,26 +219,55 @@ export const Header = React.memo(function Header() {
           <div className={styles.burger__menu_footer_pic}>
             <NavLink
               onClick={() => setActiveBurger(!activeBurger)}
-              to="/favourites"
-              className={styles.burger__cart_icon_link}
+              to="favourites"
+              className={({ isActive }) => classNames(
+                styles.burger__cart_icon_link,
+                { [styles.burger__cart_icon_link_is_active]: isActive },
+              )}
+              end
+
             >
-              <img src={favicon} alt="facourite_icon"/>
+              <img src={favicon} alt="favourite_icon"/>
+              <div
+                className={
+                  favorites.length > 0
+                    ?
+                    styles.burger_fav_counter_active
+                    :
+                    styles.burger_fav_counter
+                }
+              >
+                {favorites.length}
+              </div>
             </NavLink>
           </div>
 
           <div className={styles.burger__menu_footer_pic}>
             <NavLink
               onClick={() => setActiveBurger(!activeBurger)}
-              to="/cart"
-              className={styles.burger__cart_icon_link}
+              to="cart"
+              className={({ isActive }) => classNames(
+                styles.burger__cart_icon_link,
+                { [styles.burger__cart_icon_link_is_active]: isActive },
+              )}
+              end
             >
-              <img src={cart} alt="shopping_cart_icon"/>
-
+              <img src={cartLogo} alt="shopping_cart_icon"/>
+              <div
+                className={
+                  cart.length > 0
+                    ?
+                    styles.burger_fav_counter_active
+                    :
+                    styles.burger_fav_counter
+                }
+              >
+                {cart.length}
+              </div>
             </NavLink>
           </div>
         </footer>
       </nav>
-
     </div>
 
   );
