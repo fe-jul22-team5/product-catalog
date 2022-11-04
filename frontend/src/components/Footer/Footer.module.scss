@@ -28,6 +28,8 @@
 
   &__info {
     display: flex;
+    justify-content: space-around;
+    width: 360px;
 
     @include onPhone {
       flex-direction: column;
@@ -35,15 +37,6 @@
     }
 
     &_item {
-      &:not(:last-child) {
-        margin-right: 100px;
-      }
-
-      @include onTablet {
-        &:not(:last-child) {
-          margin-right: 70px;
-        }
-      }
 
       @include onPhone {
         &:not(:last-child) {
