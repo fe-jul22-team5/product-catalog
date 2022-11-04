@@ -21,7 +21,7 @@ export function App() {
       <main className={app.page}>
         <div className={app.page__container}>
           <Routes>
-            {/* <Route path="/" element={<HomePage />} /> */}
+            <Route path="/" element={<MainSlider />} />
             <Route path="home" element={<Navigate to="/" replace/>} />
 
             <Route path="phones" element={<PhonesPage />} />
@@ -34,8 +34,6 @@ export function App() {
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-
-          <MainSlider/>
         </div>
       </main>
 
