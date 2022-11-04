@@ -220,7 +220,12 @@ export const Header = React.memo(function Header() {
             <NavLink
               onClick={() => setActiveBurger(!activeBurger)}
               to="favourites"
-              className={styles.burger__cart_icon_link}
+              className={({ isActive }) => classNames(
+                styles.burger__cart_icon_link,
+                { [styles.burger__cart_icon_link_is_active]: isActive },
+              )}
+              end
+
             >
               <img src={favicon} alt="favourite_icon"/>
               <div
@@ -241,7 +246,11 @@ export const Header = React.memo(function Header() {
             <NavLink
               onClick={() => setActiveBurger(!activeBurger)}
               to="cart"
-              className={styles.burger__cart_icon_link}
+              className={({ isActive }) => classNames(
+                styles.burger__cart_icon_link,
+                { [styles.burger__cart_icon_link_is_active]: isActive },
+              )}
+              end
             >
               <img src={cartLogo} alt="shopping_cart_icon"/>
               <div
