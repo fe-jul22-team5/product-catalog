@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './MainSlider.module.scss';
+import styles from './HomePageSlider.module.scss';
 
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -7,7 +7,7 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/effect-fade';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Autoplay, EffectFade } from 'swiper';
-import { MainBanner } from '../../components/MainSlider/MainBanner';
+import { HomePageSlider } from '../../components/HomePageSlider/HomePageSlider';
 
 SwiperCore.use([Autoplay]);
 
@@ -33,15 +33,15 @@ export const MainSlider = React.memo(function MainSlider() {
         }}
       >
         <SwiperSlide className={styles.mainSlider__swiperSlide}>
-
+          <HomePageSlider/>
         </SwiperSlide>
 
         <SwiperSlide className={styles.mainSlider__swiperSlide}>
-          <MainBanner/>
+          <HomePageSlider/>
         </SwiperSlide>
 
         <SwiperSlide className={styles.mainSlider__content}>
-          <MainBanner/>
+          <HomePageSlider/>
         </SwiperSlide>
 
       </Swiper>

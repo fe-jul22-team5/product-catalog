@@ -6,13 +6,13 @@
 }
 
 .swiper-button-prev {
-  left: 5%;
-  background-image: url(../../pages/Home_page/img/left-arrow.svg);
+  left: 0;
+  background-image: url(../../Home_page/HomePageSlider/img/left-arrow.svg);
 }
 
 .swiper-button-next {
-  right: 5%;
-  background-image: url(../../pages/Home_page/img/right-arrow.svg);
+  right: 0;
+  background-image: url(../../Home_page/HomePageSlider/img/right-arrow.svg);
 }
 
 .swiper-button-prev,
@@ -54,12 +54,12 @@
   .swiper-button-prev {
     top: 56%;
     left: 50px;
-    background-image: url(../../pages/Home_page/img/tablet-prev-btn.svg);
+    background-image: url(../../Home_page/HomePageSlider/img/tablet-prev-btn.svg);
   }
 
   .swiper-button-next {
     top: 56%;
     right: 50px;
-    background-image: url(../../pages/Home_page/img/tablet-next-btn.png)
+    background-image: url(../../Home_page/HomePageSlider/img/tablet-next-btn.png);
   }
 }
