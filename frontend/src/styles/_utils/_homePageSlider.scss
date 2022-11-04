@@ -50,7 +50,7 @@
   }
 }
 
-@media (min-width: 640px) and (max-width: 1199px) {
+@media (min-width: 640px) and (max-width: 1023px) {
   .swiper-button-prev {
     top: 56%;
     left: 50px;
@@ -60,6 +60,20 @@
   .swiper-button-next {
     top: 56%;
     right: 50px;
+    background-image: url(../../Home_page/HomePageSlider/img/tablet-next-btn.png);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .swiper-button-prev {
+    top: 56%;
+    left: 18%;
+    background-image: url(../../Home_page/HomePageSlider/img/tablet-prev-btn.svg);
+  }
+
+  .swiper-button-next {
+    top: 56%;
+    right: 18%;
     background-image: url(../../Home_page/HomePageSlider/img/tablet-next-btn.png);
   }
 }

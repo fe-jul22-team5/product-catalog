@@ -38,7 +38,25 @@
     }
   }
 
-  @media (min-width: 640px) and (max-width: 1199px) {
+  @media (min-width: 640px) and (max-width: 1023px) {
+    &__content {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__img {
+      background-image: url(../HomePageSlider/img/tablet-banner.png);
+      width: 490px;
+      height: 189px;
+    }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1199px) {
+    &__title {
+      width: 100%;
+      text-align: center;
+    }
+
     &__content {
       display: flex;
       justify-content: center;
