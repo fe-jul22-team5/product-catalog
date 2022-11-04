@@ -14,6 +14,7 @@
   justify-content: center;
   padding-left: 0;
   list-style: none;
+  align-items: center;
 }
 
 .pageItem {
@@ -30,12 +31,14 @@
 
     cursor: pointer;
 
-    width: 32px;
-    height: 32px;
+    width: 35px;
+    height: 35px;
 
     border-radius: 100%;
 
-    border: 1px solid #E2E6E9;
+    border: 1px solid;
+    border-color: #E2E6E9;
+    transition: border-color 0.3s ease;
 
     &:hover {
       border-color: #0F0F11;
@@ -43,6 +46,12 @@
 }
 
 .pageLink {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .active {
@@ -59,18 +68,54 @@
     margin-right: 8px;
   }
 
-  width: 32px;
-  height: 32px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   border-radius: 100%;
 
   border: 1px solid #B4BDC4;
+  transition: border-color 0.3s ease;
 
   &:hover {
     border-color: #0F0F11;
   }
+
+  &_disabled {
+    opacity: 0.4;
+    cursor: default;
+
+    &:hover {
+      border-color: #B4BDC4;
+    }
+  }
+}
+
+.break {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  border-radius: 100%;
+
+  border: 1px solid #B4BDC4;
+  transition: border-color 0.3s ease;
+
+  margin-right: 8px;
+
+  cursor: pointer;
+  &:hover {
+    border-color: #0F0F11;
+  }
+}
+
+.prevAndNextLink {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
