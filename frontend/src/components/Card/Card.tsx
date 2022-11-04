@@ -56,6 +56,7 @@ export const Card = React.memo(function Card({
     <div className={card.phones_card}>
       <NavLink
         to='./1'
+        className={card.phones_card__img_link}
         end
       >
         <img src={`${BASE_URL}/${image}`} alt={name} className={card.phones_card__img}/>
