@@ -12,6 +12,9 @@ import { CustomSelect } from '../../components/CustomSelect/CustomSelect';
 import { SingleValue } from 'react-select/dist/declarations/src/types';
 import { NavLink, useSearchParams } from 'react-router-dom';
 
+import ReactPaginate from 'react-paginate';
+import classNames from 'classnames';
+
 type Option = {
   value: string,
   label: string,
@@ -86,6 +89,21 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
   }, [searchParams]);
 
+  const selectedPage = useMemo(() => {
+    const page = searchParams.get('page') || '0';
+
+    if (!Number.isInteger(Number(page))) {
+      return 0;
+    }
+
+    return Number(page);
+
+  }, [searchParams]);
+
+  const handlePageChange = useCallback(({ selected }: { [key: string]: number }) => {
+    updateSearch({ page: selected.toString() });
+  }, []);
+
   useEffect(() => {
     getCountOfPhones()
       .then(({ count }) => setPhonesCount(count))
@@ -152,6 +170,31 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
       <CardList
         data={phones}
+      />
+
+      <ReactPaginate
+        onPageChange={handlePageChange}
+        previousLabel="<"
+        nextLabel=">"
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={1}
+        pageCount={10}
+        initialPage={selectedPage}
+        breakClassName={phonePage.break}
+        containerClassName={phonePage.pagination}
+        pageClassName={phonePage.pageItem}
+        activeClassName={phonePage.active}
+        previousClassName={classNames(
+          phonePage.prevAndNext,
+          {[phonePage.prevAndNext_disabled]: selectedPage === 0}
+        )}
+        nextClassName={classNames(
+          phonePage.prevAndNext,
+          {[phonePage.prevAndNext_disabled]: selectedPage === 9}
+        )}
+        pageLinkClassName={phonePage.pageLink}
+        previousLinkClassName={phonePage.prevAndNextLink}
+        nextLinkClassName={phonePage.prevAndNextLink}
       />
     </>
   );
