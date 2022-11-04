@@ -7,3 +7,70 @@
   margin-bottom: 24px;
 }
 
+.pagination {
+  margin: auto;
+
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+}
+
+.pageItem {
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+
+    font-weight: 600;
+    font-size: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 100%;
+
+    border: 1px solid #E2E6E9;
+
+    &:hover {
+      border-color: #0F0F11;
+    }
+}
+
+.pageLink {
+}
+
+.active {
+  color: #fff;
+  background-color: #0F0F11;
+  border-color: #0F0F11;
+  border-radius: 100%;
+}
+
+.prevAndNext {
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 100%;
+
+  border: 1px solid #B4BDC4;
+
+  &:hover {
+    border-color: #0F0F11;
+  }
+}

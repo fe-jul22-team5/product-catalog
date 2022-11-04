@@ -13,6 +13,8 @@ import { SingleValue } from 'react-select/dist/declarations/src/types';
 
 import { NavLink, useSearchParams } from 'react-router-dom';
 
+import ReactPaginate from 'react-paginate';
+
 type Option = {
   value: string,
   label: string,
@@ -153,6 +155,21 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
       <CardList
         data={phones}
+      />
+
+      <ReactPaginate
+        previousLabel="<"
+        nextLabel=">"
+        pageRangeDisplayed={2}
+        marginPagesDisplayed={2}
+        pageCount={10}
+        // breakClassName={}
+        containerClassName={phonePage.pagination}
+        pageClassName={phonePage.pageItem}
+        activeClassName={phonePage.active}
+        previousClassName={phonePage.prevAndNext}
+        nextClassName={phonePage.prevAndNext}
+        pageLinkClassName={phonePage.pageLink}
       />
     </>
   );
