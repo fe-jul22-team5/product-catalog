@@ -22,7 +22,3 @@ export function getPhoneDescriptionById(phoneId: string) {
 
   return foundPhone;
 }
-
-// export function getPhonesByRange(from: string, to: string) {
-
-// }

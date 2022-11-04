@@ -13,13 +13,13 @@ import {
 import { SortTypes } from '../types/sortTypes.js';
 
 import { sortBy } from '../helpers/phoneSort.js';
-import { getRange } from '../helpers/getRange.js';
+import { getPage } from '../helpers/getPage.js';
 
 export const getAllProducts = (req: Request, res: Response) => {
   const {
-    from,
-    to,
     sort,
+    count,
+    page
   } = req.query;
 
   let products = getAll();
@@ -35,18 +35,10 @@ export const getAllProducts = (req: Request, res: Response) => {
     products = sortBy(products, sort as SortTypes);
   }
 
-  if (from && to) {
-    const fromNumber = Number(from);
-    const toNumber = Number(to);
-
-    if (!(Number.isInteger(fromNumber) && Number.isInteger(toNumber))) {
-      res.statusCode = 404;
-      res.send('Range parameters must be an integer');
-
-      return;
-    }
-
-    products = getRange(products, fromNumber, toNumber);
+  if (count && page && Number.isInteger(Number(count)) && Number.isInteger(Number(page))) {
+    products = getPage(products, Number(count), Number(page));
+  } else if (count && Number.isInteger(Number(count))) {
+    products = getPage(products, Number(count), 0);
   }
 
   res.statusCode = 200;
@@ -57,8 +49,6 @@ export const getProductDescriptionById = (req: Request, res: Response) => {
   const { id } = req.params;
 
   const phone = getPhoneDescriptionById(id);
-
-  console.log(phone);
 
   if (phone === undefined) {
     res.sendStatus(404);
@@ -73,8 +63,6 @@ export const getProductDescriptionById = (req: Request, res: Response) => {
 export const getAllProductsCount = (req: Request, res: Response) => {
   const products = getAll();
   const count = products.length;
-
-  console.log('count');
 
   res.statusCode = 200;
   res.send({ count });
