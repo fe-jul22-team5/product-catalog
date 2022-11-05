@@ -65,15 +65,6 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const phones = useMemo(() => {
-    const sort  = searchParams.get('sort') as SortTypes || SortTypes.alphabetically;
-    const count = searchParams.get('count') || productCountOnPageTypes.all;
-    const page = searchParams.get('page') || '0';
-
-    return getPhones(page, count, sort);
-
-  }, [ searchParams ]);
-
   function updateSearch(params: { [key: string]: string | undefined }) {
     Object.entries(params).forEach(([key, value]) => {
       if (value === undefined) {
@@ -98,7 +89,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
     return itemsOnPageOptions.find((option) => option.value === count) || defaultCount;
 
-  }, [searchParams]);
+  }, [searchParams, phonesCount]);
 
   const countOfPages = useMemo(() => {
     const countOfItemsOnPage = selectedItemsOnPage.value;
@@ -114,12 +105,20 @@ export const PhonesPage = React.memo(function PhonesPage() {
     const page = searchParams.get('page') || '0';
 
     if (!Number.isInteger(Number(page))) {
+      updateSearch({ page: undefined });
+
       return 0;
-    } else if (Number(page) > countOfPages) {
+    } else if (Number(page) < 0) {
+      updateSearch({ page: '0' });
+
       return 0;
+    } else if (Number(page) >= countOfPages && countOfPages !== 0) {
+      updateSearch({ page: (countOfPages - 1).toString() });
+
+      return countOfPages - 1;
     }
 
-    console.log(countOfPages);
+    updateSearch({ page: page });
 
     return Number(page);
 
@@ -130,6 +129,15 @@ export const PhonesPage = React.memo(function PhonesPage() {
       .then(({ count }) => setPhonesCount(count))
       .catch(() => setPhonesCount(-1));
   }, []);
+
+  const phones = useMemo(() => {
+    const sort = searchParams.get('sort') as SortTypes || SortTypes.alphabetically;
+    const count = searchParams.get('count') || productCountOnPageTypes.all;
+    const page = selectedPage.toString();
+
+    return getPhones(page, count, sort);
+
+  }, [searchParams, selectedPage]);
 
   const handlePageChange = useCallback(({ selected }: { [key: string]: number }) => {
     updateSearch({ page: selected.toString() });
@@ -195,7 +203,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
         data={phones}
       />
 
-      {selectedItemsOnPage.value !== productCountOnPageTypes.all
+      {(selectedItemsOnPage.value !== productCountOnPageTypes.all)
         && <ReactPaginate
           onPageChange={handlePageChange}
           previousLabel="<"
@@ -203,7 +211,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
           pageRangeDisplayed={3}
           marginPagesDisplayed={1}
           pageCount={countOfPages}
-          initialPage={selectedPage}
+          forcePage={selectedPage}
           breakClassName={phonePage.break}
           containerClassName={phonePage.pagination}
           pageClassName={phonePage.pageItem}
