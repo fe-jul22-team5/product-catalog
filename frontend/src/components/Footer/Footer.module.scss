@@ -18,6 +18,7 @@
   }
 
   &__logo {
+    width: 140px;
     & a{
       display: flex;
     }
@@ -29,14 +30,15 @@
   &__info {
     display: flex;
     justify-content: space-around;
+    width: 380px;
 
     @include onPhone {
       flex-direction: column;
       margin-bottom: 32px;
+      width: 100%;
     }
 
     &_item {
-
       @include onPhone {
         &:not(:last-child) {
           margin-bottom: 16px;

@@ -3,7 +3,7 @@ import { CategoriesHomePage } from '../../components/CategoriesHomePage/Categori
 import styles from '../../components/CategoriesHomePage/CategoriesHomePage.module.scss';
 
 
-export const HomePageCategories= React.memo(function HomePageCategories() {
+export const HomePageCategories = React.memo(function HomePageCategories() {
   return(
     <section className={styles.categories}>
       <h2 className={styles.categories__title}>
