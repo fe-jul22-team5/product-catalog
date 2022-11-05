@@ -102,7 +102,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
   }, [selectedItemsOnPage, phonesCount]);
 
   const selectedPage = useMemo(() => {
-    const page = searchParams.get('page') || '0';
+    const page = searchParams.get('page');
 
     if (!Number.isInteger(Number(page))) {
       updateSearch({ page: undefined });
@@ -111,6 +111,9 @@ export const PhonesPage = React.memo(function PhonesPage() {
     } else if (Number(page) < 0) {
       updateSearch({ page: '0' });
 
+      return 0;
+    } else if (selectedItemsOnPage.value === productCountOnPageTypes.all || !page) {
+      updateSearch({ page: undefined });
       return 0;
     } else if (Number(page) >= countOfPages && countOfPages !== 0) {
       updateSearch({ page: (countOfPages - 1).toString() });
@@ -131,9 +134,13 @@ export const PhonesPage = React.memo(function PhonesPage() {
   }, []);
 
   const phones = useMemo(() => {
-    const sort = searchParams.get('sort') as SortTypes || SortTypes.alphabetically;
-    const count = searchParams.get('count') || productCountOnPageTypes.all;
+    let sort = searchParams.get('sort') as SortTypes || SortTypes.alphabetically;
+    const count = searchParams.get('count') || defaultCount.value;
     const page = selectedPage.toString();
+
+    if (!Object.values(SortTypes).includes(sort)) {
+      sort = defaultSortBy.value as SortTypes;
+    }
 
     return getPhones(page, count, sort);
 
@@ -157,7 +164,7 @@ export const PhonesPage = React.memo(function PhonesPage() {
     (newValue: SingleValue<Option>) => {
       updateSearch({
         count: newValue?.value,
-        page: newValue === defaultCount ? undefined : firstPage,
+        page: newValue?.value === productCountOnPageTypes.all ? undefined : firstPage,
       });
     },
     [],
