@@ -21,8 +21,6 @@ export const getPhones = async (
 
   const phones = await client.get<Phone[]>(productEndPoint, params);
 
-  console.log(params);
-
   return phones;
 };
 
