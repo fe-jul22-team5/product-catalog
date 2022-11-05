@@ -10,10 +10,7 @@
   background-color: #FFF;
   border: 1px solid #E2E6E9;
   border-radius: 8px;
-
   transition: box-shadow 0.3s ease-in-out;
-
-
 
   &:hover {
     box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
@@ -26,6 +23,7 @@
 
   &__img_link {
     text-align: center;
+    flex: 1 0 auto;
   }
 
   &__name {
@@ -35,7 +33,7 @@
     font-size: 14px;
     line-height: 21px;
     color: #0F0F11;
-    flex: 1 0 auto;
+    text-align: left;
   }
 
   &__prices {
