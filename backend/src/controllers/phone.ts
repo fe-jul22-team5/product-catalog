@@ -67,3 +67,30 @@ export const getAllProductsCount = (req: Request, res: Response) => {
   res.statusCode = 200;
   res.send({ count });
 };
+
+export const getProductRecommendationsById = (req: Request, res: Response) => {
+  const countOfRecommendations = 8;
+
+  const { id } = req.params;
+  const allPhones = getAll();
+
+  let phoneIndexInArray = allPhones.findIndex(({ phoneId }) => phoneId === id);
+
+  if (phoneIndexInArray === -1) {
+    res.statusCode = 404;
+    res.send();
+
+    return;
+  }
+
+  if (allPhones.length - phoneIndexInArray < 8) {
+    phoneIndexInArray -= 8;
+  } else if (allPhones.length + phoneIndexInArray > 8) {
+    phoneIndexInArray += 8;
+  }
+
+  const recommended = allPhones.splice(phoneIndexInArray, countOfRecommendations);
+
+  res.statusCode = 200;
+  res.send(recommended);
+};
