@@ -26,9 +26,11 @@ const defaultSortBy: Option = {
 };
 
 const defaultCount: Option = {
-  value: productCountOnPageTypes.all,
-  label: 'all'
+  value: productCountOnPageTypes.sixteen,
+  label: '16'
 };
+
+const firstPage = '0';
 
 export const PhonesPage = React.memo(function PhonesPage() {
   const sortByOptions = useMemo(() => [
@@ -44,11 +46,11 @@ export const PhonesPage = React.memo(function PhonesPage() {
   ] as Option[], []);
 
   const itemsOnPageOptions = useMemo(() => [
-    defaultCount,
     {
-      value: productCountOnPageTypes.sixteen,
-      label: '16'
+      value: productCountOnPageTypes.all,
+      label: 'all',
     },
+    defaultCount,
     {
       value: productCountOnPageTypes.eight,
       label: '8'
@@ -85,29 +87,16 @@ export const PhonesPage = React.memo(function PhonesPage() {
   }
 
   const selectedSortBy = useMemo(() => {
-    const sortBy = searchParams.get('sort') as SortTypes || SortTypes.alphabetically;
+    const sortBy = searchParams.get('sort') as SortTypes || undefined;
 
     return sortByOptions.find((option) => option.value === sortBy) || defaultSortBy;
 
   }, [searchParams]);
 
   const selectedItemsOnPage = useMemo(() => {
-
-
-    const count = searchParams.get('count') as productCountOnPageTypes || productCountOnPageTypes.all;
+    const count = searchParams.get('count') as productCountOnPageTypes || undefined;
 
     return itemsOnPageOptions.find((option) => option.value === count) || defaultCount;
-
-  }, [searchParams]);
-
-  const selectedPage = useMemo(() => {
-    const page = searchParams.get('page') || '0';
-
-    if (!Number.isInteger(Number(page))) {
-      return 0;
-    }
-
-    return Number(page);
 
   }, [searchParams]);
 
@@ -121,6 +110,21 @@ export const PhonesPage = React.memo(function PhonesPage() {
     return 0;
   }, [selectedItemsOnPage, phonesCount]);
 
+  const selectedPage = useMemo(() => {
+    const page = searchParams.get('page') || '0';
+
+    if (!Number.isInteger(Number(page))) {
+      return 0;
+    } else if (Number(page) > countOfPages) {
+      return 0;
+    }
+
+    console.log(countOfPages);
+
+    return Number(page);
+
+  }, [searchParams, countOfPages]);
+
   useEffect(() => {
     getCountOfPhones()
       .then(({ count }) => setPhonesCount(count))
@@ -129,18 +133,24 @@ export const PhonesPage = React.memo(function PhonesPage() {
 
   const handlePageChange = useCallback(({ selected }: { [key: string]: number }) => {
     updateSearch({ page: selected.toString() });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   }, []);
 
   const handleChangeSortBy = useCallback(
     (newValue: SingleValue<Option>) => {
-      updateSearch({ sort: newValue?.value });
+      updateSearch({
+        sort: newValue?.value,
+        page: undefined,
+      });
     },
     [],
   );
   const handleChangeItemsOnPage = useCallback(
     (newValue: SingleValue<Option>) => {
-      updateSearch({ count: newValue?.value });
+      updateSearch({
+        count: newValue?.value,
+        page: newValue === defaultCount ? undefined : firstPage,
+      });
     },
     [],
   );
