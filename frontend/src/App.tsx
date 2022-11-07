@@ -22,6 +22,7 @@ export function App() {
         <div className={app.page__container}>
           <Routes>
             <Route path="/" element={<MainSlider />} />
+
             <Route path="home" element={<Navigate to="/" replace/>} />
 
             <Route path="phones" element={<PhonesPage />} />

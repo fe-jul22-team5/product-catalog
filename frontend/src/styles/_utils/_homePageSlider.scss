@@ -46,7 +46,7 @@
 @include onPhone {
   .swiper-button-prev,
   .swiper-button-next {
-    background: transparent;
+    display: none;
   }
 }
 
