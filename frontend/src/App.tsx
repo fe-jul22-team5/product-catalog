@@ -35,8 +35,6 @@ export function App() {
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-
-          {/* <MainSlider/> */}
         </div>
       </main>
 
