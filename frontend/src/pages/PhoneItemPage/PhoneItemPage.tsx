@@ -173,6 +173,62 @@ export const PhoneItemPage = React.memo(function PhoneItemPage() {
 
         </div>
       </div>
+
+      <div className={phoneStyles.phoneItem__about_spec_wrapper}>
+        <div className={phoneStyles.phoneItem__about_wrapper}>
+          <h2 className={phoneStyles.phoneItem__about_title}>
+        About
+          </h2>
+
+          <p className={phoneStyles.phoneItem__about_text}>
+        A transformative triple‑camera system that adds tons of capability without complexity.
+
+        An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.
+          </p>
+        </div>
+
+        <div className={phoneStyles.phoneItem__specs_wrapper}>
+          <h2 className={phoneStyles.phoneItem__specs_title}>
+        Tech specs
+          </h2>
+          <div className={phoneStyles.phoneItem__specs_table}>
+            <ul className={card.phones_card__characteristic}>
+              <li className={card.phones_card__characteristic_item}>
+                <span className={card.phones_card__characteristic_name}>
+            Screen
+                </span>
+                <span className={card.phones_card__characteristic_num}>
+            6.5” OLED
+                </span>
+              </li>
+              <li className={card.phones_card__characteristic_item}>
+                <span className={card.phones_card__characteristic_name}>
+          Resolution
+                </span>
+                <span className={card.phones_card__characteristic_num}>
+          2688x1242
+                </span>
+              </li>
+              <li className={card.phones_card__characteristic_item}>
+                <span className={card.phones_card__characteristic_name}>
+            Processor
+                </span>
+                <span className={card.phones_card__characteristic_num}>
+            Apple A12 Bionic
+                </span>
+              </li>
+              <li className={card.phones_card__characteristic_item}>
+                <span className={card.phones_card__characteristic_name}>
+            RAM
+                </span>
+                <span className={card.phones_card__characteristic_num}>
+            3 GB
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </>
   );
 });
