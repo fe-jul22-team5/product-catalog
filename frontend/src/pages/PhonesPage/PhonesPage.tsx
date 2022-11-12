@@ -14,6 +14,7 @@ import { NavLink, useSearchParams } from 'react-router-dom';
 
 import ReactPaginate from 'react-paginate';
 import classNames from 'classnames';
+import { useParams } from 'react-router';
 
 type Option = {
   value: string,
@@ -33,6 +34,9 @@ const defaultCount: Option = {
 const firstPage = '0';
 
 export const PhonesPage = React.memo(function PhonesPage() {
+
+  const { phoneId = 0 } = useParams();
+
   const sortByOptions = useMemo(() => [
     defaultSortBy,
     {

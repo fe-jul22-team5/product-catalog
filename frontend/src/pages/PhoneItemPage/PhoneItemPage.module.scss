@@ -39,13 +39,7 @@
     }
   }
 
-  &__carousel {
-    @include onTablet {
-      flex: 1 1 0px;
-      width: 0;
-    }
-  }
-
+  &__carousel,
   &__short_info_wrapper {
     @include onTablet {
       flex: 1 1 0px;
@@ -208,6 +202,78 @@
 
   &__characteristics {
     padding-top: 32px;
+  }
+
+  &__about_spec_wrapper {
+    @include onDesktop {
+      display: flex;
+      gap: 76px;
+    }
+  }
+
+  &__about_wrapper,
+  &__specs_wrapper {
+    @include onDesktop {
+      flex: 1 1 0px;
+      width: 0;
+    }
+  }
+
+  &__about_title {
+    position: relative;
+    font-weight: 700;
+    font-size: 20px;
+    color: $grey-primary-clr;
+
+    padding-top: 48px;
+    padding-bottom: 16px;
+
+    @include onTablet {
+      padding-top: 56px;
+    }
+
+    @include onDesktop {
+      padding-top: 72px;
+    }
+
+    &::after {
+      @extend %phone_page_blocks_after;
+    }
+  }
+
+  &__about_text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $grey-secondary-clr;
+
+    padding-top: 32px;
+  }
+
+  &__specs_title {
+    position: relative;
+    font-weight: 700;
+    font-size: 20px;
+    color: $grey-primary-clr;
+
+    padding-top: 48px;
+    padding-bottom: 16px;
+
+    @include onTablet {
+      padding-top: 56px;
+    }
+
+    @include onDesktop {
+      padding-top: 72px;
+    }
+
+    &::after {
+      @extend %phone_page_blocks_after;
+    }
+  }
+
+  &__specs_table {
+    padding-top: 25px;
   }
 }
 
