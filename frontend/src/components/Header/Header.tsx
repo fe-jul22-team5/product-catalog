@@ -10,6 +10,9 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import styles from  './Header.module.scss';
 import { useLocalStorage } from '../../helpers/localStorage';
 import { Phone } from '../../types/phone';
+import { PageNavLink } from './components/PageNavLink';
+import { BurgerNavLink } from './components/BurgerNavLink';
+import { IconNavLink } from './components/IconNavLink';
 
 export const Header = React.memo(function Header() {
   const [activeBurger, setActiveBurger] = useState(false);
@@ -20,65 +23,35 @@ export const Header = React.memo(function Header() {
     ? disableBodyScroll(document.querySelector('body') as HTMLElement)
     : enableBodyScroll(document.querySelector('body') as HTMLElement);
 
+
+  const handleBurgerActive = () => setActiveBurger(!activeBurger);
+
   return (
     <div className={styles.header}>
       <div className={styles.header__logo_nav_block}>
         <div className={styles.header__logo}>
           <NavLink to="home">
-            <img className='header__logo' src={logo} alt="full__logo" />
+            <img
+              className='header__logo'
+              src={logo}
+              alt="full__logo"
+            />
           </NavLink>
         </div>
 
         <nav className={styles.header__menu}>
           <ul className={styles.header__menu_list}>
             <li className={styles.header__menu_item}>
-              <NavLink
-                to="/"
-                className={({ isActive }) => classNames(
-                  styles.header__menu_link,
-                  { [styles.header__menu_link_is_active]: isActive },
-                )}
-                end
-              >
-              Home
-              </NavLink>
+              <PageNavLink to="/" text='Home'/>
             </li>
             <li className={styles.header__menu_item}>
-              <NavLink
-                to="phones"
-                className={({ isActive }) => classNames(
-                  styles.header__menu_link,
-                  { [styles.header__menu_link_is_active]: isActive },
-                )}
-                end
-              >
-              Phones
-              </NavLink>
-
+              <PageNavLink to="phones" text='Phones'/>
             </li>
             <li className={styles.header__menu_item}>
-              <NavLink
-                to="tablets"
-                className={({ isActive }) => classNames(
-                  styles.header__menu_link,
-                  { [styles.header__menu_link_is_active]: isActive },
-                )}
-                end
-              >
-              Tablets
-              </NavLink>
+              <PageNavLink to="tablets" text='Tablets'/>
             </li>
             <li className={styles.header__menu_item}>
-              <NavLink
-                to="accessories"
-                className={({ isActive }) => classNames(
-                  styles.header__menu_link,
-                  { [styles.header__menu_link_is_active]: isActive },
-                )}
-                end
-              >
-              accessories
-              </NavLink>
+              <PageNavLink to="accessories" text='accessories'/>
             </li>
           </ul>
         </nav>
@@ -86,55 +59,47 @@ export const Header = React.memo(function Header() {
 
       <div className={styles.header_icons_container}>
         <div className={styles.header__cart_icon}>
-          <div className={
-            favorites.length > 0
-              ?
-              styles.header_fav_counter_active
-              :
-              styles.header_fav_counter
-          }>
-            {favorites.length}
-          </div>
-          <NavLink
-            to="favourites"
-            className={({ isActive }) => classNames(
-              styles.header__cart_icon_link,
-              { [styles.header__menu_link_is_active]: isActive },
-            )}
-            end
-          >
-            <img src={favicon} alt="favourites_icon"/>
-          </NavLink>
+          <IconNavLink
+            to='favourites'
+            content={(<img src={favicon} alt="favourites_icon"/>)}
+            counter={(          <div className={
+              favorites.length > 0
+                ?
+                styles.header_fav_counter_active
+                :
+                styles.header_fav_counter
+            }>
+              {favorites.length}
+            </div>)}
+          />
         </div>
 
         <div className={styles.header__cart_icon}>
-          <div
-            className={
-              cart.length > 0
-                ?
-                styles.header_cart_counter_active
-                :
-                styles.header_cart_counter
-            }>
-            {cart.length}
-          </div>
-          <NavLink
-            to="cart"
-            className={({ isActive }) => classNames(
-              styles.header__cart_icon_link,
-              { [styles.header__menu_link_is_active]: isActive },
-            )}
-            end
-          >
-            <img src={cartLogo} alt="shopping_cart_icon"/>
-          </NavLink>
+          <IconNavLink
+            to='cart'
+            content={( <img src={cartLogo} alt="shopping_cart_icon"/>)}
+            counter={(<div
+              className={
+                cart.length > 0
+                  ?
+                  styles.header_cart_counter_active
+                  :
+                  styles.header_cart_counter
+              }>
+              {cart.length}
+            </div>)}
+          />
         </div>
       </div>
 
       <div className={styles.header__burger_menu}
-        onClick={() => setActiveBurger(!activeBurger)}
+        onClick={handleBurgerActive}
       >
-        <img src={burger} className={styles.burger_header__icon} alt="burger-menu icon" />
+        <img
+          src={burger}
+          className={styles.burger_header__icon}
+          alt="burger-menu icon"
+        />
       </div>
 
       <nav className={activeBurger ? styles.burger_open : styles.burger }>
@@ -142,14 +107,15 @@ export const Header = React.memo(function Header() {
           <div className={styles.burger_open_header}>
             <div className={styles.burger_header__logo}>
               <a href="/">
-                <img className='header__logo' src={logo} alt="full__logo" />
+                <img
+                  className='header__logo'
+                  src={logo} alt="full__logo"
+                />
               </a>
             </div>
 
             <div className={styles.header__burger_menu}
-              onClick={() => {
-                setActiveBurger(!activeBurger);
-              } }
+              onClick={handleBurgerActive}
             >
               <p className={styles.burger_header__icon}> X </p>
             </div>
@@ -157,73 +123,46 @@ export const Header = React.memo(function Header() {
 
           <ul className={styles.burger__menu_list}>
             <li className={styles.header__menu_item}>
-              <NavLink
-                onClick={() => setActiveBurger(!activeBurger)}
-                to="/"
-                className={({ isActive }) => classNames(
-                  styles.burger__menu_link,
-                  { [styles.header__menu_link_is_active]: isActive },
-                )}
-                end
-              >
-              Home
-              </NavLink>
+              <BurgerNavLink
+                func={handleBurgerActive}
+                to='/'
+                text='Home'
+              />
             </li>
             <li className={styles.header__menu_item}>
-              <NavLink
-                onClick={() => setActiveBurger(!activeBurger)}
-                to="phones"
-                className={({ isActive }) => classNames(
-                  styles.burger__menu_link,
-                  { [styles.header__menu_link_is_active]: isActive },
-                )}
-                end
-              >
-              Phones
-              </NavLink>
-
+              <BurgerNavLink
+                func={handleBurgerActive}
+                to='phones'
+                text='Phones'
+              />
             </li>
             <li className={styles.header__menu_item}>
-              <NavLink
-                onClick={() => setActiveBurger(!activeBurger)}
-                to="tablets"
-                className={({ isActive }) => classNames(
-                  styles.burger__menu_link,
-                  { [styles.header__menu_link_is_active]: isActive },
-                )}
-                end
-              >
-              Tablets
-              </NavLink>
+              <BurgerNavLink
+                func={handleBurgerActive}
+                to='tablets'
+                text='Tablets'
+              />
             </li>
             <li className={styles.header__menu_item}>
-              <NavLink
-                onClick={() => setActiveBurger(!activeBurger)}
-                to="accessories"
-                className={({ isActive }) => classNames(
-                  styles.burger__menu_link,
-                  { [styles.header__menu_link_is_active]: isActive },
-                )}
-                end
-              >
-              accessories
-              </NavLink>
+              <BurgerNavLink
+                func={handleBurgerActive}
+                to='accessories'
+                text='accessories'
+              />
             </li>
           </ul>
         </div>
 
-
         <footer className={styles.burger__menu_footer}>
           <div className={styles.burger__menu_footer_pic}>
             <NavLink
-              onClick={() => setActiveBurger(!activeBurger)}
-              to="favourites"
+              onClick={handleBurgerActive}
+              to='favourites'
               className={({ isActive }) => classNames(
                 styles.burger__cart_icon_link,
                 { [styles.burger__cart_icon_link_is_active]: isActive },
               )}
               end
-
             >
               <img src={favicon} alt="favourite_icon"/>
               <div
@@ -242,8 +181,8 @@ export const Header = React.memo(function Header() {
 
           <div className={styles.burger__menu_footer_pic}>
             <NavLink
-              onClick={() => setActiveBurger(!activeBurger)}
-              to="cart"
+              onClick={handleBurgerActive}
+              to='cart'
               className={({ isActive }) => classNames(
                 styles.burger__cart_icon_link,
                 { [styles.burger__cart_icon_link_is_active]: isActive },
@@ -267,6 +206,5 @@ export const Header = React.memo(function Header() {
         </footer>
       </nav>
     </div>
-
   );
 });

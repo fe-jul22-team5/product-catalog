@@ -118,8 +118,10 @@
   visibility: hidden;
   @extend %header_fav_counter;
 
+
   &_active {
     visibility: visible;
+    right: 10px;
 
     @extend %header_fav_counter
   }
