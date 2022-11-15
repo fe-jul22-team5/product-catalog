@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { FC, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Phone } from '../../../types/phone';
-import styles from '../Header.module.scss';
+import styles from '../Burger.module.scss';
 
 type Props = {
   to: string;

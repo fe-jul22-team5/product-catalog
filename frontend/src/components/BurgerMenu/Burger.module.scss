@@ -1,0 +1,165 @@
+@import '../../styles/_utils/_variables';
+@import '../../styles/_utils//extends';
+
+.burger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFFFFF;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: translateX(100%);
+  transition: transform 0.5s;
+
+  &:target {
+    transform: translateX(100%);
+  }
+
+  &_open {
+    transform: translateX(0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-color: #FFFFFF;
+    transition: transform 0.5s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &_open_header {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 1px 0px #E2E6E9;
+  }
+}
+
+.burger__header__logo {
+  padding-left: 16px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.burger_header__icon {
+  color: $grey-primary-clr;
+  padding: 17px;
+}
+
+.burger__menu_list {
+  padding-top: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+}
+
+.burger__menu_link {
+  position: relative;
+  padding-top: 19px;
+  padding-bottom: 19px;
+
+  color: $grey-secondary-clr;
+
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition-property: color;
+
+  transition-duration: 0.3s;
+}
+
+
+.burger__menu_footer {
+  display: flex;
+  height: 60px;
+  justify-content: space-around;
+  box-shadow: inset 0px 1px 0px #e2e6e9;
+}
+
+
+.burger__menu_footer_pic {
+  display: flex;
+  flex-basis: 50%;
+  justify-content: center;
+
+  border-right: 1px solid #e2e6e9;
+}
+
+.burger__cart_icon_link {
+  position: relative;
+  padding: 25px 90px;
+
+  transition-property: color;
+
+  transition-duration: 0.3s;
+}
+
+.burger__cart_icon_link:hover {
+  color: $grey-primary-clr;
+
+  &::after {
+    left: 0;
+    right: 0
+  }
+}
+
+.burger__cart_icon_link::after {
+  display: block;
+  content: "";
+  height: 4px;
+  background-color: $grey-primary-clr;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  right: 50%;
+
+  transition-property: color, left, right;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.burger__cart_icon_link_is_active {
+  color: $grey-primary-clr !important;
+  position: relative;
+  padding: 25px 90px;
+
+  transition-property: color;
+
+  transition-duration: 0.3s;
+
+  &::after {
+    display: block;
+    content: "";
+    height: 4px;
+    background-color: $grey-primary-clr;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+  }
+}
+
+.burger_fav_counter {
+  visibility: hidden;
+  @extend %burger_fav_counter;
+
+  &_active {
+    visibility: visible;
+
+    @extend %burger_fav_counter;
+  }
+}

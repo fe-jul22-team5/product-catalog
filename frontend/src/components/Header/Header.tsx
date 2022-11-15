@@ -7,12 +7,12 @@ import favicon from './logo/fav_icon.png';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import styles from  './Header.module.scss';
+import burgerStyles from '../BurgerMenu/Burger.module.scss';
 import { useLocalStorage } from '../../helpers/localStorage';
 import { Phone } from '../../types/phone';
 import { PageNavLink } from './components/PageNavLink';
-import { BurgerNavLink } from './components/BurgerNavLink';
 import { IconNavLink } from './components/IconNavLink';
-import { BurgerIconNavLink } from './components/BurgerIconNavLink';
+import { BurgerMenu } from '../BurgerMenu';
 
 export const Header = React.memo(function Header() {
   const [activeBurger, setActiveBurger] = useState(false);
@@ -101,82 +101,17 @@ export const Header = React.memo(function Header() {
       >
         <img
           src={burger}
-          className={styles.burger_header__icon}
+          className={burgerStyles.burger_header__icon}
           alt="burger-menu icon"
         />
       </div>
 
-      <nav className={activeBurger ? styles.burger_open : styles.burger }>
-        <div className={styles.burger_open_wrapper}>
-          <div className={styles.burger_open_header}>
-            <div className={styles.burger_header__logo}>
-              <a href="/">
-                <img
-                  className='header__logo'
-                  src={logo} alt="full__logo"
-                />
-              </a>
-            </div>
-
-            <div className={styles.header__burger_menu}
-              onClick={handleBurgerActive}
-            >
-              <p className={styles.burger_header__icon}> X </p>
-            </div>
-          </div>
-
-          <ul className={styles.burger__menu_list}>
-            <li className={styles.header__menu_item}>
-              <BurgerNavLink
-                func={handleBurgerActive}
-                to='/'
-                text='Home'
-              />
-            </li>
-            <li className={styles.header__menu_item}>
-              <BurgerNavLink
-                func={handleBurgerActive}
-                to='phones'
-                text='Phones'
-              />
-            </li>
-            <li className={styles.header__menu_item}>
-              <BurgerNavLink
-                func={handleBurgerActive}
-                to='tablets'
-                text='Tablets'
-              />
-            </li>
-            <li className={styles.header__menu_item}>
-              <BurgerNavLink
-                func={handleBurgerActive}
-                to='accessories'
-                text='accessories'
-              />
-            </li>
-          </ul>
-        </div>
-
-        <footer className={styles.burger__menu_footer}>
-          <div className={styles.burger__menu_footer_pic}>
-            <BurgerIconNavLink
-              to='favourites'
-              func={handleBurgerActive}
-              content={<img src={favicon} alt="favourite_icon"/>}
-              storage={favorites}
-            />
-          </div>
-
-          <div className={styles.burger__menu_footer_pic}>
-            <BurgerIconNavLink
-              to='cart'
-              func={handleBurgerActive}
-              content={(<img src={cartLogo} alt="shopping_cart_icon"/>)}
-              storage={cart}
-            />
-          </div>
-        </footer>
-      </nav>
+      <BurgerMenu
+        activeBurger={activeBurger}
+        handleBurgerActive={handleBurgerActive}
+        cart={cart}
+        favorites={favorites}
+      />
     </div>
   );
 });
