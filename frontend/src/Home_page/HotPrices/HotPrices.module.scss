@@ -1,0 +1,81 @@
+@import '../../styles/_utils/variables';
+@import '../../styles/_utils/mixins';
+@import '../../styles/_utils/extends';
+@import '../../styles/_utils/variables';
+
+.hotPrices {
+  padding-top: 80px;
+
+  &__title {
+    font-size: 22px;
+    line-height: 140%;
+    font-weight: 800;
+    color: $grey-primary-clr;
+
+    @include onTablet {
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__wrapper {
+    position: relative;;
+  }
+
+  &__title {
+    padding-bottom: $padding-l-r-big;
+  }
+
+  &__swiper {
+    position: static;
+  }
+
+  &__content {
+    width: 237px;
+    height: 500px;
+    background: #FFFFFF;
+    border: 1px solid #E2E6E9;
+    border-radius: 8px;
+
+    @include onDesktop {
+      width: 258px;
+      height: 506px;
+    }
+  }
+
+  &__prev {
+    &_button {
+      position: absolute;
+      top: -50px;
+      right: 12%;
+      background-image: url(../../Home_page/HotPrices/img/sircle.svg);
+      @extend %home_page_arrow_styles;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 9px;
+        left: 8px;
+        width: 16px;
+        height: 16px;
+        transform: rotate(180deg);
+        background-image: url(../../Home_page/HotPrices/img/next-arrow.svg);
+      }
+
+      @include onTablet {
+        right: 7%;
+      }
+    }
+  }
+
+  &__next {
+    &_button {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background-image: url(../../Home_page/HotPrices/img/right-arrow.svg);
+      @extend %home_page_arrow_styles;
+    }
+  }
+}

@@ -10,6 +10,7 @@ import { NotificationContainer} from 'react-notifications';
 import { PageFavorites } from './pages/PageFavorites';
 import { MainSlider } from './Home_page/HomePageSlider';
 import { PhoneItemPage } from './pages/PhoneItemPage';
+import { HotPrices } from './Home_page/HotPrices';
 
 export function App() {
   return (
@@ -35,6 +36,8 @@ export function App() {
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
+
+          <HotPrices/>
         </div>
       </main>
 
