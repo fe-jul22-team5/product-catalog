@@ -23,7 +23,10 @@ export const CardList = React.memo(function CardList(props: Props) {
   useEffect(() => {
     if (data instanceof Promise<Phone[]>) {
       data.then(phones => setPhonesList(phones))
-        .catch(() => setIsError(true))
+        .catch(() => {
+          setIsError(true);
+          setIsLoading(false);
+        })
         .finally(() => setIsLoading(false));
     } else {
       setPhonesList(data);
@@ -40,7 +43,7 @@ export const CardList = React.memo(function CardList(props: Props) {
   }, [favorites]);
   return (
     <>
-      {isLoading
+      {/* {isLoading
         ? <Loader />
         : !isError
           ? (
@@ -58,9 +61,27 @@ export const CardList = React.memo(function CardList(props: Props) {
             </div>
           )
           : (
-            <h1>Oooops! Something went wrong</h1>
+
           )
+      } */}
+
+      {isLoading
+        ? <Loader />
+        : <div className={cardList.CardList}>
+          {phoneList.map(phone => (
+            <Card
+              key={phone.id}
+              phone={phone}
+              addItemToCart={addItemToCart}
+              addItemToFavorites={addItemToFavorites}
+              cart={cart}
+              favorites={favorites}
+            />
+          ))}
+        </div>
       }
+
+      {isError && <h1>Oooops! Something went wrong</h1>}
     </>
   );
 });

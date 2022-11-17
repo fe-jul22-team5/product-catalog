@@ -10,7 +10,7 @@ type Props = {
   addItemToCart: (phone: Phone) => void;
   addItemToFavorites: (phone: Phone) => void;
   cart: Phone[];
-  favorites: Phone[]
+  favorites: Phone[];
 }
 
 export const Card = React.memo(function Card({
@@ -31,8 +31,10 @@ export const Card = React.memo(function Card({
     screen,
     capacity,
     ram,
-    image
+    image,
+    id,
   } = phone;
+
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('cart') as string);
@@ -55,7 +57,7 @@ export const Card = React.memo(function Card({
   return (
     <div className={card.phones_card}>
       <NavLink
-        to='./1'
+        to={`../phones/${id}`}
         className={card.phones_card__img_link}
         end
       >

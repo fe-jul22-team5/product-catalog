@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from '../HotPrices/HotPrices.module.scss';
-
-
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/effect-fade';

@@ -23,11 +23,12 @@ export function App() {
         <div className={app.page__container}>
           <Routes>
             <Route path="/" element={<MainSlider />} />
+
             <Route path="home" element={<Navigate to="/" replace/>} />
 
             <Route path="phones" element={<PhonesPage />} />
 
-            <Route path="phones/1" element={<PhoneItemPage />} />
+            <Route path="phones/:phoneId" element={<PhoneItemPage />} />
 
             <Route path="cart" element={<PageCart />} />
 
