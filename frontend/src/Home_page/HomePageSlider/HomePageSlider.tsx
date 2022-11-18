@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './HomePageSlider.module.scss';
 
 import 'swiper/scss';
@@ -7,7 +8,7 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/effect-fade';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Autoplay, EffectFade } from 'swiper';
-import { HomePageSlider } from '../../components/HomePageSlider/HomePageSlider';
+
 
 SwiperCore.use([Autoplay]);
 
@@ -33,15 +34,19 @@ export const MainSlider = React.memo(function MainSlider() {
         }}
       >
         <SwiperSlide className={styles.mainSlider__swiperSlide}>
-          <HomePageSlider/>
+          <NavLink to="/phones" className={styles.mainSlider__swiperSlide1}>
+            <div className={styles.mainSlider__link}>
+              <div className={styles.mainSlider__firstImg}></div>
+            </div>
+          </NavLink>
         </SwiperSlide>
 
         <SwiperSlide className={styles.mainSlider__swiperSlide}>
-          <HomePageSlider/>
-        </SwiperSlide>
-
-        <SwiperSlide className={styles.mainSlider__content}>
-          <HomePageSlider/>
+          <NavLink to="/phones" className={styles.mainSlider__swiperSlide}>
+            <div className={styles.mainSlider__link}>
+              <div className={styles.mainSlider__secondImg}></div>
+            </div>
+          </NavLink>
         </SwiperSlide>
 
       </Swiper>
