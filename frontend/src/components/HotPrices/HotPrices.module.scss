@@ -49,7 +49,7 @@
       position: absolute;
       top: -50px;
       right: 12%;
-      background-image: url(../../Home_page/HotPrices/img/sircle.svg);
+      background-image: url(./img/sircle.svg);
       @extend %home_page_arrow_styles;
 
       &::after {
@@ -60,7 +60,7 @@
         width: 16px;
         height: 16px;
         transform: rotate(180deg);
-        background-image: url(../../Home_page/HotPrices/img/next-arrow.svg);
+        background-image: url(./img/next-arrow.svg);
       }
 
       @include onTablet {
@@ -74,7 +74,7 @@
       position: absolute;
       top: -50px;
       right: 0;
-      background-image: url(../../Home_page/HotPrices/img/right-arrow.svg);
+      background-image: url(./img/right-arrow.svg);
       @extend %home_page_arrow_styles;
     }
   }

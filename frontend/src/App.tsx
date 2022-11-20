@@ -8,9 +8,8 @@ import { Footer } from './components/Footer';
 import app from './styles/App.module.scss';
 import { NotificationContainer} from 'react-notifications';
 import { PageFavorites } from './pages/PageFavorites';
-import { MainSlider } from './Home_page/HomePageSlider';
 import { PhoneItemPage } from './pages/PhoneItemPage';
-import { HotPrices } from './Home_page/HotPrices';
+import { HomePage } from './pages/HomePage';
 
 export function App() {
   return (
@@ -22,7 +21,7 @@ export function App() {
       <main className={app.page}>
         <div className={app.page__container}>
           <Routes>
-            <Route path="/" element={<MainSlider />} />
+            <Route path="/" element={<HomePage />} />
 
             <Route path="home" element={<Navigate to="/" replace/>} />
 
@@ -36,8 +35,6 @@ export function App() {
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-
-          <HotPrices/>
         </div>
       </main>
 

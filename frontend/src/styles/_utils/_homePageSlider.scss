@@ -7,12 +7,12 @@
 
 .swiper-button-prev {
   left: 0;
-  background-image: url(../../Home_page/HomePageSlider/img/left-arrow.svg);
+  background-image: url(../../components/HomePageSlider/img/left-arrow.svg);
 }
 
 .swiper-button-next {
   right: 0;
-  background-image: url(../../Home_page/HomePageSlider/img/right-arrow.svg);
+  background-image: url(../../components/HomePageSlider/img/right-arrow.svg);
 }
 
 .swiper-button-prev,
@@ -54,13 +54,13 @@
   .swiper-button-prev {
     top: 56%;
     left: 50px;
-    background-image: url(../../Home_page/HomePageSlider/img/tablet-prev-btn.svg);
+    background-image: url(../../components/HomePageSlider/img/tablet-prev-btn.svg);
   }
 
   .swiper-button-next {
     top: 56%;
     right: 50px;
-    background-image: url(../../Home_page/HomePageSlider/img/tablet-next-btn.png);
+    background-image: url(../../components/HomePageSlider/img/tablet-next-btn.png);
   }
 }
 
@@ -68,12 +68,12 @@
   .swiper-button-prev {
     top: 56%;
     left: 18%;
-    background-image: url(../../Home_page/HomePageSlider/img/tablet-prev-btn.svg);
+    background-image: url(../../components/HomePageSlider/img/tablet-prev-btn.svg);
   }
 
   .swiper-button-next {
     top: 56%;
     right: 18%;
-    background-image: url(../../Home_page/HomePageSlider/img/tablet-next-btn.png);
+    background-image: url(../../components/HomePageSlider/img/tablet-next-btn.png);
   }
 }
