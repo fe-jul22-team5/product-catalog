@@ -43,28 +43,6 @@ export const CardList = React.memo(function CardList(props: Props) {
   }, [favorites]);
   return (
     <>
-      {/* {isLoading
-        ? <Loader />
-        : !isError
-          ? (
-            <div className={cardList.CardList}>
-              {phoneList.map(phone => (
-                <Card
-                  key={phone.id}
-                  phone={phone}
-                  addItemToCart={addItemToCart}
-                  addItemToFavorites={addItemToFavorites}
-                  cart={cart}
-                  favorites={favorites}
-                />
-              ))}
-            </div>
-          )
-          : (
-
-          )
-      } */}
-
       {isLoading
         ? <Loader />
         : <div className={cardList.CardList}>
