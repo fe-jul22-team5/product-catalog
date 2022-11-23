@@ -34,6 +34,8 @@ const defaultCount: Option = {
 const firstPage = '0';
 
 export const PhonesPage = React.memo(function PhonesPage() {
+  const [phonesCount, setPhonesCount] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const { phoneId = 0 } = useParams();
 
@@ -65,9 +67,6 @@ export const PhonesPage = React.memo(function PhonesPage() {
     },
   ] as Option[], []);
 
-  const [phonesCount, setPhonesCount] = useState(0);
-
-  const [searchParams, setSearchParams] = useSearchParams();
 
   function updateSearch(params: { [key: string]: string | undefined }) {
     Object.entries(params).forEach(([key, value]) => {

@@ -94,3 +94,19 @@ export const getProductRecommendationsById = (req: Request, res: Response) => {
   res.statusCode = 200;
   res.send(recommended);
 };
+
+export const getHotPrices = (req: Request, res: Response) => {
+  const { discount } = req.query;
+
+  if (typeof discount === 'string') {
+    const hotPhones = getAll()
+      .filter(phone => phone.fullPrice - phone.price >= +discount);
+
+    res.statusCode = 200;
+    res.send(hotPhones);
+
+    return;
+  }
+
+  res.sendStatus(400);
+};
