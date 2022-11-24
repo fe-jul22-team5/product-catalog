@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/product-catalog/static/css/main.2f9096c4.css",
-    "main.js": "/product-catalog/static/js/main.5ce7ba61.js",
+    "main.css": "/product-catalog/static/css/main.e67dd7fb.css",
+    "main.js": "/product-catalog/static/js/main.87789908.js",
     "static/media/desctop-banner.svg": "/product-catalog/static/media/desctop-banner.19e658112abfd43acf9c.svg",
     "static/media/banner-phones.png": "/product-catalog/static/media/banner-phones.b4eeda8bd82b712057a2.png",
     "static/media/Mont-Regular.otf": "/product-catalog/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
     "static/media/Mont-SemiBold.otf": "/product-catalog/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
     "static/media/Mont-Bold.otf": "/product-catalog/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
     "static/media/mobile-phones.png": "/product-catalog/static/media/mobile-phones.bbecf787adada7301c9f.png",
+    "static/media/accessories.jpg": "/product-catalog/static/media/accessories.5d2bd14d4ec4f61bda80.jpg",
+    "static/media/tablets.jpg": "/product-catalog/static/media/tablets.f30d7f2f72b0e20baee1.jpg",
     "static/media/phone-banner.png": "/product-catalog/static/media/phone-banner.fa13001e667cb7988218.png",
     "static/media/tablet-banner.png": "/product-catalog/static/media/tablet-banner.4faefabb323c84068d7c.png",
     "static/media/notification.svg?s3g3t9": "/product-catalog/static/media/notification.5d0158671dd860c714c4.svg",
@@ -31,11 +33,11 @@
     "static/media/minus.svg": "/product-catalog/static/media/minus.f1534e41b8f01195bbc8.svg",
     "static/media/sircle.svg": "/product-catalog/static/media/sircle.6264bdae2dc02aa5891f.svg",
     "static/media/divider.svg": "/product-catalog/static/media/divider.b3cd47ad47435f3bcf23.svg",
-    "main.2f9096c4.css.map": "/product-catalog/static/css/main.2f9096c4.css.map",
-    "main.5ce7ba61.js.map": "/product-catalog/static/js/main.5ce7ba61.js.map"
+    "main.e67dd7fb.css.map": "/product-catalog/static/css/main.e67dd7fb.css.map",
+    "main.87789908.js.map": "/product-catalog/static/js/main.87789908.js.map"
   },
   "entrypoints": [
-    "static/css/main.2f9096c4.css",
-    "static/js/main.5ce7ba61.js"
+    "static/css/main.e67dd7fb.css",
+    "static/js/main.87789908.js"
   ]
 }
