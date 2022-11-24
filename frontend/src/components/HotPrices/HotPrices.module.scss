@@ -20,7 +20,8 @@
   }
 
   &__wrapper {
-    position: relative;;
+    position: relative;
+
   }
 
   &__title {
@@ -31,24 +32,12 @@
     position: static;
   }
 
-  &__content {
-    width: 237px;
-    height: 500px;
-    background: #FFFFFF;
-    border: 1px solid #E2E6E9;
-    border-radius: 8px;
-
-    @include onDesktop {
-      width: 258px;
-      height: 506px;
-    }
-  }
-
   &__prev {
     &_button {
       position: absolute;
       top: -50px;
-      right: 12%;
+      right: 16px;
+      transform: translateX(-100%);
       background-image: url(./img/sircle.svg);
       @extend %home_page_arrow_styles;
 
@@ -62,10 +51,6 @@
         transform: rotate(180deg);
         background-image: url(./img/next-arrow.svg);
       }
-
-      @include onTablet {
-        right: 7%;
-      }
     }
   }
 
@@ -77,5 +62,10 @@
       background-image: url(./img/right-arrow.svg);
       @extend %home_page_arrow_styles;
     }
+  }
+
+  &__btn_disabled {
+    opacity: 0.3;
+    cursor: default;
   }
 }

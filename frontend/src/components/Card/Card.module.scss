@@ -101,7 +101,7 @@
 
   &__addBtn {
     margin-right: 8px;
-    flex: 1 0 160px;
+    flex: 1 0 auto;
     height: 40px;
     background-color: $accent-color;
     border-radius: 8px;
@@ -123,6 +123,7 @@
   }
 
   &__favoritesBtn {
+    flex: 0 0 40px;
     position: relative;
     width: 40px;
     height: 40px;

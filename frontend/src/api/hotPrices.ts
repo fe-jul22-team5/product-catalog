@@ -1,17 +1,12 @@
 import { Phone } from '../types/phone';
 import { client } from './fetchClient';
 
-const productByIdEndPoint = '/product/';
+const productHotPricesEndpoint = '/product/hotprices';
 
-const getHotPricesURL = (discount: string) => {
-  const url = new URL(productByIdEndPoint + 'hotprices');
-  url.search = new URLSearchParams({ discount }).toString();
-
-  return url;
-};
+const getHotPricesURL = (discount: string) => productHotPricesEndpoint + `?discount=${discount}`;
 
 export const getHotPrices = async (discount: string) => {
-  const recommended = await client.get<Phone[]>(getHotPricesURL(discount).toString());
+  const hotPhones = await client.get<Phone[]>(getHotPricesURL(discount).toString());
 
-  return recommended;
+  return hotPhones;
 };
