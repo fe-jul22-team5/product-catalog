@@ -24,12 +24,15 @@ export const CategoriesHomePage: React.FC<Props> = React.memo(function Categorie
       <h3 className={styles.categories__content_title}>
         {title}
       </h3>
-      <p className={styles.categories__content_quantity}>
-        {modelsCount === -2 ?
-          <Loader height='30' width='30' wrapperStyle={{ 'justifyContent': 'left' }} />
-          : `${modelsCount} models`
-        }
-      </p>
+
+      {modelsCount === -2
+        ?
+        <Loader height='30' width='30' wrapperStyle={{ 'justifyContent': 'left' }} />
+        :
+        <p className={styles.categories__content_quantity}>
+          {`${modelsCount} models`}
+        </p>
+      }
     </li>
   );
 });

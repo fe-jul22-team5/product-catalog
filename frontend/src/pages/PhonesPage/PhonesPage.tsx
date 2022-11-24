@@ -36,8 +36,13 @@ const firstPage = '0';
 export const PhonesPage = React.memo(function PhonesPage() {
   const [phonesCount, setPhonesCount] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
-
   const { phoneId = 0 } = useParams();
+
+  useEffect(() => {
+    getCountOfPhones()
+      .then(({ count }) => setPhonesCount(count))
+      .catch(() => setPhonesCount(-1));
+  }, []);
 
   const sortByOptions = useMemo(() => [
     defaultSortBy,
@@ -129,12 +134,6 @@ export const PhonesPage = React.memo(function PhonesPage() {
     return Number(page);
 
   }, [searchParams, countOfPages]);
-
-  useEffect(() => {
-    getCountOfPhones()
-      .then(({ count }) => setPhonesCount(count))
-      .catch(() => setPhonesCount(-1));
-  }, []);
 
   const phones = useMemo(() => {
     let sort = searchParams.get('sort') as SortTypes || SortTypes.alphabetically;

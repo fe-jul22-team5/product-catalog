@@ -25,7 +25,7 @@ export const HomePageSlider = React.memo(function HomePageSlider() {
         modules={[Navigation, Pagination, EffectFade]}
         navigation
         loop={true}
-        effect={'fade'}
+        // effect={'fade'}
         slidesPerView={1}
         pagination={{ clickable: true }}
         autoplay={{

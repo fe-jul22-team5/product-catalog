@@ -1,6 +1,6 @@
 import { Params } from '../types/params';
 
-export const BASE_URL = 'https://product--catalog.herokuapp.com';
+export const BASE_URL = 'https://product-catalog-vv49.onrender.com';
 
 
 type RequestMethod = 'GET';

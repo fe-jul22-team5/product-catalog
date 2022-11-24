@@ -4,7 +4,7 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/effect-fade';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Autoplay } from 'swiper';
+import SwiperCore, { Navigation } from 'swiper';
 import useLocalStorage from '../../helpers/localStorage';
 import { Phone } from '../../types/phone';
 import { updatePhonesList } from '../../helpers/updatePhonesList';
@@ -12,10 +12,8 @@ import { getHotPrices } from '../../api/hotPrices';
 import { Loader } from '../Loader';
 import { Card } from '../Card';
 
-SwiperCore.use([Autoplay]);
-
 export const HotPrices = React.memo(function HotPrices() {
-  const [hotPhones, setHotPhones] = useState<Phone[]>([]);
+  const [hotItems, setHotPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [cart, setCart] = useLocalStorage<Phone[]>('cart', []);
@@ -45,12 +43,25 @@ export const HotPrices = React.memo(function HotPrices() {
       // @ts-ignore
       // eslint-disable-next-line no-param-reassign
       navigation.prevEl = navPrevButton.current;
+      navPrevButton.current?.classList.add(styles.hotPrices__btn_disabled);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // eslint-disable-next-line no-param-reassign
       navigation.nextEl = navNextButton.current;
     }
   };
+
+  const handleNavButtonsEnabling = useCallback((index: SwiperCore) => {
+    if (index.snapIndex === 0) {
+      navPrevButton.current?.classList.add(styles.hotPrices__btn_disabled);
+    }
+    else if (index.snapGrid.length === index.snapIndex + 1) {
+      navNextButton.current?.classList.add(styles.hotPrices__btn_disabled);
+    } else {
+      navPrevButton.current?.classList.remove(styles.hotPrices__btn_disabled);
+      navNextButton.current?.classList.remove(styles.hotPrices__btn_disabled);
+    }
+  }, [hotItems]);
 
   return (
     <section className={styles.hotPrices}>
@@ -66,27 +77,30 @@ export const HotPrices = React.memo(function HotPrices() {
             className={styles.hotPrices__swiper}
             onBeforeInit={onBeforeInit}
             modules={[Navigation]}
-            slidesPerView={1.4}
             loop={false}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false
-            }}
             breakpoints={{
-              767: {
-                width: 767,
-                slidesPerView: 2.5,
+              320: {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
               },
-
-              1023: {
-                width: 1023,
-                slidesPerView: 3.5,
+              490: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+              },
+              768: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+              },
+              1024: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
               },
             }}
+            spaceBetween={16}
+            onSlideChange={handleNavButtonsEnabling}
           >
-            {hotPhones.map(phone => (
+            {hotItems.map(phone => (
               <SwiperSlide className={styles.hotPrices__swiperSlide} key={phone.id}>
-                {/* <div className={styles.hotPrices__content}></div> */}
                 <Card
                   phone={phone}
                   addItemToCart={addItemToCart}
@@ -94,6 +108,7 @@ export const HotPrices = React.memo(function HotPrices() {
                   cart={cart}
                   favorites={favorites}
                 />
+
               </SwiperSlide>
             ))}
 
@@ -107,6 +122,7 @@ export const HotPrices = React.memo(function HotPrices() {
             />
 
           </Swiper>
+          {hotItems.length === 0 && <h1>No items</h1>}
         </div>
       }
 
